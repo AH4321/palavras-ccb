@@ -161,50 +161,92 @@ export async function tocarVideo(index) {
   ativarBloqueioTela();
   
   let playerOverlay = document.getElementById('fullscreen-player-overlay');
-  if (!playerOverlay) {
+let mouseTimer = null; // Temporizador para sumir com o mouse
+
+if (!playerOverlay) {
     playerOverlay = document.createElement('div');
     playerOverlay.id = 'fullscreen-player-overlay';
     playerOverlay.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #000;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     `;
     playerOverlay.innerHTML = `
-      <button
-        id="close-fullscreen-player"
-        style="
-          position: absolute;
-          top: 40px;
-          right: 25px;
-          background: rgba(0,0,0,0.6);
-          color: #fff;
-          border: 2px solid #c5a059;
-          font-size: 1.2rem;
-          padding: 2px 9px;
-          border-radius: 6px;
-          cursor: pointer;
-          z-index: 10000;
-        "
-      >
-        ✕
-      </button>
-      <div style="position: relative; width: 100%; height: 100%;">
-        <div id="youtube-player-div" style="width: 100%; height: 100%;"></div>
-      </div>
+        <button
+            id="close-fullscreen-player"
+            style="
+                position: absolute;
+                top: 40px;
+                right: 25px;
+                background: rgba(0,0,0,0.6);
+                color: #fff;
+                border: 2px solid #c5a059;
+                font-size: 1.5rem;
+                padding: 3px 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                z-index: 10000;
+                transition: opacity 0.3s ease;
+                opacity: 1;
+            "
+        >
+            X
+        </button>
+        <div
+            style="
+                position: relative;
+                width: 100%;
+                height: 100%;
+            "
+        >
+            <div
+                id="youtube-player-div"
+                style="
+                    width: 100%;
+                    height: 100%;
+                "
+            ></div>
+        </div>
     `;
     document.body.appendChild(playerOverlay);
-    document.getElementById('close-fullscreen-player').addEventListener('click', () => {
-      fecharPlayerFullscreen();
-    });
-  }  
+    document
+        .getElementById('close-fullscreen-player')
+        .addEventListener('click', () => {
+            fecharPlayerFullscreen();
+        });
+
+    // Função para mostrar o botão e reiniciar o contador para sumir
+    const resetButtonTimer = () => {
+        const closeBtn = document.getElementById('close-fullscreen-player');
+        if (closeBtn) {
+            closeBtn.style.opacity = '1';
+            closeBtn.style.pointerEvents = 'auto';
+        }
+
+        clearTimeout(mouseTimer);
+        
+        // O botão some após 3 segundos sem mexer o mouse
+        mouseTimer = setTimeout(() => {
+            const btn = document.getElementById('close-fullscreen-player');
+            if (btn) {
+                btn.style.opacity = '0';
+                btn.style.pointerEvents = 'none';
+            }
+        }, 3000);
+    };
+
+    // Monitora o movimento do mouse dentro do overlay do player
+    playerOverlay.addEventListener('mousemove', resetButtonTimer);
+}
+    
 
   playerOverlay.style.display = 'flex';
   
