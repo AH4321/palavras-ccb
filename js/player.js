@@ -6,7 +6,7 @@ let ytPlayerInstance = null;
 let youtubeApiPromise = null;
 let wakeLock = null;
 let mouseTimer = null;           
-let handleGlobalMouseMove = null; 
+let mostrarBotao = null;
 
 async function ativarBloqueioTela() {
   try {
@@ -163,25 +163,25 @@ export async function tocarVideo(index) {
   ativarBloqueioTela();
   
   let playerOverlay = document.getElementById('fullscreen-player-overlay');
-let mouseTimer = null; // Temporizador para sumir com o mouse
-
-if (!playerOverlay) {
-    playerOverlay = document.createElement('div');
-    playerOverlay.id = 'fullscreen-player-overlay';
-    playerOverlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: #000;
-        z-index: 9999;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    `;
-    playerOverlay.innerHTML = `
+    if (!playerOverlay) {
+        playerOverlay = document.createElement('div');
+        playerOverlay.id = 'fullscreen-player-overlay';
+        playerOverlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        `;
+        
+        // Estrutura com o botão separado e acima do player do YouTube
+        playerOverlay.innerHTML = `
             <div
                 id="youtube-player-div"
                 style="
@@ -192,8 +192,6 @@ if (!playerOverlay) {
                     left: 0;
                 "
             ></div>
-            
-            <!-- AQUI COMEÇA O BOTÃO -->
             <button
                 id="close-fullscreen-player"
                 style="
@@ -214,40 +212,37 @@ if (!playerOverlay) {
                 X
             </button>
         `;
-    document.body.appendChild(playerOverlay);
-    document
-        .getElementById('close-fullscreen-player')
-        .addEventListener('click', () => {
-            fecharPlayerFullscreen();
-        });
+        
+        document.body.appendChild(playerOverlay);
+        document
+            .getElementById('close-fullscreen-player')
+            .addEventListener('click', () => {
+                fecharPlayerFullscreen();
+            });
 
-    // Função para mostrar o botão e reiniciar o contador para sumir
-    const resetButtonTimer = () => {
+        // Definição da função que gere o aparecer/desaparecer do botão
+        mostrarBotao = () => {
             const closeBtn = document.getElementById('close-fullscreen-player');
             if (closeBtn) {
-                closeBtn.style.display = 'block'; // Mostra o botão imediatamente
+                closeBtn.style.display = 'block';
             }
-
             clearTimeout(mouseTimer);
             
-            // O botão desaparece após 3 segundos sem mexer o rato
+            // Oculta o botão após 3 segundos sem mexer o rato
             mouseTimer = setTimeout(() => {
                 const btn = document.getElementById('close-fullscreen-player');
                 if (btn) {
-                    btn.style.display = 'none'; // Esconde completamente o botão
+                    btn.style.display = 'none';
                 }
             }, 3000);
         };
 
-    // Função global para escutar o movimento do mouse em toda a janela quando o player estiver ativo
-    const handleGlobalMouseMove = () => {
-        resetButtonTimer();
-    };
-
-    document.addEventListener('mousemove', handleGlobalMouseMove);
-
-    
-}
+        // Ativa o ouvinte global de movimento do rato
+        window.addEventListener('mousemove', mostrarBotao);
+        
+        // Mostra o botão imediatamente ao abrir o vídeo
+        mostrarBotao();
+    }
     
 
   playerOverlay.style.display = 'flex';
@@ -320,8 +315,8 @@ function onPlayerError(event) {
 
 export function fecharPlayerFullscreen() {
 
-  if (handleGlobalMouseMove) {
-        window.removeEventListener('mousemove', handleGlobalMouseMove, true);
+  if (mostrarBotao) {
+        window.removeEventListener('mousemove', mostrarBotao);
     }
     clearTimeout(mouseTimer);
 
