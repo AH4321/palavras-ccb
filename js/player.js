@@ -184,7 +184,7 @@ export async function tocarVideo(index) {
           position: absolute;
           top: 40px;
           right: 25px;
-          background: rgba(0,0,0,0.6);
+          background: rgba(0, 0, 0, 0.14);
           color: #fff;
           border: 2px solid #c5a059;
           font-size: 1.2rem;
