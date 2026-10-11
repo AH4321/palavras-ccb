@@ -5,6 +5,8 @@ let modoAleatorioContinuoAtivo = false;
 let ytPlayerInstance = null;
 let youtubeApiPromise = null;
 let wakeLock = null;
+let mouseTimer = null;           
+let handleGlobalMouseMove = null; 
 
 async function ativarBloqueioTela() {
   try {
@@ -243,8 +245,14 @@ if (!playerOverlay) {
         }, 3000);
     };
 
-    // Monitora o movimento do mouse dentro do overlay do player
-    playerOverlay.addEventListener('mousemove', resetButtonTimer);
+    // Função global para escutar o movimento do mouse em toda a janela quando o player estiver ativo
+    const handleGlobalMouseMove = () => {
+        resetButtonTimer();
+    };
+
+    document.addEventListener('mousemove', handleGlobalMouseMove);
+
+    
 }
     
 
@@ -317,7 +325,15 @@ function onPlayerError(event) {
 }
 
 export function fecharPlayerFullscreen() {
-  modoAleatorioContinuoAtivo = false;
+
+  if (handleGlobalMouseMove) {
+        document.removeEventListener('mousemove', handleGlobalMouseMove);
+    }
+    clearTimeout(mouseTimer);
+
+    // Desliga o modo aleatório.
+    modoAleatorioContinuoAtivo = false;
+  
   if (typeof state !== 'undefined') {
     state.modoAleatorioAtivo = false;
   }
