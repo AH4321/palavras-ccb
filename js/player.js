@@ -206,7 +206,9 @@ export async function tocarVideo(index) {
                     border-radius: 6px;
                     cursor: pointer;
                     z-index: 2147483647;
-                    display: block;
+                    opacity: 1;
+                    transition: opacity 0.3s ease;
+                    pointer-events: auto;
                 "
             >
                 X
@@ -220,11 +222,12 @@ export async function tocarVideo(index) {
                 fecharPlayerFullscreen();
             });
 
-        // Definição da função que gere o aparecer/desaparecer do botão
+        // Definição da função que gere o aparecer/desaparecer do botão usando opacidade
         mostrarBotao = () => {
             const closeBtn = document.getElementById('close-fullscreen-player');
             if (closeBtn) {
-                closeBtn.style.display = 'block';
+                closeBtn.style.opacity = '1';
+                closeBtn.style.pointerEvents = 'auto';
             }
             clearTimeout(mouseTimer);
             
@@ -232,7 +235,8 @@ export async function tocarVideo(index) {
             mouseTimer = setTimeout(() => {
                 const btn = document.getElementById('close-fullscreen-player');
                 if (btn) {
-                    btn.style.display = 'none';
+                    btn.style.opacity = '0';
+                    btn.style.pointerEvents = 'none';
                 }
             }, 3000);
         };
@@ -314,8 +318,7 @@ function onPlayerError(event) {
 }
 
 export function fecharPlayerFullscreen() {
-
-  if (mostrarBotao) {
+    if (mostrarBotao) {
         window.removeEventListener('mousemove', mostrarBotao);
     }
     clearTimeout(mouseTimer);
@@ -323,33 +326,40 @@ export function fecharPlayerFullscreen() {
     // Desliga o modo aleatório.
     modoAleatorioContinuoAtivo = false;
   
-  if (typeof state !== 'undefined') {
-    state.modoAleatorioAtivo = false;
-  }
-
-  // Liberta o bloqueio da tela para o monitor voltar a gerir o consumo de energia normalmente
-  libertarBloqueioTela();
-
-  const playerOverlay = document.getElementById('fullscreen-player-overlay');
-  if (playerOverlay) {
-    playerOverlay.style.display = 'none';
-  }
-  
-  if (ytPlayerInstance && typeof ytPlayerInstance.stopVideo === 'function') {
-    ytPlayerInstance.stopVideo();
-  }
-  
-  if (document.fullscreenElement && document.exitFullscreen) {
-    document.exitFullscreen().catch(err => console.log(err));
-  }
-
-  const playlistElement = document.getElementById('playlist');
-  if (playlistElement) {
-    playlistElement.focus();
-    if (typeof state.kbPlaylistIndex === 'number') {
-      focarCartaoVideo(state.kbPlaylistIndex);
+    if (typeof state !== 'undefined') {
+        state.modoAleatorioAtivo = false;
     }
-  }
+
+    // Liberta o bloqueio da tela para o monitor voltar a gerir o consumo de energia normalmente
+    libertarBloqueioTela();
+
+    const playerOverlay = document.getElementById('fullscreen-player-overlay');
+    if (playerOverlay) {
+        playerOverlay.style.display = 'none';
+    }
+  
+    // Garante que ao fechar o botão volta a ficar visível/com pointer-events para o próximo uso
+    const closeBtn = document.getElementById('close-fullscreen-player');
+    if (closeBtn) {
+        closeBtn.style.opacity = '1';
+        closeBtn.style.pointerEvents = 'auto';
+    }
+  
+    if (ytPlayerInstance && typeof ytPlayerInstance.stopVideo === 'function') {
+        ytPlayerInstance.stopVideo();
+    }
+  
+    if (document.fullscreenElement && document.exitFullscreen) {
+        document.exitFullscreen().catch(err => console.log(err));
+    }
+
+    const playlistElement = document.getElementById('playlist');
+    if (playlistElement) {
+        playlistElement.focus();
+        if (typeof state.kbPlaylistIndex === 'number') {
+            focarCartaoVideo(state.kbPlaylistIndex);
+        }
+    }
 }
 
 export function iniciarVideosAleatoriosContinuos() {
