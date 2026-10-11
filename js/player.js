@@ -197,7 +197,7 @@ if (!playerOverlay) {
                 cursor: pointer;
                 z-index: 10000;
                 transition: opacity 0.3s ease;
-                opacity: 1;
+                opacity: 3;
             "
         >
             X
@@ -227,23 +227,21 @@ if (!playerOverlay) {
 
     // Função para mostrar o botão e reiniciar o contador para sumir
     const resetButtonTimer = () => {
-        const closeBtn = document.getElementById('close-fullscreen-player');
-        if (closeBtn) {
-            closeBtn.style.opacity = '1';
-            closeBtn.style.pointerEvents = 'auto';
-        }
-
-        clearTimeout(mouseTimer);
-        
-        // O botão some após 3 segundos sem mexer o mouse
-        mouseTimer = setTimeout(() => {
-            const btn = document.getElementById('close-fullscreen-player');
-            if (btn) {
-                btn.style.opacity = '0';
-                btn.style.pointerEvents = 'none';
+            const closeBtn = document.getElementById('close-fullscreen-player');
+            if (closeBtn) {
+                closeBtn.style.display = 'block'; // Mostra o botão imediatamente
             }
-        }, 3000);
-    };
+
+            clearTimeout(mouseTimer);
+            
+            // O botão desaparece após 3 segundos sem mexer o rato
+            mouseTimer = setTimeout(() => {
+                const btn = document.getElementById('close-fullscreen-player');
+                if (btn) {
+                    btn.style.display = 'none'; // Esconde completamente o botão
+                }
+            }, 3000);
+        };
 
     // Função global para escutar o movimento do mouse em toda a janela quando o player estiver ativo
     const handleGlobalMouseMove = () => {
@@ -327,7 +325,7 @@ function onPlayerError(event) {
 export function fecharPlayerFullscreen() {
 
   if (handleGlobalMouseMove) {
-        document.removeEventListener('mousemove', handleGlobalMouseMove);
+        window.removeEventListener('mousemove', handleGlobalMouseMove, true);
     }
     clearTimeout(mouseTimer);
 
