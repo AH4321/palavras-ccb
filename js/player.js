@@ -182,42 +182,38 @@ if (!playerOverlay) {
         align-items: center;
     `;
     playerOverlay.innerHTML = `
-        <button
-            id="close-fullscreen-player"
-            style="
-                position: absolute;
-                top: 40px;
-                right: 25px;
-                background: rgba(0,0,0,0.6);
-                color: #fff;
-                border: 2px solid #c5a059;
-                font-size: 1.5rem;
-                padding: 3px 12px;
-                border-radius: 6px;
-                cursor: pointer;
-                z-index: 10000;
-                transition: opacity 0.3s ease;
-                opacity: 3;
-            "
-        >
-            X
-        </button>
-        <div
-            style="
-                position: relative;
-                width: 100%;
-                height: 100%;
-            "
-        >
             <div
                 id="youtube-player-div"
                 style="
                     width: 100%;
                     height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                 "
             ></div>
-        </div>
-    `;
+            
+            <!-- AQUI COMEÇA O BOTÃO -->
+            <button
+                id="close-fullscreen-player"
+                style="
+                    position: absolute;
+                    top: 40px;
+                    right: 25px;
+                    background: rgba(0,0,0,0.7);
+                    color: #fff;
+                    border: 2px solid #c5a059;
+                    font-size: 1.5rem;
+                    padding: 6px 16px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    z-index: 2147483647;
+                    display: block;
+                "
+            >
+                X
+            </button>
+        `;
     document.body.appendChild(playerOverlay);
     document
         .getElementById('close-fullscreen-player')
