@@ -192,6 +192,7 @@ export async function tocarVideo(index) {
           border-radius: 6px;
           cursor: pointer;
           z-index: 10000;
+          opacity: 3;
         "
       >
         ✕
