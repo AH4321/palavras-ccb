@@ -180,7 +180,6 @@ export async function tocarVideo(index) {
             align-items: center;
         `;
         
-        // Estrutura com o botão separado e acima do player do YouTube
         playerOverlay.innerHTML = `
             <div
                 id="youtube-player-div"
@@ -198,17 +197,16 @@ export async function tocarVideo(index) {
                     position: absolute;
                     top: 40px;
                     right: 25px;
-                    background: rgba(0,0,0,0.7);
+                    background: rgba(0,0,0,0.8);
                     color: #fff;
                     border: 2px solid #c5a059;
                     font-size: 1.5rem;
-                    padding: 6px 16px;
+                    padding: 8px 18px;
                     border-radius: 6px;
                     cursor: pointer;
                     z-index: 2147483647;
                     opacity: 1;
                     transition: opacity 0.3s ease;
-                    pointer-events: auto;
                 "
             >
                 X
@@ -222,7 +220,7 @@ export async function tocarVideo(index) {
                 fecharPlayerFullscreen();
             });
 
-        // Definição da função que gere o aparecer/desaparecer do botão usando opacidade
+        // Função para mostrar o botão e reagendar o sumiço
         mostrarBotao = () => {
             const closeBtn = document.getElementById('close-fullscreen-player');
             if (closeBtn) {
@@ -231,7 +229,6 @@ export async function tocarVideo(index) {
             }
             clearTimeout(mouseTimer);
             
-            // Oculta o botão após 3 segundos sem mexer o rato
             mouseTimer = setTimeout(() => {
                 const btn = document.getElementById('close-fullscreen-player');
                 if (btn) {
@@ -241,10 +238,10 @@ export async function tocarVideo(index) {
             }, 3000);
         };
 
-        // Ativa o ouvinte global de movimento do rato
+        // Adicionamos o evento diretamente no overlay e usamos captura na janela para garantir que qualquer movimento capte
+        playerOverlay.addEventListener('mousemove', mostrarBotao);
         window.addEventListener('mousemove', mostrarBotao);
         
-        // Mostra o botão imediatamente ao abrir o vídeo
         mostrarBotao();
     }
     
@@ -320,6 +317,11 @@ function onPlayerError(event) {
 export function fecharPlayerFullscreen() {
     if (mostrarBotao) {
         window.removeEventListener('mousemove', mostrarBotao);
+        const playerOverlay = document.getElementById('fullscreen-player-overlay');
+        if (playerOverlay) {
+            playerOverlay.removeifExist; // limpa event listeners antigos se necessário
+            playerOverlay.remove(); // Remove o overlay completamente do DOM para recriar limpo na próxima vez
+        }
     }
     clearTimeout(mouseTimer);
 
@@ -330,20 +332,8 @@ export function fecharPlayerFullscreen() {
         state.modoAleatorioAtivo = false;
     }
 
-    // Liberta o bloqueio da tela para o monitor voltar a gerir o consumo de energia normalmente
+    // Liberta o bloqueio da tela
     libertarBloqueioTela();
-
-    const playerOverlay = document.getElementById('fullscreen-player-overlay');
-    if (playerOverlay) {
-        playerOverlay.style.display = 'none';
-    }
-  
-    // Garante que ao fechar o botão volta a ficar visível/com pointer-events para o próximo uso
-    const closeBtn = document.getElementById('close-fullscreen-player');
-    if (closeBtn) {
-        closeBtn.style.opacity = '1';
-        closeBtn.style.pointerEvents = 'auto';
-    }
   
     if (ytPlayerInstance && typeof ytPlayerInstance.stopVideo === 'function') {
         ytPlayerInstance.stopVideo();
