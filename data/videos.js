@@ -238,5 +238,6 @@ export const listaVideos = [
   { title: "2024 04 03   Palavra Vídeo   QUA 15 00   Lucas 19   IrLuiz", youtubeId: "9e0t1n0OhKg" },
   { title: "2024 03 24   Palavra Vídeo   DOM 10 00   Atos 9   Ir", youtubeId: "x5_skHXzmJ0" },
   { title: "2024 03 13   Palavra   QUA 15 00   Apocalipse 7 9   IrCláudio", youtubeId: "1kDVdzJ31no" },
-  { title: "2024 03 10   Palavra Vídeo   DOM 10 00   Mateus 5   IrLuiz", youtubeId: "ciYOK71lqzk" }
+  { title: "2024 03 10   Palavra Vídeo   DOM 10 00   Mateus 5   IrLuiz", youtubeId: "ciYOK71lqzk" },
+  { title: "2024 03 06   Palavra Vídeo   QUA 15 00   João 1   IrLuiz", youtubeId: "ToDbhIQpcm4" }
 ];
