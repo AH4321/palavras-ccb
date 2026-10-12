@@ -282,5 +282,6 @@ export const listaVideos = [
   { title: "2023 05 24   Palavra Vídeo   QUA 15 00   Jó 42   Ir", youtubeId: "n0hLDl4vn6c" },
   { title: "2023 05 17   Palavra Vídeo   QUA 15 00   Mateus 5 13   IrLuiz", youtubeId: "ZjnDQ06S9KI" },
   { title: "2023 05 14   Palavra Vídeo   DOM 10 00   Tiago 5 7   IrMaurício", youtubeId: "ps1t7SGV8P4" },
-  { title: "2023 05 10   Palavra Vídeo   QUA 15 00   Mateus 5   IrCláudio", youtubeId: "uli8OxsDY9A" }
+  { title: "2023 05 10   Palavra Vídeo   QUA 15 00   Mateus 5   IrCláudio", youtubeId: "uli8OxsDY9A" },
+  { title: "2023 05 07   Palavra Vídeo   DOM 10 00   Jonas 1   Ir", youtubeId: "igekAVPZKNc" }
 ];
