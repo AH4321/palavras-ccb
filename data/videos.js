@@ -259,5 +259,6 @@ export const listaVideos = [
   { title: "2023 11 19   Palavra Vídeo   DOM 10 00   II Samuel 23   Ir", youtubeId: "8dcGZ6zbldg" },
   { title: "2023 11 15   Palavra Vídeo   QUA 15 00   Colossenses 2   IrLuiz", youtubeId: "8wukXmqmgqs" },
   { title: "2023 11 12   Palavra Vídeo   DOM 10 00   Mateus 25   IrSalvador", youtubeId: "NDic07LKVzA" },
-  { title: "2023 11 05   Palavra Vídeo   DOM 10 00   Salmos 90   IrSalvador", youtubeId: "ge0bWxDTXZ0" }
+  { title: "2023 11 05   Palavra Vídeo   DOM 10 00   Salmos 90   IrSalvador", youtubeId: "ge0bWxDTXZ0" },
+  { title: "2023 11 01   Palavra Vídeo   QUA 15 00   Filipenses 1 12   IrSalvador", youtubeId: "SNMbzjJSV_I" }
 ];
