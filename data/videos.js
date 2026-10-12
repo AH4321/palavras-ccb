@@ -217,5 +217,6 @@ export const listaVideos = [
   { title: "2024 09 04   Palavra Vídeo   QUA 15 00    Lucas 16 14   IrLuiz", youtubeId: "y_D1juva4Ls" },
   { title: "2024 08 28   Palavra Vídeo   QUA 15 00   Lucas 15   IrLuiz", youtubeId: "_UU_4uRJWpQ" },
   { title: "2024 08 14   Palavra Vídeo   QUA 15 00   João 15   IrLuiz", youtubeId: "fulznvL8yTs" },
-  { title: "2024 08 04   Palavra Vídeo   DOM 10 00   Salmo 40   IrSalvador", youtubeId: "5aK_2AJwVY4" }
+  { title: "2024 08 04   Palavra Vídeo   DOM 10 00   Salmo 40   IrSalvador", youtubeId: "5aK_2AJwVY4" },
+  { title: "2024 07 31   Palavra Vídeo   QUA 15 00   I Tessalonicenses 4 13   IrLuiz", youtubeId: "Ru_GVJrzWlU" }
 ];
