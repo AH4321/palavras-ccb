@@ -209,5 +209,6 @@ export const listaVideos = [
   { title: "2024 12 25   Palavra Vídeo   QUA 15 00   Efésios 4   Ir", youtubeId: "3u9g-3tJrp8" },
   { title: "2024 11 27   Palavra Vídeo   QUA 15 00   Lucas 12 13   IrLuiz", youtubeId: "5_N28hsIn2Y" },
   { title: "2024 10 30   Palavra Vídeo   QUA 15 00   João 11   IrLuiz", youtubeId: "hl_KCgfy1wA" },
-  { title: "2024 10 09   Palavra Vídeo   QUA 15 00   João 5 16   IrLuiz", youtubeId: "U3v79EcrW9k" }
+  { title: "2024 10 09   Palavra Vídeo   QUA 15 00   João 5 16   IrLuiz", youtubeId: "U3v79EcrW9k" },
+  { title: "2024 10 06   Palavra Vídeo   DOM 10 00   I Coríntios 13   IrLuiz", youtubeId: "Qcwb2I-n8Tg" }
 ];
