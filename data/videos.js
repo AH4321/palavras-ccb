@@ -289,5 +289,6 @@ export const listaVideos = [
   { title: "2023 04 26   Palavra Vídeo   QUA 15 00   Tiago 3 13   IrValdir", youtubeId: "GbhQdDwskzY" },
   { title: "2023 04 12   Palavra Vídeo   QUA 15 00   Romanos 6   IrLuiz", youtubeId: "e1oUfG7_ktc" },
   { title: "2023 04 02   Palavra Vídeo   DOM 10 00  Josué 1   IrHélio", youtubeId: "21U0bYM67vk" },
-  { title: "2023 03 26   Palavra Vídeo   DOM 10 00   Hebreus 10   IrSalvador", youtubeId: "uJK6ncTrVC4" }
+  { title: "2023 03 26   Palavra Vídeo   DOM 10 00   Hebreus 10   IrSalvador", youtubeId: "uJK6ncTrVC4" },
+  { title: "2023 03 15   Palavra Vídeo   QUA 15 00   Romanos 12   Ir", youtubeId: "AayqSyH78As" }
 ];
