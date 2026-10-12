@@ -254,5 +254,6 @@ export const listaVideos = [
   { title: "2023 12 20   Palavra Vídeo   QUA 15 00   Provérbios 17   IrLuiz", youtubeId: "50yKzHLx22M" },
   { title: "2023 12 13   Palavra Vídeo   QUA 15 00   Efésios 1   IrLuiz", youtubeId: "qScYcEUn2Aw" },
   { title: "2023 12 06   Palavra Vídeo   QUA 15 00   Romanos 7   IrLuiz", youtubeId: "wGLGYwqmvf4" },
-  { title: "2023 11 29   Palavra Vídeo   QUA 15 00   I Coríntios 13   IrLuiz", youtubeId: "6tXubHVTFTk" }
+  { title: "2023 11 29   Palavra Vídeo   QUA 15 00   I Coríntios 13   IrLuiz", youtubeId: "6tXubHVTFTk" },
+  { title: "2023 11 22   Palavra Vídeo   QUA 15 00   I Pedro I   IrLuiz", youtubeId: "nJtvFyDoD5s" }
 ];
