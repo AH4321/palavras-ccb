@@ -274,5 +274,6 @@ export const listaVideos = [
   { title: "2023 07 26   Palavra Vídeo   QUA 15 00   Gênesis 13 7   IrCláudio", youtubeId: "KVmG-J2kOss" },
   { title: "2023 07 23   Palavra Vídeo   DOM 10 00   Mateus 7   IrSalvador", youtubeId: "6Qjyt_32kMY" },
   { title: "2023 07 19   Palavra Vídeo   QUA 15 00   Hebreus 1   IrLuiz", youtubeId: "_hvrUEQQsqg" },
-  { title: "2023 07 02   Palavra Vídeo   DOM 10 00   I João 4   IrSalvador", youtubeId: "7EvI-FxRPqc" }
+  { title: "2023 07 02   Palavra Vídeo   DOM 10 00   I João 4   IrSalvador", youtubeId: "7EvI-FxRPqc" },
+  { title: "2023 06 28   Palavra Vídeo   QUA 15 00   Hebreus 2   IrLuiz", youtubeId: "epcEuuXA3po" }
 ];
