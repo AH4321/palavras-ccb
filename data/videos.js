@@ -270,5 +270,6 @@ export const listaVideos = [
   { title: "2023 08 27   Palavra Vídeo   DOM 10 00   II Timóteo 2   IrLuiz", youtubeId: "c8rNDbzMzs4" },
   { title: "2023 08 20   Palavra Vídeo   DOM 10 00   Efésios 5   IrNilson", youtubeId: "rJ5thk4NgTE" },
   { title: "2023 08 16   Palavra Vídeo   QUA 15 00   Isaías 9   IrLuiz", youtubeId: "Bsb69xwUPhY" },
-  { title: "2023 07 30   Palavra Vídeo   DOM 10 00   Hebreus 6   IrLuiz", youtubeId: "vTL6k6e9q70" }
+  { title: "2023 07 30   Palavra Vídeo   DOM 10 00   Hebreus 6   IrLuiz", youtubeId: "vTL6k6e9q70" },
+  { title: "2023 07 26   Palavra Vídeo   QUA 15 00   Gênesis 13 7   IrCláudio", youtubeId: "KVmG-J2kOss" }
 ];
