@@ -248,5 +248,6 @@ export const listaVideos = [
   { title: "2024 02 04   Palavra Vídeo   DOM 10 00   Mateus 5   IrSalvador", youtubeId: "oEJ5MCSqMno" },
   { title: "2024 01 21   Palavra Vídeo   DOM 10 00   Mateus 25   IrNilson", youtubeId: "l43EQYffYFM" },
   { title: "2024 01 17   Palavra Vídeo   QUA 15 00   Hebreus 12   IrLuiz", youtubeId: "M8GaQFJEXIs" },
-  { title: "2024 01 10   Palavra Vídeo   QUA 15 00   Filipenses 4   IrHélio", youtubeId: "cFAzhZADTf4" }
+  { title: "2024 01 10   Palavra Vídeo   QUA 15 00   Filipenses 4   IrHélio", youtubeId: "cFAzhZADTf4" },
+  { title: "2024 01 03   Palavra Vídeo   QUA 15 00   Provérbios 25   IrLuiz", youtubeId: "WgvRCDiST4k" }
 ];
