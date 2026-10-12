@@ -265,5 +265,6 @@ export const listaVideos = [
   { title: "2023 10 18   Palavra Vídeo   QUA 15 00   João 18   IrLuiz", youtubeId: "HCf0ywbVs-4" },
   { title: "2023 10 15   Palavra Vídeo   DOM 10 00   Mateus 13 44   IrSalvador", youtubeId: "X1JG13BMm8Y" },
   { title: "2023 10 08   Palavra Vídeo   DOM 10 00   Mateus 18 23   IrSalvador", youtubeId: "4PrdYdKsFLc" },
-  { title: "2023 09 13   Palavra Vídeo   QUA 15 00   I Coríntios 12   IrLuiz", youtubeId: "-Meevlh9gnA" }
+  { title: "2023 09 13   Palavra Vídeo   QUA 15 00   I Coríntios 12   IrLuiz", youtubeId: "-Meevlh9gnA" },
+  { title: "2023 09 03   Palavra Vídeo   DOM 10 00   João 20 19   IrNilson", youtubeId: "lEr_CGdPUTc" }
 ];
