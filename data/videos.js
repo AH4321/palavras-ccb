@@ -231,5 +231,6 @@ export const listaVideos = [
   { title: "2024 05 08   Palavra Vídeo   QUA 15 00   Marcos 16   IrCláudio", youtubeId: "gSn4UF7A-AA" },
   { title: "2024 04 28   Palavra Vídeo   DOM 10 00 – Salmo 119 97   IrNilson", youtubeId: "7TwlgdGmOlU" },
   { title: "2024 04 21   Palavra Vídeo   DOM 10 00   Salmos 23   IrNorival", youtubeId: "JcTdrdJkeL0" },
-  { title: "2024 04 17   Palavra Vídeo   QUA 15 00   Mateus 27 32   IrLuiz", youtubeId: "M9HkZB0SUPU" }
+  { title: "2024 04 17   Palavra Vídeo   QUA 15 00   Mateus 27 32   IrLuiz", youtubeId: "M9HkZB0SUPU" },
+  { title: "2024 04 14   Palavra Vídeo   DOM 10 00   I Samuel 3   IrMaurício", youtubeId: "L54VJn7JXpw" }
 ];
