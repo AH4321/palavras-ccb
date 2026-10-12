@@ -243,5 +243,6 @@ export const listaVideos = [
   { title: "2024 02 28   Palavra Vídeo   QUA 15 00   João 9   IrLuiz", youtubeId: "TMAy87D3I5o" },
   { title: "2024 02 25   Palavra Vídeo   DOM 10 00   Lucas 16   IrSalvador", youtubeId: "RQzt-ir6XzI" },
   { title: "2024 02 18   Palavra Vídeo   DOM 10 00   I Coríntios 2   IrSalvador", youtubeId: "RRJNi60FrWs" },
-  { title: "2024 02 14   Palavra Vídeo   QUA 15 00   Gálatas 5   IrLuiz", youtubeId: "gLNgtT7S14M" }
+  { title: "2024 02 14   Palavra Vídeo   QUA 15 00   Gálatas 5   IrLuiz", youtubeId: "gLNgtT7S14M" },
+  { title: "2024 02 11   Palavra Vídeo   DOM 10 00   Salmos 51   IrSalvador", youtubeId: "5wUO1XexFL8" }
 ];
