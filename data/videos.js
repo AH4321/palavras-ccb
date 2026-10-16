@@ -435,5 +435,6 @@ export const listaVideos = [
   { title: "2020 05 31   Palavra Vídeo 18 00   Mateus 9 14   IrCláudio", youtubeId: "t5xjMp6AwDY" },
   { title: "2020 05 31   Palavra Vídeo 10 00   Lucas 15 11   IrMilton", youtubeId: "x61cqRoEKug" },
   { title: "2020 05 30   Palavra Vídeo 18 00   Colossenses 3   IrCláudio", youtubeId: "0dtRnNVUeyA" },
-  { title: "2020 05 24   Palavra Vídeo 18 00   Apocalipse 13   IrSalvador", youtubeId: "FvkaZA1YHfE" }
+  { title: "2020 05 24   Palavra Vídeo 18 00   Apocalipse 13   IrSalvador", youtubeId: "FvkaZA1YHfE" },
+  { title: "2020 05 23   Palavra Vídeo 18 00   II Pedro 1   IrCláudio", youtubeId: "Njc-wHQ1edE" }
 ];
