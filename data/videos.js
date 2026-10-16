@@ -314,5 +314,6 @@ export const listaVideos = [
   { title: "2022 04 15   Palavra Vídeo   SEX 19 30   Jó 28   IrDavi", youtubeId: "yHksc7Ttq0c" },
   { title: "2022 04 13   Palavra Vídeo   QUA 15 00   Marcos 16   Ir", youtubeId: "e6f-eRmjhgg" },
   { title: "2022 04 10   Palavra Vídeo   DOM 10 00   João 15   IrSalvador", youtubeId: "pH-s2YkkBWA" },
-  { title: "2021 11 24   Palavra Vídeo   QUA 15 00   Lucas 24 13   IrCláudio", youtubeId: "rBWxRpgJAhk" }
+  { title: "2021 11 24   Palavra Vídeo   QUA 15 00   Lucas 24 13   IrCláudio", youtubeId: "rBWxRpgJAhk" },
+  { title: "2021 11 21   Palavra Vídeo   DOM 10 00   João 20 19   IrNilson", youtubeId: "n0_CWsI6WYk" }
 ];
