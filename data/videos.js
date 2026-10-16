@@ -364,5 +364,6 @@ export const listaVideos = [
   { title: "2021 05 05   Palavra Vídeo   QUA 15 00   Rute 2   IrCláudio", youtubeId: "5M1dXD-AomM" },
   { title: "2021 05 02   Palavra Vídeo   DOM 10 00   I Samuel 7   IrCláudio", youtubeId: "__pZWDa9TVE" },
   { title: "2021 04 28   Palavra Vídeo   QUA 15 00   Salmos 73   IrSilvano", youtubeId: "SLoJhVfQz8I" },
-  { title: "2021 04 25   Palavra Vídeo   DOM 10 00   I Samuel 1   IrLaércio", youtubeId: "ZD-XSPK_tz4" }
+  { title: "2021 04 25   Palavra Vídeo   DOM 10 00   I Samuel 1   IrLaércio", youtubeId: "ZD-XSPK_tz4" },
+  { title: "2021 04 21   Palavra Vídeo   QUA 15 00   Zacarias 3   IrLuiz", youtubeId: "EGk7AEGM22s" }
 ];
