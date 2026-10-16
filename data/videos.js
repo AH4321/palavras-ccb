@@ -387,5 +387,6 @@ export const listaVideos = [
   { title: "2021 02 14   Palavra Vídeo 14 00   Lucas 17 11   IrSilvano", youtubeId: "uK0tpali9yE" },
   { title: "2021 02 10   Palavra Vídeo 15 00   I Pedro 1   IrCláudio", youtubeId: "EHYCAChKwus" },
   { title: "2021 01 10   Palavra Vídeo 18 00   Atos 12   IrSalvador", youtubeId: "gjuRrBCNwEQ" },
-  { title: "2021 01 10   Palavra Vídeo 10 00   Salmos 133   IrSilvano", youtubeId: "4LkNMKMk7G4" }
+  { title: "2021 01 10   Palavra Vídeo 10 00   Salmos 133   IrSilvano", youtubeId: "4LkNMKMk7G4" },
+  { title: "2020 10 18   Palavra Vídeo 18 00   Mateus 11   IrSalvador", youtubeId: "wsCDmaiMmAQ" }
 ];
