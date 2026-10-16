@@ -401,5 +401,6 @@ export const listaVideos = [
   { title: "2020 09 26   Palavra Vídeo 18 00   Lucas 18   IrCláudio", youtubeId: "dYxZVDPwt1Y" },
   { title: "2020 09 19   Palavra Vídeo 18 00   Apocalipse 12   Ir", youtubeId: "yqndPcc2SfM" },
   { title: "2020 09 13   Palavra Vídeo 18 00   Mateus 6 25   IrSilvano", youtubeId: "kP8SY1pFm-U" },
-  { title: "2020 09 12   Palavra Vídeo 18 00   I Samuel 17 12   IrIsaias", youtubeId: "32WKgNL61Qc" }
+  { title: "2020 09 12   Palavra Vídeo 18 00   I Samuel 17 12   IrIsaias", youtubeId: "32WKgNL61Qc" },
+  { title: "2020 09 09   Palavra Vídeo 20 00   Daniel 6   Ir", youtubeId: "SQO8bNcrqa4" }
 ];
