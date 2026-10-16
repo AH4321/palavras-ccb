@@ -382,5 +382,6 @@ export const listaVideos = [
   { title: "2021 03 17   Palavra Vídeo   QUA 15h00   Jó 1   IrCláudio", youtubeId: "cxjNVnfgnAI" },
   { title: "2021 03 13   Palavra Vídeo 19 00   Marcos 6 30   IrLaércio", youtubeId: "kjabKSXMj1s" },
   { title: "2021 03 10   Palavra Vídeo 15 00   Gênesis 50 22   IrCláudio", youtubeId: "JL2ekUyRFZo" },
-  { title: "2021 02 24   Palavra Vídeo 15 00   Salmo 40   Ir", youtubeId: "puuSiqRPTRc" }
+  { title: "2021 02 24   Palavra Vídeo 15 00   Salmo 40   Ir", youtubeId: "puuSiqRPTRc" },
+  { title: "2021 02 17   Palavra Vídeo 15 00   Romanos 8   Ir", youtubeId: "smmA4X9G_54" }
 ];
