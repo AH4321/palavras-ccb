@@ -326,5 +326,6 @@ export const listaVideos = [
   { title: "2021 10 20   Palavra Vídeo   QUA 15 00   Romanos 8 31   IrSilvano", youtubeId: "RgNM_CxlNfY" },
   { title: "2021 10 17   Palavra Vídeo   DOM 10 00   Colossenses 3   IrNilson", youtubeId: "BNJ_b_Nr2k8" },
   { title: "2021 10 06   Palavra Vídeo   QUA 15 00   Jó 29   IrCláudio", youtubeId: "734T0_4Na9M" },
-  { title: "2021 09 29   Palavra Vídeo   QUA 15 00   Mateus 1 18   IrCláudio", youtubeId: "-oDYMYVHZf4" }
+  { title: "2021 09 29   Palavra Vídeo   QUA 15 00   Mateus 1 18   IrCláudio", youtubeId: "-oDYMYVHZf4" },
+  { title: "2021 09 22   Palavra Vídeo   QUA 15 00   Lucas 19   IrCláudio", youtubeId: "-HCl1GdicKE" }
 ];
