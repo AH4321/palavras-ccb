@@ -399,5 +399,6 @@ export const listaVideos = [
   { title: "2020 10 04   Palavra Vídeo   10 00   Salmos 33   IrSilvano", youtubeId: "3_RtwlhEaeI" },
   { title: "2020 09 27   Palavra Vídeo 18 00   Mateus 16   IrSalvador", youtubeId: "z5VW04j3_DU" },
   { title: "2020 09 26   Palavra Vídeo 18 00   Lucas 18   IrCláudio", youtubeId: "dYxZVDPwt1Y" },
-  { title: "2020 09 19   Palavra Vídeo 18 00   Apocalipse 12   Ir", youtubeId: "yqndPcc2SfM" }
+  { title: "2020 09 19   Palavra Vídeo 18 00   Apocalipse 12   Ir", youtubeId: "yqndPcc2SfM" },
+  { title: "2020 09 13   Palavra Vídeo 18 00   Mateus 6 25   IrSilvano", youtubeId: "kP8SY1pFm-U" }
 ];
