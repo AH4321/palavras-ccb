@@ -405,5 +405,6 @@ export const listaVideos = [
   { title: "2020 09 09   Palavra Vídeo 20 00   Daniel 6   Ir", youtubeId: "SQO8bNcrqa4" },
   { title: "2020 09 02   Palavra Vídeo 20 00   II Pedro 3   IrSalvador", youtubeId: "tD2k8hJu5Mo" },
   { title: "2020 08 30   Palavra Vídeo 18 00   Josué 3   IrLaércio", youtubeId: "po76xjARndw" },
-  { title: "2020 08 30   Palavra Vídeo 10 00   Mateus 10 16   IrHélio", youtubeId: "A0Fs8a5JAYc" }
+  { title: "2020 08 30   Palavra Vídeo 10 00   Mateus 10 16   IrHélio", youtubeId: "A0Fs8a5JAYc" },
+  { title: "2020 08 26   Palavra Vídeo 20 00   Salmos 134   IrHélio", youtubeId: "z_sLDAjxjAU" }
 ];
