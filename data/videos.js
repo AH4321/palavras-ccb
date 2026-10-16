@@ -329,5 +329,6 @@ export const listaVideos = [
   { title: "2021 09 29   Palavra Vídeo   QUA 15 00   Mateus 1 18   IrCláudio", youtubeId: "-oDYMYVHZf4" },
   { title: "2021 09 22   Palavra Vídeo   QUA 15 00   Lucas 19   IrCláudio", youtubeId: "-HCl1GdicKE" },
   { title: "2021 09 19   Palavra Vídeo   DOM 10 00   Mateus 12 9   IrHélio", youtubeId: "JHlW3eJgWqc" },
-  { title: "2021 09 15   Palavra Vídeo   QUA 15 00   Salmo 126   IrHélio", youtubeId: "G_hNW88ikMY" }
+  { title: "2021 09 15   Palavra Vídeo   QUA 15 00   Salmo 126   IrHélio", youtubeId: "G_hNW88ikMY" },
+  { title: "2021 09 12   Palavra Vídeo   DOM 10 00   I Coríntios 13   IrSilvano", youtubeId: "LUJz264vlR0" }
 ];
