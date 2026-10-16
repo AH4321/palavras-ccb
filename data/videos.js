@@ -385,5 +385,6 @@ export const listaVideos = [
   { title: "2021 02 24   Palavra Vídeo 15 00   Salmo 40   Ir", youtubeId: "puuSiqRPTRc" },
   { title: "2021 02 17   Palavra Vídeo 15 00   Romanos 8   Ir", youtubeId: "smmA4X9G_54" },
   { title: "2021 02 14   Palavra Vídeo 14 00   Lucas 17 11   IrSilvano", youtubeId: "uK0tpali9yE" },
-  { title: "2021 02 10   Palavra Vídeo 15 00   I Pedro 1   IrCláudio", youtubeId: "EHYCAChKwus" }
+  { title: "2021 02 10   Palavra Vídeo 15 00   I Pedro 1   IrCláudio", youtubeId: "EHYCAChKwus" },
+  { title: "2021 01 10   Palavra Vídeo 18 00   Atos 12   IrSalvador", youtubeId: "gjuRrBCNwEQ" }
 ];
