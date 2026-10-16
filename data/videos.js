@@ -431,5 +431,6 @@ export const listaVideos = [
   { title: "2020 06 14   Palavra Vídeo 18 00   Salmos 91   Ir", youtubeId: "kJGH2q4BxGk" },
   { title: "2020 06 14   Palavra Vídeo 10 00   Ester 1   IrSilvano", youtubeId: "ZTGm0SzSMNw" },
   { title: "2020 06 06   Palavra Vídeo 18 00   I Pedro 5   IrCláudio", youtubeId: "YVU6Bbyd7Jw" },
-  { title: "2020 06 03   Palavra Vídeo 20 00   Atos 28   IrLaércio", youtubeId: "DvCbU1KEk6s" }
+  { title: "2020 06 03   Palavra Vídeo 20 00   Atos 28   IrLaércio", youtubeId: "DvCbU1KEk6s" },
+  { title: "2020 05 31   Palavra Vídeo 18 00   Mateus 9 14   IrCláudio", youtubeId: "t5xjMp6AwDY" }
 ];
