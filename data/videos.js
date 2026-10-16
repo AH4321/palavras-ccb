@@ -342,5 +342,6 @@ export const listaVideos = [
   { title: "2021 08 04   Palavra Vídeo   QUA 15 00   Números 20 14   IrMilton", youtubeId: "LNv-gEG15Wo" },
   { title: "2021 08 01   Palavra Vídeo   DOM 10 00   Atos 12   IrSalvador", youtubeId: "v5VdZdeOTrg" },
   { title: "2021 07 25   Palavra Vídeo   DOM 10 00   Filipenses 2   IrSalvador", youtubeId: "FgBTP0lQj6w" },
-  { title: "2021 07 21   Palavra Vídeo   QUA 15 00   Atos 10   IrCláudio", youtubeId: "pBJtOMPs1aY" }
+  { title: "2021 07 21   Palavra Vídeo   QUA 15 00   Atos 10   IrCláudio", youtubeId: "pBJtOMPs1aY" },
+  { title: "2021 07 18   Palavra Vídeo   DOM 10 00   Lucas 5   IrMaurício", youtubeId: "d13tqkjD7Pk" }
 ];
