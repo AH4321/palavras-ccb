@@ -355,5 +355,6 @@ export const listaVideos = [
   { title: "2021 06 13   Palavra Vídeo   DOM 10 00   Colossenses 3   IrNilson", youtubeId: "tIMEwiV0vPM" },
   { title: "2021 06 09   Palavra Vídeo   QUA 15 00   João 15   IrLuiz", youtubeId: "8aUgepdbTas" },
   { title: "2021 06 02   Palavra Vídeo   QUA 15 00   II Coríntios 4 16   IrCláudio", youtubeId: "xGb_R8iVGC0" },
-  { title: "2021 05 26   Palavra Vídeo   QUA 15 00   Hebreus 1   IrLuiz", youtubeId: "qk0UeXMBH84" }
+  { title: "2021 05 26   Palavra Vídeo   QUA 15 00   Hebreus 1   IrLuiz", youtubeId: "qk0UeXMBH84" },
+  { title: "2021 05 23   Palavra Vídeo   DOM 10 00   Lucas 4 32   IrLaércio", youtubeId: "A0HKbSx2fPg" }
 ];
