@@ -300,5 +300,6 @@ export const listaVideos = [
   { title: "2023 01 22   Palavra Vídeo   DOM 10 00   Colossenses 3   IrLuiz", youtubeId: "fFhkAtYOrfU" },
   { title: "2023 01 18   Palavra Vídeo   QUA 15 00   II Timóteo 4   IrLuiz", youtubeId: "TrIxPBYqdE4" },
   { title: "2023 01 11   Palavra Vídeo   QUA 15 00   Hebreus 1   IrCláudio", youtubeId: "rmDwYXFaDnU" },
-  { title: "2022 12 25   Palavra Vídeo   DOM 10 00   Mateus 5   IrSalvador", youtubeId: "nNI2bJEcQVg" }
+  { title: "2022 12 25   Palavra Vídeo   DOM 10 00   Mateus 5   IrSalvador", youtubeId: "nNI2bJEcQVg" },
+  { title: "2022 12 21   Palavra Vídeo   QUA 15 00   Lucas 10 38   IrValdir", youtubeId: "vsAs5wZiTz8" }
 ];
