@@ -347,5 +347,6 @@ export const listaVideos = [
   { title: "2021 07 11   Palavra Vídeo   DOM 10 00   IrEliel", youtubeId: "IIJUj-w70nY" },
   { title: "2021 07 07   Palavra Vídeo   QUA 15 00   Marcos 10 13   IrLuiz", youtubeId: "my6fvQePQFE" },
   { title: "2021 07 04   Palavra Vídeo   DOM 10 00   Salmo 119 17 24   IrSalvador", youtubeId: "sMmEvSHxNWY" },
-  { title: "2021 06 30   Palavra Vídeo   QUA 15 00   I Samuel 1 9   IrSilvano", youtubeId: "Rsa17eDXiFc" }
+  { title: "2021 06 30   Palavra Vídeo   QUA 15 00   I Samuel 1 9   IrSilvano", youtubeId: "Rsa17eDXiFc" },
+  { title: "2021 06 27   Palavra Vídeo   DOM 10 00   Efésios 3   IrSalvador", youtubeId: "rL1aWEdCkiY" }
 ];
