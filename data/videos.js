@@ -332,5 +332,6 @@ export const listaVideos = [
   { title: "2021 09 15   Palavra Vídeo   QUA 15 00   Salmo 126   IrHélio", youtubeId: "G_hNW88ikMY" },
   { title: "2021 09 12   Palavra Vídeo   DOM 10 00   I Coríntios 13   IrSilvano", youtubeId: "LUJz264vlR0" },
   { title: "2021 09 08   Palavra Vídeo   QUA 15 00   Eclesiastes 7   IrLuiz", youtubeId: "AIvW46ezYtU" },
-  { title: "2021 09 05   Palavra Vídeo   DOM 10 00   II Coríntios 13   Ir", youtubeId: "VfgARbEBCDY" }
+  { title: "2021 09 05   Palavra Vídeo   DOM 10 00   II Coríntios 13   Ir", youtubeId: "VfgARbEBCDY" },
+  { title: "2021 09 01   Palavra Vídeo   QUA 15 00   Gênesis 50 14   IrCláudio", youtubeId: "byrsaVbnN_Q" }
 ];
