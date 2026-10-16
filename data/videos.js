@@ -372,5 +372,6 @@ export const listaVideos = [
   { title: "2021 04 11   Palavra Vídeo   DOM 18 00   Marcos 5   IrSalvador", youtubeId: "Lg6ylvS-dHM" },
   { title: "2021 04 10   Palavra Vídeo   SAB 19 30   Salmo 125   IrHélio", youtubeId: "WH5dAwrvsxk" },
   { title: "2021 04 07   Palavra Vídeo   QUA 15 00   Êxodo 33 12   IrCláudio", youtubeId: "K-j1IAtglVQ" },
-  { title: "2021 04 04   Palavra Vídeo   DOM 18 00   Lucas 21 20   IrSalvador", youtubeId: "3_bHl73EAqY" }
+  { title: "2021 04 04   Palavra Vídeo   DOM 18 00   Lucas 21 20   IrSalvador", youtubeId: "3_bHl73EAqY" },
+  { title: "2021 04 03   Palavra Vídeo   SAB 19 30   II Reis 4   IrNilson", youtubeId: "cMmACUvSW-c" }
 ];
