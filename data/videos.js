@@ -317,5 +317,6 @@ export const listaVideos = [
   { title: "2021 11 24   Palavra Vídeo   QUA 15 00   Lucas 24 13   IrCláudio", youtubeId: "rBWxRpgJAhk" },
   { title: "2021 11 21   Palavra Vídeo   DOM 10 00   João 20 19   IrNilson", youtubeId: "n0_CWsI6WYk" },
   { title: "2021 11 17   Palavra Vídeo   QUA 15 00   Gênesis 28 10   IrSilvano", youtubeId: "Fuy4zHNnA5I" },
-  { title: "2021 11 14   Palavra Vídeo   DOM 10 00   Lucas 8 40   Ir", youtubeId: "0X_c7rHbyYo" }
+  { title: "2021 11 14   Palavra Vídeo   DOM 10 00   Lucas 8 40   Ir", youtubeId: "0X_c7rHbyYo" },
+  { title: "2021 11 10   Palavra Vídeo   QUA 15 00   Gálatas 4 21   IrCláudio", youtubeId: "lLzj_InUluI" }
 ];
