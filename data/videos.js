@@ -367,5 +367,6 @@ export const listaVideos = [
   { title: "2021 04 25   Palavra Vídeo   DOM 10 00   I Samuel 1   IrLaércio", youtubeId: "ZD-XSPK_tz4" },
   { title: "2021 04 21   Palavra Vídeo   QUA 15 00   Zacarias 3   IrLuiz", youtubeId: "EGk7AEGM22s" },
   { title: "2021 04 18   Palavra Vídeo   DOM 18 00   IrSalvador", youtubeId: "umWGOMwGj_U" },
-  { title: "2021 04 17   Palavra Vídeo   SAB 19 30   Lucas 9 51   IrLaércio", youtubeId: "I0qFJo7rWbg" }
+  { title: "2021 04 17   Palavra Vídeo   SAB 19 30   Lucas 9 51   IrLaércio", youtubeId: "I0qFJo7rWbg" },
+  { title: "2021 04 14   Palavra Vídeo   QUA 15 00   II Coríntios 12 11   IrCláudio", youtubeId: "rt7fs47q1QU" }
 ];
