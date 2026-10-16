@@ -413,5 +413,6 @@ export const listaVideos = [
   { title: "2020 08 09   Palavra Vídeo 18 00   Atos 4 32   IrCláudio", youtubeId: "2fYWc2IBmz4" },
   { title: "2020 08 08   Palavra Vídeo 18 00   Gênesis 28 10   IrHélio", youtubeId: "eACC-J3HcaA" },
   { title: "2020 08 05   Palavra Vídeo 20 00   I Tessalonicenses 5   IrHélio", youtubeId: "325H-zCLpRk" },
-  { title: "2020 08 02   Palavra Vídeo 18 00   Salmos 46   IrLaércio", youtubeId: "rSjgXZnxwhU" }
+  { title: "2020 08 02   Palavra Vídeo 18 00   Salmos 46   IrLaércio", youtubeId: "rSjgXZnxwhU" },
+  { title: "2020 08 02   Palavra Vídeo 10 00   Daniel 1   IrSilvano", youtubeId: "cdgbM9RkTLM" }
 ];
