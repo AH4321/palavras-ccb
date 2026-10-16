@@ -371,5 +371,6 @@ export const listaVideos = [
   { title: "2021 04 14   Palavra Vídeo   QUA 15 00   II Coríntios 12 11   IrCláudio", youtubeId: "rt7fs47q1QU" },
   { title: "2021 04 11   Palavra Vídeo   DOM 18 00   Marcos 5   IrSalvador", youtubeId: "Lg6ylvS-dHM" },
   { title: "2021 04 10   Palavra Vídeo   SAB 19 30   Salmo 125   IrHélio", youtubeId: "WH5dAwrvsxk" },
-  { title: "2021 04 07   Palavra Vídeo   QUA 15 00   Êxodo 33 12   IrCláudio", youtubeId: "K-j1IAtglVQ" }
+  { title: "2021 04 07   Palavra Vídeo   QUA 15 00   Êxodo 33 12   IrCláudio", youtubeId: "K-j1IAtglVQ" },
+  { title: "2021 04 04   Palavra Vídeo   DOM 18 00   Lucas 21 20   IrSalvador", youtubeId: "3_bHl73EAqY" }
 ];
