@@ -380,5 +380,6 @@ export const listaVideos = [
   { title: "2021 03 24   Palavra Vídeo   QUA 15 00   Oséias 11   IrJoão", youtubeId: "zNDpIEqc5Wc" },
   { title: "2021 03 20   Palavra Vídeo   SAB 19h30   II Samuel 18 9   IrMilton", youtubeId: "LmTdQGIXLqE" },
   { title: "2021 03 17   Palavra Vídeo   QUA 15h00   Jó 1   IrCláudio", youtubeId: "cxjNVnfgnAI" },
-  { title: "2021 03 13   Palavra Vídeo 19 00   Marcos 6 30   IrLaércio", youtubeId: "kjabKSXMj1s" }
+  { title: "2021 03 13   Palavra Vídeo 19 00   Marcos 6 30   IrLaércio", youtubeId: "kjabKSXMj1s" },
+  { title: "2021 03 10   Palavra Vídeo 15 00   Gênesis 50 22   IrCláudio", youtubeId: "JL2ekUyRFZo" }
 ];
