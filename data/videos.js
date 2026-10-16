@@ -322,5 +322,6 @@ export const listaVideos = [
   { title: "2021 11 07   Palavra Vídeo   DOM 10 00   Salmo 19   IrEliel", youtubeId: "7evxz1PUmdc" },
   { title: "2021 11 03   Palavra Vídeo   QUA 15 00   João 2   IrLuiz", youtubeId: "85AYrWC8Kpw" },
   { title: "2021 10 31   Palavra Vídeo   DOM 10 00   II Crônicas 26   IrMilton", youtubeId: "O06nXJvp-6k" },
-  { title: "2021 10 24   Palavra Vídeo   DOM 10 00   Salmo 121   IrHélio", youtubeId: "Rlbb-6V4uAY" }
+  { title: "2021 10 24   Palavra Vídeo   DOM 10 00   Salmo 121   IrHélio", youtubeId: "Rlbb-6V4uAY" },
+  { title: "2021 10 20   Palavra Vídeo   QUA 15 00   Romanos 8 31   IrSilvano", youtubeId: "RgNM_CxlNfY" }
 ];
