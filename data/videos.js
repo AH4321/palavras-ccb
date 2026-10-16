@@ -305,5 +305,6 @@ export const listaVideos = [
   { title: "2022 11 27   Palavra Vídeo   DOM 10 00   Efésios 3 14   IrSalvador", youtubeId: "nykc7oMOMSQ" },
   { title: "2022 11 20   Palavra Vídeo   DOM 10 00   Marcos 12 41   Milton", youtubeId: "JJWf6D3KETY" },
   { title: "2022 11 16   Palavra Vídeo   QUA 15 00   I Pedro 5   IrCláudio", youtubeId: "ZY2v4FFoJAQ" },
-  { title: "2022 05 18   Palavra Vídeo   QUA 15 00   João 4   IrCláudio", youtubeId: "2YAyzXdUq6c" }
+  { title: "2022 05 18   Palavra Vídeo   QUA 15 00   João 4   IrCláudio", youtubeId: "2YAyzXdUq6c" },
+  { title: "2022 05 11   Palavra Vídeo   QUA 15 00   Mateus 13   IrCláudio", youtubeId: "ht1ex1huSnU" }
 ];
