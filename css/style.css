@@ -299,20 +299,20 @@ button.btn-close:focus {
 }
 
 /* ==========================================
-   ESTILOS DA APLICAÇÃO "PALAVRAS" (YOUTUBE TV)
+ESTILOS DA APLICAÇÃO "PALAVRAS" (YOUTUBE TV)
 ========================================== */
 #app-container {
   display: none;
   width: 98vw;
   max-width: 1700px;
-  height: 95vh; 
+  height: 95vh;
   background: var(--ccb-dark-blue);
   border-radius: 10px;
   border: 2px solid var(--ccb-gold);
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0,0,0,0.7);
   margin: auto;
-  flex-direction: column; 
+  flex-direction: column;
   position: relative;
 }
 
@@ -325,19 +325,24 @@ button.btn-close:focus {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
   border-bottom: 3px solid var(--ccb-gold);
   width: 100%;
   box-sizing: border-box;
   flex-shrink: 0;
 }
 
+.tv-header-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .tv-header h1 {
   font-size: 1.15rem;
-  color: var(--ccb-gold); 
+  color: var(--ccb-gold);
   letter-spacing: 0.5px;
   font-weight: 600;
-  order: 2;
   margin: 0;
 }
 
@@ -351,11 +356,11 @@ button.btn-close:focus {
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 4px;
-  order: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .btn-back-menu:hover {
@@ -363,11 +368,20 @@ button.btn-close:focus {
   color: var(--ccb-dark-blue);
 }
 
-/* .tv-search-container {
-  width: 100%;
-  order: 3;
-  margin-top: 2px;
-} */
+/* Grupo de Busca e Botão Aleatório (PC) */
+.header-search-random-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.tv-search-container {
+  flex: 1;
+  max-width: 320px;
+  margin-top: 0;
+}
 
 .tv-search-container input {
   width: 100%;
@@ -385,6 +399,34 @@ button.btn-close:focus {
   box-shadow: 0 0 10px var(--ccb-gold);
 }
 
+.tv-random-section {
+  margin-bottom: 0;
+}
+
+/* Estilo do Botão Aleatório (Idêntico ao Menu) */
+.tv-header .btn-random-tv {
+  background: transparent;
+  border: 1px solid var(--ccb-gold);
+  color: var(--ccb-gold);
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  box-shadow: none;
+  white-space: nowrap;
+  width: auto;
+}
+
+.tv-header .btn-random-tv:hover,
+.tv-header .btn-random-tv.kb-focus {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  transform: none;
+  outline: none;
+}
+
 .tv-main-content {
   flex: 1;
   padding: 1rem;
@@ -392,33 +434,6 @@ button.btn-close:focus {
   flex-direction: column;
   overflow-y: auto !important;
   max-height: calc(95vh - 80px);
-}
-
-/* .tv-random-section {
-  margin-bottom: 1.5rem;
-} */
-
-/*  //Botão Vídeos Aleatórios 
-.btn-random-tv {
-  width: 100%;
-  padding: 1rem;
-  background: linear-gradient(135deg, var(--ccb-gold), #b38f45);
-  color: var(--ccb-dark-blue);
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
-  transition: transform 0.2s, background 0.2s;
-} */
-
-.btn-random-tv:hover,
-.btn-random-tv.kb-focus {
-  transform: scale(1.01);
-  background: #fff;
-  color: var(--ccb-blue);
-  outline: 3px solid var(--ccb-gold);
 }
 
 /* GRADE DE CARTÕES DE VÍDEOS */
@@ -476,14 +491,12 @@ button.btn-close:focus {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-} 
+}
 
-/* ==========================================
-   BOTÃO FLUTUANTE DE CONFIGURAÇÃO
-========================================== */
+/* BOTÃO FLUTUANTE DE CONFIGURAÇÃO */
 .btn-config-flutuante {
   position: fixed;
-  bottom: 25px; 
+  bottom: 25px;
   right: 25px;
   z-index: 9999;
   background-color: var(--ccb-blue);
@@ -512,7 +525,7 @@ button.btn-close:focus {
 }
 
 /* ==========================================
-   MEDIA QUERY EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
+ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
 ========================================== */
 @media (max-width: 767px) {
   body {
@@ -520,7 +533,7 @@ button.btn-close:focus {
     overflow-y: auto !important;
     background-color: var(--ccb-dark-blue);
   }
-  
+
   #app-container[style*="display: block"] {
     display: flex !important;
     width: 100% !important;
@@ -533,39 +546,58 @@ button.btn-close:focus {
     margin: 0 !important;
     overflow: visible !important;
   }
-  
+
   .tv-header {
     position: sticky !important;
-    top: 0; 
+    top: 0;
     z-index: 1000;
-    flex-wrap: wrap !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     padding: 10px 12px !important;
+    gap: 10px !important;
   }
-  
+
+  .tv-header-top {
+    width: 100% !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
   .tv-header h1 {
     font-size: 1.1rem !important;
-    order: 2 !important;
   }
-  
+
   .btn-back-menu {
-    display: inline-flex !important;
-    order: 1 !important; 
     font-size: 0.8rem !important;
     padding: 6px 10px !important;
   }
-  
-  .tv-search-container {
-    display: block !important;
+
+  .header-search-random-group {
     width: 100% !important;
-    order: 3 !important;
-    margin-top: 8px !important;
+    display: flex !important;
+    flex-direction: column !important; /* Linha 2: Busca, Linha 3: Botão Aleatório */
+    align-items: stretch !important;
+    gap: 8px !important;
+    margin-top: 0 !important;
   }
-  
-  .tv-search-container input {
+
+  .tv-search-container {
+    max-width: 100% !important;
     width: 100% !important;
-    font-size: 0.9rem !important;
-  } 
-  
+    order: 1 !important; /* Força a barra de busca a ficar acima */
+  }
+
+  .tv-random-section {
+    width: 100% !important;
+    order: 2 !important; /* Força o botão aleatório a ficar abaixo da busca */
+  }
+
+  .tv-header .btn-random-tv {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 8px 10px !important;
+  }
+
   .tv-main-content {
     display: flex !important;
     flex-direction: column !important;
@@ -573,26 +605,13 @@ button.btn-close:focus {
     overflow: visible !important;
     padding: 10px !important;
   }
-  
-  .tv-random-section {
-    display: block !important;
-    width: 100% !important;
-    margin-bottom: 15px !important;
-  }
-  
-  .btn-random-tv {
-    display: block !important;
-    width: 100% !important;
-    padding: 12px !important;
-    font-size: 1rem !important;
-  } 
-  
+
   .tv-grid-container {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 15px !important;
     overflow: visible !important;
-    height: auto !important; 
+    height: auto !important;
   }
 }
 
