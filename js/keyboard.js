@@ -99,11 +99,18 @@ export function inicializarTeclado() {
           if (btnMenu) {
             btnMenu.focus();
           }
-        } else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        } else if (e.key === "ArrowRight") {
           e.preventDefault();
           const btnRandom = document.getElementById("btn-random-videos");
           if (btnRandom) {
             btnRandom.focus();
+          }
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          // Se estiver na busca e apertar para a esquerda, vai para o botão de menu
+          const btnMenu = document.getElementById("btn-app-back");
+          if (btnMenu) {
+            btnMenu.focus();
           }
         }
         return;
