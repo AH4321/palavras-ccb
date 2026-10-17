@@ -214,26 +214,41 @@ export function inicializarTeclado() {
       return;
     }
 
-    // 3. MENU PRINCIPAL OU MODAIS (Navegação vertical genérica por botões)
-    const botoesAtivos = Array.from(document.querySelectorAll('#menu-overlay button:not([style*="display: none"]), .btn-menu:not([style*="display: none"]), .btn-config-flutuante, .btn-sair-flutuante'))
-      .filter(btn => {
-        const rect = btn.getBoundingClientRect();
-        return rect.width > 0 && rect.height > 0;
-      });
-      
-    if (botoesAtivos.length > 0) {
-      let currentIndex = botoesAtivos.indexOf(document.activeElement);
-      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
-        e.preventDefault();
-        currentIndex = (currentIndex + 1) % botoesAtivos.length;
-        botoesAtivos[currentIndex].focus();
-      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-        e.preventDefault();
-        currentIndex = (currentIndex - 1 + botoesAtivos.length) % botoesAtivos.length;
-        botoesAtivos[currentIndex].focus();
-      }
-    }
+    // 3. MENU PRINCIPAL OU MODAIS (Navegação por botões)
+const botoesAtivos = Array.from(document.querySelectorAll('#menu-overlay button:not([style*="display: none"]), .btn-menu:not([style*="display: none"]), .btn-config-flutuante, .btn-sair-flutuante'))
+  .filter(btn => {
+    const rect = btn.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0;
   });
+
+if (botoesAtivos.length > 0) {
+  let currentIndex = botoesAtivos.indexOf(document.activeElement);
+  if (currentIndex === -1) currentIndex = 0;
+
+  const btnConfig = document.getElementById("btn-menu-configuracao");
+  const btnSair = document.getElementById("btn-sair-app");
+
+  // Regra especial para transição direta entre os botões flutuantes nos cantos
+  if (document.activeElement === btnConfig && (e.key === "ArrowLeft" || e.key === "ArrowUp")) {
+    e.preventDefault();
+    if (btnSair) btnSair.focus();
+    return;
+  } else if (document.activeElement === btnSair && (e.key === "ArrowRight" || e.key === "ArrowDown")) {
+    e.preventDefault();
+    if (btnConfig) btnConfig.focus();
+    return;
+  }
+
+  // Navegação padrão para os restantes botões
+  if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+    e.preventDefault();
+    currentIndex = (currentIndex + 1) % botoesAtivos.length;
+    botoesAtivos[currentIndex].focus();
+  } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+    e.preventDefault();
+    currentIndex = (currentIndex - 1 + botoesAtivos.length) % botoesAtivos.length;
+    botoesAtivos[currentIndex].focus();
+  }
 }
 
 // Exporta com ambos os nomes para evitar erros de incompatibilidade no app.js
