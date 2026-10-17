@@ -120,11 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSairSim.addEventListener("click", () => {
       window.close();
       setTimeout(() => {
-        // Exibe um ecrã de encerramento limpo caso o telemóvel bloqueie o fecho automático da aba
+        // Exibe o ecrã de encerramento com botão de reabertura para telemóveis
         document.body.innerHTML = `
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #0b2545; color: white; font-family: sans-serif; text-align: center; padding: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #0b2545; color: white; font-family: sans-serif; text-align: center; padding: 20px; box-sizing: border-box;">
             <h2 style="margin-bottom: 10px; font-size: 1.5rem;">Aplicativo Encerrado</h2>
-            <p style="color: #cbd5e1; font-size: 1rem;">Pode fechar esta aba ou sair do navegador em segurança.</p>
+            <p style="color: #cbd5e1; font-size: 1rem; margin-bottom: 2rem;">Pode fechar esta aba ou reabrir o aplicativo quando desejar.</p>
+            <button onclick="window.location.reload()" style="background: #ffffff; color: #0b2545; border: none; padding: 12px 24px; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+              Voltar / Reabrir Aplicativo
+            </button>
           </div>
         `;
       }, 50);
