@@ -142,7 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Atualiza o histórico para registar que estamos na tela de login
+      // Substitui o estado atual no histórico para marcar que estamos no login
+      window.history.replaceState({ page: "login" }, "", "");
       window.history.pushState({ page: "login" }, "", "");
     });
   }
@@ -166,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Se estiver no ecrã de login e apertar voltar, tenta fechar a aba/aplicativo
     if (loginVisivel) {
       window.close();
+      window.history.pushState({ page: "login" }, "", "");
       return;
     }
 
