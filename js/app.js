@@ -96,8 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const sairModal = document.getElementById("sair-modal");
       const btnSairNao = document.getElementById("btn-sair-nao");
+      
+      // Substitua a verificação antiga por esta com setProperty para forçar a exibição
       if (sairModal) {
-        sairModal.style.display = "flex";
+        sairModal.style.setProperty("display", "flex", "important");
         if (btnSairNao) btnSairNao.focus();
       }
     }
@@ -109,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairNao && sairModal) {
     btnSairNao.addEventListener("click", () => {
-      sairModal.style.display = "none";
+      sairModal.style.setProperty("display", "none", "important");
       const btnSair = document.getElementById("btn-sair-app");
       if (btnSair) btnSair.focus();
     });

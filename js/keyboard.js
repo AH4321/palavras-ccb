@@ -191,7 +191,7 @@ export function inicializarTeclado() {
       const btnConfig = document.getElementById("btn-menu-configuracao");
       const btnSair = document.getElementById("btn-sair-app");
 
-      // Regra especial para transição lateral entre os botões flutuantes nos cantos
+      // Regra especial para transição direta entre os botões flutuantes nos cantos
       if (document.activeElement === btnConfig && e.key === "ArrowLeft") {
         e.preventDefault();
         if (btnSair) btnSair.focus();
@@ -202,17 +202,17 @@ export function inicializarTeclado() {
         return;
       }
 
-      // Se estiver nos botões flutuantes e apertar Seta para Cima, volta para o menu principal (ex: botão Hinos)
+      // Se estiver nos botões flutuantes e apertar Seta para Cima, volta para o menu principal (Hinos)
       if ((document.activeElement === btnConfig || document.activeElement === btnSair) && e.key === "ArrowUp") {
         e.preventDefault();
         const botoesCentrais = document.querySelectorAll('#menu-overlay .menu-grid button:not([style*="display: none"])');
         if (botoesCentrais.length > 0) {
-          botoesCentrais[botoesCentrais.length - 1].focus(); // Foca no último botão (Hinos)
+          botoesCentrais[botoesCentrais.length - 1].focus();
         }
         return;
       }
 
-      // Navegação padrão para os restantes botões
+      // Navegação padrão por setas
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
         e.preventDefault();
         currentIndex = (currentIndex + 1) % botoesAtivos.length;
@@ -221,8 +221,17 @@ export function inicializarTeclado() {
         e.preventDefault();
         currentIndex = (currentIndex - 1 + botoesAtivos.length) % botoesAtivos.length;
         botoesAtivos[currentIndex].focus();
+      } else if (e.key === "Enter") {
+        // Dispara o clique do botão atualmente focado (incluindo o botão power e configurações)
+        e.preventDefault();
+        const elementoFocado = document.activeElement;
+        if (elementoFocado) {
+          elementoFocado.click();
+        }
+        return;
       }
     }
+
   });
 }
 
