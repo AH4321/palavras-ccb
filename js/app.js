@@ -87,6 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRandomVideos.addEventListener("click", iniciarVideosAleatoriosContinuos);
   }
   
+  /* ==========================================
+   AÇÃO DO BOTÃO SAIR (CANTO INFERIOR ESQUERDO)
+   ========================================== */
+  const btnSair = document.getElementById("btn-sair-app");
+  if (btnSair) {
+    btnSair.addEventListener("click", () => {
+      if (confirm("Deseja realmente sair do aplicativo?")) {
+        window.location.reload(); 
+      }
+    });
+  }
+
   inicializarTeclado();
   focarMenuPrincipal();
 });
