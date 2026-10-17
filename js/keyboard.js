@@ -1,6 +1,6 @@
 /* ==========================================
-GESTOR DE NAVEGAÇÃO POR TECLADO
-========================================== */
+   GESTOR DE NAVEGAÇÃO POR TECLADO
+   ========================================== */
 import { state } from './state.js';
 import { listaVideos } from '../data/videos.js';
 import { tocarVideo, focarCartaoVideo } from './player.js';
@@ -8,7 +8,6 @@ import { tocarVideo, focarCartaoVideo } from './player.js';
 // Função auxiliar para focar o primeiro cartão visível com base na lista filtrada
 function focarPrimeiroCartaoVisivel(listaExibida) {
   if (!listaExibida || listaExibida.length === 0) return;
-  
   const cards = document.querySelectorAll('.video-card-item');
   const videoAlvo = listaExibida[0];
   
@@ -27,10 +26,9 @@ export function inicializarTeclado() {
     // Verifica o estado atual da interface
     const loginOverlay = document.getElementById("login-overlay");
     const menuOverlay = document.getElementById("menu-overlay");
-    const adminModal = document.getElementById("admin-form-overlay") || 
-                       document.getElementById("admin-modal");
+    const adminModal = document.getElementById("admin-form-overlay") || document.getElementById("admin-modal");
     const appContainer = document.getElementById("app-container");
-    
+
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
     const menuVisivel = menuOverlay && window.getComputedStyle(menuOverlay).display !== "none";
     const adminVisivel = adminModal && window.getComputedStyle(adminModal).display !== "none";
@@ -53,25 +51,7 @@ export function inicializarTeclado() {
       const listaExibida = termos.length > 0
         ? listaVideos.filter(video => {
             const tit = video.title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            return termos.every((t, index) => {
-              if (/^\d{1,2}$/.test(t)) {
-                if (index === termos.length - 1 && termos.length >= 3) {
-                  const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
-                  return regex.test(tit);
-                }
-                const regex = new RegExp(`\\b${t}\\b`);
-                return regex.test(tit);
-              }
-              if (/^\d{4}$/.test(t)) {
-                if (index === termos.length - 1 && termos.length >= 3) {
-                  const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
-                  return regex.test(tit);
-                }
-                const regex = new RegExp(`\\b${t}\\b`);
-                return regex.test(tit);
-              }
-              return tit.includes(t);
-            });
+            return termos.every(t => tit.includes(t));
           })
         : listaVideos;
 
@@ -91,41 +71,27 @@ export function inicializarTeclado() {
           focarPrimeiroCartaoVisivel(listaExibida);
         } else if (e.key === "ArrowUp") {
           e.preventDefault();
-          const btnMenu = document.getElementById("btn-app-back") || 
-                          document.getElementById("btn-back") || 
-                          document.getElementById("btn-voltar") || 
-                          document.querySelector(".btn-voltar") || 
-                          document.querySelector("header button");
-          if (btnMenu) {
-            btnMenu.focus();
-          }
+          const btnMenu = document.getElementById("btn-app-back") || document.getElementById("btn-back") || document.querySelector("header button");
+          if (btnMenu) btnMenu.focus();
         } else if (e.key === "ArrowRight") {
           e.preventDefault();
           const btnRandom = document.getElementById("btn-random-videos");
-          if (btnRandom) {
-            btnRandom.focus();
-          }
+          if (btnRandom) btnRandom.focus();
         } else if (e.key === "ArrowLeft") {
           e.preventDefault();
-          // Se estiver na busca e apertar para a esquerda, vai para o botão de menu
           const btnMenu = document.getElementById("btn-app-back");
-          if (btnMenu) {
-            btnMenu.focus();
-          }
+          if (btnMenu) btnMenu.focus();
         }
         return;
       }
 
-      // TRATAMENTO PARA O BOTÃO DE VÍDEOS ALEATÓRIOS (caso esteja focado)
+      // TRATAMENTO PARA O BOTÃO DE VÍDEOS ALEATÓRIOS
       const btnRandom = document.getElementById("btn-random-videos");
       if (document.activeElement === btnRandom) {
         if (e.key === "ArrowDown") {
           e.preventDefault();
           focarPrimeiroCartaoVisivel(listaExibida);
-        } else if (e.key === "ArrowUp") {
-          e.preventDefault();
-          if (searchBox) searchBox.focus();
-        } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        } else if (e.key === "ArrowUp" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
           e.preventDefault();
           if (searchBox) searchBox.focus();
         } else if (e.key === "Enter") {
@@ -134,12 +100,9 @@ export function inicializarTeclado() {
         }
         return;
       }
-      
 
-      // TRATAMENTO PARA O BOTÃO DE MENU / VOLTAR (caso esteja focado)
-      const btnMenu = document.getElementById("btn-app-back") || 
-                      document.getElementById("btn-back") || 
-                      document.getElementById("btn-voltar");
+      // TRATAMENTO PARA O BOTÃO DE MENU / VOLTAR
+      const btnMenu = document.getElementById("btn-app-back") || document.getElementById("btn-back") || document.getElementById("btn-voltar");
       if (document.activeElement === btnMenu) {
         if (e.key === "ArrowRight") {
           e.preventDefault();
@@ -195,11 +158,11 @@ export function inicializarTeclado() {
       } else if (e.key === "Enter") {
         e.preventDefault();
         const elementoFocado = document.activeElement;
-        if (elementoFocado === btnMenu || (btnMenu && btnMenu.contains(elementoFocado))) {
+        if (elementoFocado === btnMenu && btnMenu) {
           btnMenu.click();
           return;
         }
-        if (elementoFocado === btnRandom) {
+        if (elementoFocado === btnRandom && btnRandom) {
           btnRandom.click();
           return;
         }
@@ -215,44 +178,47 @@ export function inicializarTeclado() {
     }
 
     // 3. MENU PRINCIPAL OU MODAIS (Navegação por botões)
-const botoesAtivos = Array.from(document.querySelectorAll('#menu-overlay button:not([style*="display: none"]), .btn-menu:not([style*="display: none"]), .btn-config-flutuante, .btn-sair-flutuante'))
-  .filter(btn => {
-    const rect = btn.getBoundingClientRect();
-    return rect.width > 0 && rect.height > 0;
+    const botoesAtivos = Array.from(document.querySelectorAll('#menu-overlay button:not([style*="display: none"]), .btn-menu:not([style*="display: none"]), .btn-config-flutuante, .btn-sair-flutuante'))
+      .filter(btn => {
+        const rect = btn.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+      });
+
+    if (botoesAtivos.length > 0) {
+      let currentIndex = botoesAtivos.indexOf(document.activeElement);
+      if (currentIndex === -1) currentIndex = 0;
+
+      const btnConfig = document.getElementById("btn-menu-configuracao");
+      const btnSair = document.getElementById("btn-sair-app");
+
+      // Regra especial para transição direta entre os botões flutuantes nos cantos
+      if (document.activeElement === btnConfig && (e.key === "ArrowLeft" || e.key === "ArrowUp")) {
+        e.preventDefault();
+        if (btnSair) btnSair.focus();
+        return;
+      } else if (document.activeElement === btnSair && (e.key === "ArrowRight" || e.key === "ArrowDown")) {
+        e.preventDefault();
+        if (btnConfig) btnConfig.focus();
+        return;
+      }
+
+      // Navegação padrão para os restantes botões
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % botoesAtivos.length;
+        botoesAtivos[currentIndex].focus();
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        currentIndex = (currentIndex - 1 + botoesAtivos.length) % botoesAtivos.length;
+        botoesAtivos[currentIndex].focus();
+      }
+    }
   });
-
-if (botoesAtivos.length > 0) {
-  let currentIndex = botoesAtivos.indexOf(document.activeElement);
-  if (currentIndex === -1) currentIndex = 0;
-
-  const btnConfig = document.getElementById("btn-menu-configuracao");
-  const btnSair = document.getElementById("btn-sair-app");
-
-  // Regra especial para transição direta entre os botões flutuantes nos cantos
-  if (document.activeElement === btnConfig && (e.key === "ArrowLeft" || e.key === "ArrowUp")) {
-    e.preventDefault();
-    if (btnSair) btnSair.focus();
-    return;
-  } else if (document.activeElement === btnSair && (e.key === "ArrowRight" || e.key === "ArrowDown")) {
-    e.preventDefault();
-    if (btnConfig) btnConfig.focus();
-    return;
-  }
-
-  // Navegação padrão para os restantes botões
-  if (e.key === "ArrowDown" || e.key === "ArrowRight") {
-    e.preventDefault();
-    currentIndex = (currentIndex + 1) % botoesAtivos.length;
-    botoesAtivos[currentIndex].focus();
-  } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-    e.preventDefault();
-    currentIndex = (currentIndex - 1 + botoesAtivos.length) % botoesAtivos.length;
-    botoesAtivos[currentIndex].focus();
-  }
 }
 
-// Exporta com ambos os nomes para evitar erros de incompatibilidade no app.js
+// Exportações corretas no final do ficheiro
 export const initKeyboard = inicializarTeclado;
+
 export function focarMenuPrincipal() {
   const menuOverlay = document.getElementById("menu-overlay");
   if (menuOverlay) {
@@ -260,6 +226,7 @@ export function focarMenuPrincipal() {
     if (primeiroBotao) primeiroBotao.focus();
   }
 }
+
 export function focarAdminMenu() {
   const adminMenuOverlay = document.getElementById("admin-menu-overlay");
   if (adminMenuOverlay) {
