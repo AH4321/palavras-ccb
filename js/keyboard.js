@@ -88,19 +88,8 @@ export function inicializarTeclado() {
       if (document.activeElement === searchBox) {
         if (e.key === "ArrowDown") {
           e.preventDefault();
-          const btnRandom = document.getElementById("btn-random-videos");
-          if (btnRandom) {
-            btnRandom.focus();
-          } else {
-            focarPrimeiroCartaoVisivel(listaExibida);
-          }
+          focarPrimeiroCartaoVisivel(listaExibida);
         } else if (e.key === "ArrowUp") {
-          e.preventDefault();
-          const btnAppBack = document.getElementById("btn-app-back") || 
-                             document.getElementById("btn-back") || 
-                             document.getElementById("btn-voltar");
-          if (btnAppBack) btnAppBack.focus();
-        } else if (e.key === "ArrowLeft") {
           e.preventDefault();
           const btnMenu = document.getElementById("btn-app-back") || 
                           document.getElementById("btn-back") || 
@@ -110,8 +99,12 @@ export function inicializarTeclado() {
           if (btnMenu) {
             btnMenu.focus();
           }
-        } else if (e.key === "ArrowRight") {
-          return; // Permite mover o cursor livremente pelo texto
+        } else if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          const btnRandom = document.getElementById("btn-random-videos");
+          if (btnRandom) {
+            btnRandom.focus();
+          }
         }
         return;
       }
@@ -125,12 +118,16 @@ export function inicializarTeclado() {
         } else if (e.key === "ArrowUp") {
           e.preventDefault();
           if (searchBox) searchBox.focus();
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          if (searchBox) searchBox.focus();
         } else if (e.key === "Enter") {
           e.preventDefault();
           btnRandom.click();
         }
         return;
       }
+      
 
       // TRATAMENTO PARA O BOTÃO DE MENU / VOLTAR (caso esteja focado)
       const btnMenu = document.getElementById("btn-app-back") || 
