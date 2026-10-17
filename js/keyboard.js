@@ -23,6 +23,34 @@ function focarPrimeiroCartaoVisivel(listaExibida) {
 
 export function inicializarTeclado() {
   document.addEventListener("keydown", (e) => {
+    const sairModal = document.getElementById("sair-modal");
+    const sairVisivel = sairModal && window.getComputedStyle(sairModal).display !== "none";
+
+    if (sairVisivel) {
+      const btnSim = document.getElementById("btn-sair-sim");
+      const btnNao = document.getElementById("btn-sair-nao");
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+        e.preventDefault();
+        if (document.activeElement === btnSim) {
+          if (btnNao) btnNao.focus();
+        } else {
+          if (btnSim) btnSim.focus();
+        }
+        return;
+      }
+
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const elementoFocado = document.activeElement;
+        if (elementoFocado) {
+          elementoFocado.click();
+        }
+        return;
+      }
+      return; // Interrompe para não navegar no fundo enquanto o modal estiver aberto
+    }
+
     // Verifica o estado atual da interface
     const loginOverlay = document.getElementById("login-overlay");
     const menuOverlay = document.getElementById("menu-overlay");
