@@ -87,22 +87,35 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRandomVideos.addEventListener("click", iniciarVideosAleatoriosContinuos);
   }
   
+  
   /* ==========================================
-   AÇÃO DO BOTÃO SAIR (CANTO INFERIOR ESQUERDO)
+   AÇÃO DO BOTÃO SAIR (MODAL PERSONALIZADO)
    ========================================== */
   const btnSair = document.getElementById("btn-sair-app");
-  if (btnSair) {
-    btnSair.addEventListener("click", () => {
-      if (confirm("Deseja realmente sair do aplicativo?")) {
-        // 1. Tenta fechar a aba/navegador (funciona em webapps/PWAs e abas abertas via script)
-        window.close();
+  const sairModal = document.getElementById("sair-modal");
+  const btnSairSim = document.getElementById("btn-sair-sim");
+  const btnSairNao = document.getElementById("btn-sair-nao");
 
-        // 2. Fallback caso o navegador bloqueie o fechamento:
-        // Redireciona para uma página em branco (about:blank) ou recarrega a aplicação
-        setTimeout(() => {
-          window.location.href = "about:blank";
-        }, 100);
-      }
+  if (btnSair && sairModal) {
+    btnSair.addEventListener("click", () => {
+      sairModal.style.display = "flex";
+      if (btnSairNao) btnSairNao.focus();
+    });
+  }
+
+  if (btnSairNao && sairModal) {
+    btnSairNao.addEventListener("click", () => {
+      sairModal.style.display = "none";
+      if (btnSair) btnSair.focus();
+    });
+  }
+
+  if (btnSairSim) {
+    btnSairSim.addEventListener("click", () => {
+      window.close();
+      setTimeout(() => {
+        window.location.href = "about:blank";
+      }, 100);
     });
   }
 
