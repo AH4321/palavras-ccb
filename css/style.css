@@ -629,8 +629,10 @@ button.btn-close:focus {
   .tv-main-content {
     padding: 1.5rem 2rem;
   }
+}
 
-  /* --- BOTÃO ALEATÓRIO --- */
+
+/* --- BOTÃO ALEATÓRIO --- */
 
 .tv-header {
   display: flex;
@@ -640,18 +642,37 @@ button.btn-close:focus {
   gap: 10px;
 }
 
-.tv-search-container {
+.tv-header .tv-search-container {
   flex: 1;
   min-width: 200px;
+  margin-top: 0;
 }
 
-.tv-random-section {
-  margin-bottom: 0 !important;
+.tv-header .tv-random-section {
+  margin-bottom: 0;
 }
 
-.btn-random-tv {
-  padding: 0.55rem 1rem !important;
-  font-size: 0.85rem !important;
+/* Estilo do botão idêntico ao menu, usando especificidade para não precisar do !important */
+.tv-header .btn-random-tv {
+  background: transparent;
+  border: 1px solid var(--ccb-gold);
+  color: var(--ccb-gold);
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  box-shadow: none;
   white-space: nowrap;
+  width: auto;
 }
+
+/* Efeito ao passar o mouse ou focar */
+.tv-header .btn-random-tv:hover,
+.tv-header .btn-random-tv.kb-focus {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  transform: none;
+  outline: none;
 }
