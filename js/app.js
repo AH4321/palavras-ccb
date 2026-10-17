@@ -94,7 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnSair) {
     btnSair.addEventListener("click", () => {
       if (confirm("Deseja realmente sair do aplicativo?")) {
-        window.location.reload(); 
+        // 1. Tenta fechar a aba/navegador (funciona em webapps/PWAs e abas abertas via script)
+        window.close();
+
+        // 2. Fallback caso o navegador bloqueie o fechamento:
+        // Redireciona para uma página em branco (about:blank) ou recarrega a aplicação
+        setTimeout(() => {
+          window.location.href = "about:blank";
+        }, 100);
       }
     });
   }
