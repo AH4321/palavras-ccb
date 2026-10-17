@@ -121,4 +121,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   inicializarTeclado();
   focarMenuPrincipal();
+
+  /* ==========================================
+   CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
+   ========================================== */
+  window.history.pushState({ page: "main" }, "", "");
+
+  window.addEventListener("popstate", (event) => {
+    const appContainer = document.getElementById("app-container");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const sairModal = document.getElementById("sair-modal");
+
+    // Se o modal de saída estiver aberto, apenas fecha o modal
+    if (sairModal && window.getComputedStyle(sairModal).display !== "none") {
+      sairModal.style.display = "none";
+      window.history.pushState({ page: "main" }, "", "");
+      return;
+    }
+
+    // Se estiver na tela de vídeos aberta, volta para o menu principal em vez de sair
+    if (appContainer && window.getComputedStyle(appContainer).display !== "none") {
+      voltarParaMenu();
+      window.history.pushState({ page: "main" }, "", "");
+    } else {
+      // Se já estiver no menu principal, permite sair ou pede confirmação
+      if (confirm("Deseja realmente sair do aplicativo?")) {
+        window.close();
+        setTimeout(() => {
+          window.location.href = "about:blank";
+        }, 100);
+      } else {
+        window.history.pushState({ page: "main" }, "", "");
+      }
+    }
+  });
+
+  
 });
