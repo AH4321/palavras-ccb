@@ -681,11 +681,10 @@ button.btn-close:focus {
 @media (max-width: 767px) {
   .header-search-random-group {
     width: 100%;
-    flex-direction: column-reverse; /* Inverte: a barra de busca fica abaixo do botão no celular */
+    flex-direction: column; /* Faz os itens empilharem na ordem normal: busca em cima, botão embaixo */
     align-items: stretch;
     gap: 8px;
     margin-top: 8px;
-    justify-content: flex-start;
   }
   
   .tv-search-container {
