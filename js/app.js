@@ -118,6 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
+      // Limpa os dados de sessão para garantir que a senha é exigida novamente
+      sessionStorage.clear();
+
       window.close();
       setTimeout(() => {
         window.location.replace("about:blank");
