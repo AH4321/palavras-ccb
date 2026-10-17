@@ -118,13 +118,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
-      // Limpa os dados de sessão para garantir que a senha é exigida novamente
+      // Limpa os dados de sessão para forçar a exigência de senha
       sessionStorage.clear();
 
-      window.close();
-      setTimeout(() => {
-        window.location.replace("about:blank");
-      }, 50);
+      // Fecha o modal de saída
+      if (sairModal) {
+        sairModal.style.setProperty("display", "none", "important");
+      }
+
+      // Regressa de imediato ao ecrã de login/senha
+      const menuOverlay = document.getElementById("menu-overlay");
+      const appContainer = document.getElementById("app-container");
+      const loginOverlay = document.getElementById("login-overlay");
+      const passwordInput = document.getElementById("password-input");
+
+      if (menuOverlay) menuOverlay.style.display = "none";
+      if (appContainer) appContainer.style.display = "none";
+      if (loginOverlay) {
+        loginOverlay.style.display = "flex";
+        if (passwordInput) {
+          passwordInput.value = "";
+          passwordInput.focus();
+        }
+      }
     });
   }
 
