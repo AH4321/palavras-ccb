@@ -117,13 +117,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (btnSairSim) {
-    btnSairSim.addEventListener("click", () => {
-      window.close();
-      setTimeout(() => {
-        window.location.href = "about:blank";
-      }, 50);
-    });
-  }
+  btnSairSim.addEventListener("click", () => {
+    // Tenta fechar (funciona se for PWA instalado no ecrã principal)
+    window.close();
+    
+    // Se o telemóvel bloquear o fecho, substitui a página por um aviso limpo de encerramento
+    setTimeout(() => {
+      document.body.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #0b2545; color: white; font-family: sans-serif; text-align: center; padding: 20px;">
+          <h2 style="margin-bottom: 10px; font-size: 1.5rem;">Aplicativo Encerrado</h2>
+          <p style="color: #cbd5e1; font-size: 1rem;">Pode fechar esta aba ou sair do navegador em segurança.</p>
+        </div>
+      `;
+    }, 50);
+  });
+}
 
   inicializarTeclado();
   focarMenuPrincipal();
