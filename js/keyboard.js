@@ -191,14 +191,24 @@ export function inicializarTeclado() {
       const btnConfig = document.getElementById("btn-menu-configuracao");
       const btnSair = document.getElementById("btn-sair-app");
 
-      // Regra especial para transição direta entre os botões flutuantes nos cantos
-      if (document.activeElement === btnConfig && (e.key === "ArrowLeft" || e.key === "ArrowUp")) {
+      // Regra especial para transição lateral entre os botões flutuantes nos cantos
+      if (document.activeElement === btnConfig && e.key === "ArrowLeft") {
         e.preventDefault();
         if (btnSair) btnSair.focus();
         return;
-      } else if (document.activeElement === btnSair && (e.key === "ArrowRight" || e.key === "ArrowDown")) {
+      } else if (document.activeElement === btnSair && e.key === "ArrowRight") {
         e.preventDefault();
         if (btnConfig) btnConfig.focus();
+        return;
+      }
+
+      // Se estiver nos botões flutuantes e apertar Seta para Cima, volta para o menu principal (ex: botão Hinos)
+      if ((document.activeElement === btnConfig || document.activeElement === btnSair) && e.key === "ArrowUp") {
+        e.preventDefault();
+        const botoesCentrais = document.querySelectorAll('#menu-overlay .menu-grid button:not([style*="display: none"])');
+        if (botoesCentrais.length > 0) {
+          botoesCentrais[botoesCentrais.length - 1].focus(); // Foca no último botão (Hinos)
+        }
         return;
       }
 
