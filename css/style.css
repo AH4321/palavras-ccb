@@ -633,26 +633,27 @@ button.btn-close:focus {
 
 
 /* --- BOTÃO ALEATÓRIO --- */
+/* --- ORGANIZAÇÃO DO BOTÃO E BUSCA NO CABEÇALHO --- */
 
-.tv-header {
+.header-search-random-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
   gap: 10px;
+  flex: 1;
+  justify-content: flex-end; /* Alinha os itens à direita no PC */
 }
 
-.tv-header .tv-search-container {
+.tv-search-container {
   flex: 1;
-  min-width: 200px;
+  max-width: 320px;
   margin-top: 0;
 }
 
-.tv-header .tv-random-section {
+.tv-random-section {
   margin-bottom: 0;
 }
 
-/* Estilo do botão idêntico ao menu, usando especificidade para não precisar do !important */
+/* Estilo do botão idêntico ao botão de Menu original */
 .tv-header .btn-random-tv {
   background: transparent;
   border: 1px solid var(--ccb-gold);
@@ -668,11 +669,33 @@ button.btn-close:focus {
   width: auto;
 }
 
-/* Efeito ao passar o mouse ou focar */
 .tv-header .btn-random-tv:hover,
 .tv-header .btn-random-tv.kb-focus {
   background: var(--ccb-gold);
   color: var(--ccb-dark-blue);
   transform: none;
   outline: none;
+}
+
+/* --- ADAPTAÇÃO PARA CELULARES (Mobile) --- */
+@media (max-width: 767px) {
+  .header-search-random-group {
+    width: 100%;
+    flex-direction: column-reverse; /* Inverte: a barra de busca fica abaixo do botão no celular */
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: flex-start;
+  }
+  
+  .tv-search-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .tv-header .btn-random-tv {
+    width: 100%;
+    text-align: center;
+    padding: 8px 10px;
+  }
 }
