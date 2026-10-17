@@ -97,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const sairModal = document.getElementById("sair-modal");
       const btnSairNao = document.getElementById("btn-sair-nao");
       
-      // Substitua a verificação antiga por esta com setProperty para forçar a exibição
       if (sairModal) {
         sairModal.style.setProperty("display", "flex", "important");
         if (btnSairNao) btnSairNao.focus();
@@ -117,12 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Coloque esta parte exatamente aqui:
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
+      // Tenta fechar a janela (funciona em PWA / Apps instalados)
       window.close();
+      
+      // Se o navegador bloquear o window.close(), limpa a tela ou redireciona
       setTimeout(() => {
         window.location.href = "about:blank";
-      }, 100);
+      }, 50);
     });
   }
 
