@@ -90,72 +90,68 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================
    AÇÃO DO BOTÃO SAIR (MODAL PERSONALIZADO)
    ========================================== */
-  const btnSair = document.getElementById("btn-sair-app");
-  const sairModal = document.getElementById("sair-modal");
-  const btnSairSim = document.getElementById("btn-sair-sim");
-  const btnSairNao = document.getElementById("btn-sair-nao");
+const btnSair = document.getElementById("btn-sair-app");
+const sairModal = document.getElementById("sair-modal");
+const btnSairSim = document.getElementById("btn-sair-sim");
+const btnSairNao = document.getElementById("btn-sair-nao");
 
-  if (btnSair && sairModal) {
-    btnSair.addEventListener("click", (e) => {
-      e.preventDefault();
-      sairModal.style.display = "flex";
-      if (btnSairNao) btnSairNao.focus();
-    });
-  }
+if (btnSair && sairModal) {
+  btnSair.addEventListener("click", (e) => {
+    e.preventDefault();
+    sairModal.style.display = "flex";
+    if (btnSairNao) btnSairNao.focus();
+  });
+}
 
-  if (btnSairNao && sairModal) {
-    btnSairNao.addEventListener("click", () => {
-      sairModal.style.display = "none";
-      if (btnSair) btnSair.focus();
-    });
-  }
+if (btnSairNao && sairModal) {
+  btnSairNao.addEventListener("click", () => {
+    sairModal.style.display = "none";
+    if (btnSair) btnSair.focus();
+  });
+}
 
-  if (btnSairSim) {
-    btnSairSim.addEventListener("click", () => {
-      window.close();
-      setTimeout(() => {
-        window.location.href = "about:blank";
-      }, 100);
-    });
-  }
-  
+if (btnSairSim) {
+  btnSairSim.addEventListener("click", () => {
+    window.close();
+    setTimeout(() => {
+      window.location.href = "about:blank";
+    }, 100);
+  });
+}
 
-  inicializarTeclado();
-  focarMenuPrincipal();
+inicializarTeclado();
+focarMenuPrincipal();
 
-  /* ==========================================
+/* ==========================================
    CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
    ========================================== */
-  window.history.pushState({ page: "main" }, "", "");
+window.history.pushState({ page: "main" }, "", "");
 
-  window.addEventListener("popstate", (event) => {
-    const appContainer = document.getElementById("app-container");
-    const menuOverlay = document.getElementById("menu-overlay");
-    const sairModal = document.getElementById("sair-modal");
+window.addEventListener("popstate", (event) => {
+  const appContainer = document.getElementById("app-container");
+  const menuOverlay = document.getElementById("menu-overlay");
+  const currentSairModal = document.getElementById("sair-modal");
 
-    // Se o modal de saída estiver aberto, apenas fecha o modal
-    if (sairModal && window.getComputedStyle(sairModal).display !== "none") {
-      sairModal.style.display = "none";
-      window.history.pushState({ page: "main" }, "", "");
-      return;
+  // Se o modal de saída estiver aberto, apenas fecha o modal
+  if (currentSairModal && window.getComputedStyle(currentSairModal).display !== "none") {
+    currentSairModal.style.display = "none";
+    window.history.pushState({ page: "main" }, "", "");
+    return;
+  }
+
+  // Se estiver na tela de vídeos aberta, volta para o menu principal em vez de sair
+  if (appContainer && window.getComputedStyle(appContainer).display !== "none") {
+    voltarParaMenu();
+    window.history.pushState({ page: "main" }, "", "");
+  } else {
+    // Se já estiver no menu principal, abre o modal personalizado de saída em vez do confirm nativo
+    if (currentSairModal) {
+      currentSairModal.style.display = "flex";
+      if (btnSairNao) btnSairNao.focus();
     }
-
-    // Se estiver na tela de vídeos aberta, volta para o menu principal em vez de sair
-    if (appContainer && window.getComputedStyle(appContainer).display !== "none") {
-      voltarParaMenu();
-      window.history.pushState({ page: "main" }, "", "");
-    } else {
-      // Se já estiver no menu principal, permite sair ou pede confirmação
-      if (confirm("Deseja realmente sair do aplicativo?")) {
-        window.close();
-        setTimeout(() => {
-          window.location.href = "about:blank";
-        }, 100);
-      } else {
-        window.history.pushState({ page: "main" }, "", "");
-      }
-    }
-  });
+    window.history.pushState({ page: "main" }, "", "");
+  }
+});
 
   
 });
