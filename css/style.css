@@ -677,24 +677,31 @@ button.btn-close:focus {
   outline: none;
 }
 
-/* --- ADAPTAÇÃO PARA CELULARES (Mobile) --- */
+/* --- ADAPTAÇÃO PARA TELEMÓVEIS (Mobile) --- */
 @media (max-width: 767px) {
   .header-search-random-group {
-    width: 100%;
-    flex-direction: column; /* Faz os itens empilharem na ordem normal: busca em cima, botão embaixo */
-    align-items: stretch;
-    gap: 8px;
-    margin-top: 8px;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important; /* Empilha: busca em cima, botão embaixo */
+    align-items: stretch !important;
+    gap: 8px !important;
+    margin-top: 8px !important;
   }
   
   .tv-search-container {
-    max-width: 100%;
-    width: 100%;
+    max-width: 100% !important;
+    width: 100% !important;
+    order: 1 !important; /* Força a busca a ser a primeira */
+  }
+
+  .tv-random-section {
+    width: 100% !important;
+    order: 2 !important; /* Força o botão a ser o segundo (abaixo da busca) */
   }
 
   .tv-header .btn-random-tv {
-    width: 100%;
-    text-align: center;
-    padding: 8px 10px;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 8px 10px !important;
   }
 }
