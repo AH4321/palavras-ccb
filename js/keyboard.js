@@ -158,7 +158,7 @@ export function inicializarTeclado() {
         return;
       }
 
-      // NAVEGAÇÃO POR SETAS E ATALHOS NOS CARTÕES DE VÍDEO
+      // NAVEGAÇÃO POR SETAS NOS CARTÕES DE VÍDEO
       if (e.key === "ArrowRight") {
         e.preventDefault();
         if (listaExibida.length > 0) {
@@ -183,47 +183,16 @@ export function inicializarTeclado() {
         e.preventDefault();
         let novoIndex = state.kbPlaylistIndex - colunas;
         if (novoIndex < 0) {
-          if (searchBox) {
+          if (btnRandom) {
+            btnRandom.focus();
+          } else if (searchBox) {
             searchBox.focus();
           }
         } else {
           state.kbPlaylistIndex = novoIndex;
           focarCartaoVideo(state.kbPlaylistIndex);
         }
-      } 
-      // === NOVOS ATALHOS: PAGE DOWN, PAGE UP, HOME E END ===
-      else if (e.key === "PageDown") {
-        e.preventDefault();
-        if (listaExibida.length > 0) {
-          // Pula o equivalente a duas linhas ou avança vários itens de uma vez
-          let novoIndex = state.kbPlaylistIndex + (colunas * 2);
-          if (novoIndex >= listaExibida.length) novoIndex = listaExibida.length - 1;
-          state.kbPlaylistIndex = novoIndex;
-          focarCartaoVideo(state.kbPlaylistIndex);
-        }
-      } else if (e.key === "PageUp") {
-        e.preventDefault();
-        if (listaExibida.length > 0) {
-          let novoIndex = state.kbPlaylistIndex - (colunas * 2);
-          if (novoIndex < 0) novoIndex = 0;
-          state.kbPlaylistIndex = novoIndex;
-          focarCartaoVideo(state.kbPlaylistIndex);
-        }
-      } else if (e.key === "Home") {
-        e.preventDefault();
-        if (listaExibida.length > 0) {
-          state.kbPlaylistIndex = 0;
-          focarCartaoVideo(state.kbPlaylistIndex);
-        }
-      } else if (e.key === "End") {
-        e.preventDefault();
-        if (listaExibida.length > 0) {
-          state.kbPlaylistIndex = listaExibida.length - 1;
-          focarCartaoVideo(state.kbPlaylistIndex);
-        }
-      }
-      // ====================================================
-      else if (e.key === "Enter") {
+      } else if (e.key === "Enter") {
         e.preventDefault();
         const elementoFocado = document.activeElement;
         if (elementoFocado === btnMenu || (btnMenu && btnMenu.contains(elementoFocado))) {
@@ -236,13 +205,14 @@ export function inicializarTeclado() {
         }
         if (listaExibida[state.kbPlaylistIndex]) {
           const videoAlvo = listaExibida[state.kbPlaylistIndex];
-          const indexOriginal = listaVideos.findIndex(v => (v.youtubeld || v.youtubeld) === (videoAlvo.youtubeld || videoAlvo.youtubeld));
+          const indexOriginal = listaVideos.findIndex(v => (v.youtubeId || v.youtubeld) === (videoAlvo.youtubeId || videoAlvo.youtubeld));
           if (indexOriginal !== -1) {
             tocarVideo(indexOriginal);
           }
         }
       }
       return;
+    }
 
     // 3. MENU PRINCIPAL OU MODAIS (Navegação vertical genérica por botões)
     const botoesAtivos = Array.from(document.querySelectorAll('button:not([style*="display: none"]), .btn-menu:not([style*="display: none"])'))
