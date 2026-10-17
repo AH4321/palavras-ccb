@@ -141,6 +141,9 @@ document.addEventListener("DOMContentLoaded", () => {
           passwordInput.focus();
         }
       }
+
+      // Atualiza o histórico para registar que estamos na tela de login
+      window.history.pushState({ page: "login" }, "", "");
     });
   }
 
@@ -153,9 +156,18 @@ document.addEventListener("DOMContentLoaded", () => {
   window.history.pushState({ page: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
+    const loginOverlay = document.getElementById("login-overlay");
     const appContainer = document.getElementById("app-container");
     const currentSairModal = document.getElementById("sair-modal");
     const btnSairNao = document.getElementById("btn-sair-nao");
+
+    const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
+
+    // Se estiver no ecrã de login e apertar voltar, tenta fechar a aba/aplicativo
+    if (loginVisivel) {
+      window.close();
+      return;
+    }
 
     // Se o modal de saída estiver aberto, apenas fecha o modal ao apertar voltar
     if (currentSairModal && window.getComputedStyle(currentSairModal).display !== "none") {
