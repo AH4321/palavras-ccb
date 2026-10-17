@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRandomVideos.addEventListener("click", iniciarVideosAleatoriosContinuos);
   }
   
-  
   /* ==========================================
    AÇÃO DO BOTÃO SAIR (MODAL PERSONALIZADO)
    ========================================== */
@@ -97,7 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSairNao = document.getElementById("btn-sair-nao");
 
   if (btnSair && sairModal) {
-    btnSair.addEventListener("click", () => {
+    btnSair.addEventListener("click", (e) => {
+      e.preventDefault();
       sairModal.style.display = "flex";
       if (btnSairNao) btnSairNao.focus();
     });
@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 100);
     });
   }
+  
 
   inicializarTeclado();
   focarMenuPrincipal();
