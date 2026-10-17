@@ -215,7 +215,7 @@ export function inicializarTeclado() {
     }
 
     // 3. MENU PRINCIPAL OU MODAIS (Navegação vertical genérica por botões)
-    const botoesAtivos = Array.from(document.querySelectorAll('button:not([style*="display: none"]), .btn-menu:not([style*="display: none"])'))
+    const botoesAtivos = Array.from(document.querySelectorAll('#menu-overlay button:not([style*="display: none"]), .btn-menu:not([style*="display: none"]), .btn-config-flutuante, .btn-sair-flutuante'))
       .filter(btn => {
         const rect = btn.getBoundingClientRect();
         return rect.width > 0 && rect.height > 0;
