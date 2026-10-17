@@ -930,3 +930,44 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
     padding: 10px !important;
   }
 }
+
+.btn-sair-flutuante {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 9999;
+  background-color: var(--ccb-blue);
+  color: var(--ccb-gold);
+  border: 2px solid var(--ccb-gold);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.btn-sair-flutuante svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--ccb-gold);
+}
+
+.btn-sair-flutuante:hover svg,
+.btn-sair-flutuante:focus svg,
+.btn-sair-flutuante.kb-focus svg {
+  stroke: #fff;
+}
+
+.btn-sair-flutuante:hover,
+.btn-sair-flutuante:focus,
+.btn-sair-flutuante.kb-focus {
+  background-color: var(--ccb-red);
+  color: #fff;
+  border-color: #fff;
+  transform: scale(1.1);
+  outline: 3px solid #fff;
+}
