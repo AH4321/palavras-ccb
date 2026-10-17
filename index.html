@@ -156,21 +156,24 @@
      APLICAÇÃO DE VÍDEOS (ESTILO YOUTUBE TV)
 ========================================== -->
 <div id="app-container">
+
   <header class="tv-header">
     <button class="btn-back-menu" id="btn-app-back" type="button" title="Voltar ao Menu">&larr; Menu</button>
     <h1>Palavras CCB</h1>
     <div class="tv-search-container">
-      <input type="text" id="search-input" placeholder="Buscar vídeo (digite qualquer palavra)...">
+      <input type="text" id="search-input" placeholder="Buscar vídeo (digite sua busca)...">
     </div>
-  </header>
-  <div class="tv-main-content">
     <div class="tv-random-section">
-      <button id="btn-random-videos" class="btn-random-tv" type="button">REPRODUÇÃO ALEATÓRIA</button>
-    </div>
+        <button id="btn-random-videos" class="btn-random-tv" type="button">ALEATÓRIO</button>
+      </div>
+  </header>
+  
+  <div class="tv-main-content">    
     <div class="tv-grid-container" id="playlist" tabindex="0">
       <!-- Os cartões dos vídeos serão injetados dinamicamente via JS -->
     </div>
   </div>
+  
 </div>
 
 <script type="module" src="js/app.js"></script>

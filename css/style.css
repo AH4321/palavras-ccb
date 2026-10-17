@@ -363,11 +363,11 @@ button.btn-close:focus {
   color: var(--ccb-dark-blue);
 }
 
-.tv-search-container {
+/* .tv-search-container {
   width: 100%;
   order: 3;
   margin-top: 2px;
-}
+} */
 
 .tv-search-container input {
   width: 100%;
@@ -394,11 +394,11 @@ button.btn-close:focus {
   max-height: calc(95vh - 80px);
 }
 
-.tv-random-section {
+/* .tv-random-section {
   margin-bottom: 1.5rem;
-}
+} */
 
-/* Botão Vídeos Aleatórios */
+/*  //Botão Vídeos Aleatórios 
 .btn-random-tv {
   width: 100%;
   padding: 1rem;
@@ -411,7 +411,7 @@ button.btn-close:focus {
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
   transition: transform 0.2s, background 0.2s;
-}
+} */
 
 .btn-random-tv:hover,
 .btn-random-tv.kb-focus {
@@ -629,4 +629,29 @@ button.btn-close:focus {
   .tv-main-content {
     padding: 1.5rem 2rem;
   }
+
+  /* --- BOTÃO ALEATÓRIO --- */
+
+.tv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tv-search-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.tv-random-section {
+  margin-bottom: 0 !important;
+}
+
+.btn-random-tv {
+  padding: 0.55rem 1rem !important;
+  font-size: 0.85rem !important;
+  white-space: nowrap;
+}
 }
