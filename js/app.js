@@ -90,68 +90,73 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================
    AÇÃO DO BOTÃO SAIR (MODAL PERSONALIZADO)
    ========================================== */
-const btnSair = document.getElementById("btn-sair-app");
-const sairModal = document.getElementById("sair-modal");
-const btnSairSim = document.getElementById("btn-sair-sim");
-const btnSairNao = document.getElementById("btn-sair-nao");
-
-if (btnSair && sairModal) {
-  btnSair.addEventListener("click", (e) => {
-    e.preventDefault();
-    sairModal.style.display = "flex";
-    if (btnSairNao) btnSairNao.focus();
-  });
-}
-
-if (btnSairNao && sairModal) {
-  btnSairNao.addEventListener("click", () => {
-    sairModal.style.display = "none";
-    if (btnSair) btnSair.focus();
-  });
-}
-
-if (btnSairSim) {
-  btnSairSim.addEventListener("click", () => {
-    window.close();
-    setTimeout(() => {
-      window.location.href = "about:blank";
-    }, 100);
-  });
-}
-
-inicializarTeclado();
-focarMenuPrincipal();
-
-/* ==========================================
-   CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
-   ========================================== */
-window.history.pushState({ page: "main" }, "", "");
-
-window.addEventListener("popstate", (event) => {
-  const appContainer = document.getElementById("app-container");
-  const menuOverlay = document.getElementById("menu-overlay");
-  const currentSairModal = document.getElementById("sair-modal");
-
-  // Se o modal de saída estiver aberto, apenas fecha o modal
-  if (currentSairModal && window.getComputedStyle(currentSairModal).display !== "none") {
-    currentSairModal.style.display = "none";
-    window.history.pushState({ page: "main" }, "", "");
-    return;
-  }
-
-  // Se estiver na tela de vídeos aberta, volta para o menu principal em vez de sair
-  if (appContainer && window.getComputedStyle(appContainer).display !== "none") {
-    voltarParaMenu();
-    window.history.pushState({ page: "main" }, "", "");
-  } else {
-    // Se já estiver no menu principal, abre o modal personalizado de saída em vez do confirm nativo
-    if (currentSairModal) {
-      currentSairModal.style.display = "flex";
-      if (btnSairNao) btnSairNao.focus();
+  document.addEventListener("click", (e) => {
+    const btnSairTarget = e.target.closest("#btn-sair-app");
+    if (btnSairTarget) {
+      e.preventDefault();
+      const sairModal = document.getElementById("sair-modal");
+      const btnSairNao = document.getElementById("btn-sair-nao");
+      if (sairModal) {
+        sairModal.style.display = "flex";
+        if (btnSairNao) btnSairNao.focus();
+      }
     }
-    window.history.pushState({ page: "main" }, "", "");
+  });
+
+  const btnSairSim = document.getElementById("btn-sair-sim");
+  const btnSairNao = document.getElementById("btn-sair-nao");
+  const sairModal = document.getElementById("sair-modal");
+
+  if (btnSairNao && sairModal) {
+    btnSairNao.addEventListener("click", () => {
+      sairModal.style.display = "none";
+      const btnSair = document.getElementById("btn-sair-app");
+      if (btnSair) btnSair.focus();
+    });
   }
-});
+
+  if (btnSairSim) {
+    btnSairSim.addEventListener("click", () => {
+      window.close();
+      setTimeout(() => {
+        window.location.href = "about:blank";
+      }, 100);
+    });
+  }
+
+  inicializarTeclado();
+  focarMenuPrincipal();
+
+  /* ==========================================
+    CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
+    ========================================== */
+  window.history.pushState({ page: "main" }, "", "");
+
+  window.addEventListener("popstate", (event) => {
+    const appContainer = document.getElementById("app-container");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const currentSairModal = document.getElementById("sair-modal");
+
+    // Se o modal de saída estiver aberto, apenas fecha o modal
+    if (currentSairModal && window.getComputedStyle(currentSairModal).display !== "none") {
+      currentSairModal.style.display = "none";
+      window.history.pushState({ page: "main" }, "", "");
+      return;
+    }
+
+    // Se estiver na tela de vídeos aberta, volta para o menu principal em vez de sair
+    if (appContainer && window.getComputedStyle(appContainer).display !== "none") {
+      voltarParaMenu();
+      window.history.pushState({ page: "main" }, "", "");
+    } else {
+      // Se já estiver no menu principal, abre o modal personalizado de saída em vez do confirm nativo
+      if (currentSairModal) {
+        currentSairModal.style.display = "flex";
+        if (btnSairNao) btnSairNao.focus();
+      }
+      window.history.pushState({ page: "main" }, "", "");
+    }
+  });
 
   
 });
