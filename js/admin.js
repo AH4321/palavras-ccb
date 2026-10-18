@@ -82,14 +82,17 @@ export function carregarSelecaoParaEdicao() {
   const video = listaVideos[itemSelecionadoIndex];
   if (!video) return;
 
-  // Usa a chave exata 'youtubeld' do objeto de dados
-  const videoId = video.youtubeld;
+  // Verifica todas as variações possíveis da chave do ID do YouTube
+  const videoId = video.youtubeld || video.youtubeId || video.youtube_id || "";
 
   document.getElementById("edit-video-index").value = itemSelecionadoIndex;
-  document.getElementById("new-video-title").value = video.title;
+  document.getElementById("new-video-title").value = video.title || "";
   
-  // Preenche o campo da URL com o link completo do YouTube usando o ID correto
-  document.getElementById("new-video-url").value = videoId ? `https://www.youtube.com/watch?v=${videoId}` : "";
+  // Define explicitamente o valor da URL no input correspondente
+  const urlInput = document.getElementById("new-video-url");
+  if (urlInput) {
+    urlInput.value = videoId ? `https://www.youtube.com/watch?v=${videoId}` : "";
+  }
   
   document.getElementById("form-video-title-heading").innerText = "Editar Vídeo Selecionado";
   document.getElementById("btn-save-gh").innerText = "Salvar Alterações";
