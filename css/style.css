@@ -903,3 +903,8 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
   }
 }
 
+.admin-video-item.selected {
+  background-color: var(--ccb-gold) !important;
+  color: var(--ccb-dark-blue) !important;
+  font-weight: bold;
+}

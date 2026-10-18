@@ -98,25 +98,37 @@
   <div class="admin-card">
     <button class="btn-close" id="btn-close-video-manager" type="button">&times;</button>
     <h2>Gerenciar Vídeos</h2>
-    <p>Adicione ou remova vídeos do repositório</p>
+    <p>Adicione, edite ou remova vídeos do repositório</p>
+    
     <div class="token-area">
       <label>Token do GitHub (PAT):</label>
       <input type="password" id="gh-token-videos" placeholder="Digite apenas o seu token aqui">
     </div>
+
+    <!-- Formulário Único (Novo / Edição) -->
     <div class="admin-manage-section">
-      <h3 id="form-video-title-heading">Adicionar Novo Vídeo</h3>
+      <h3 id="form-video-title-heading">Adicionar / Editar Vídeo</h3>
       <input type="hidden" id="edit-video-index" value="-1">
       <input type="text" id="new-video-title" placeholder="Título do Vídeo">
       <input type="text" id="new-video-url" placeholder="ID ou URL do YouTube">
-      <button id="btn-save-gh" class="btn-action" type="button">Salvar Novo Vídeo</button>
-      <button id="btn-cancel-edit" class="btn-action gray-button" type="button" style="display: none; margin-top: 5px;">Cancelar Edição</button>
+      <button id="btn-save-gh" class="btn-action" type="button">Salvar Vídeo</button>
+      <button id="btn-cancel-edit" class="btn-action gray-button" type="button" style="display: none; margin-top: 5px;">Limpar Seleção</button>
     </div>
+
+    <!-- Lista com Ações Únicas Globais -->
     <div class="admin-manage-section">
-      <h3>Vídeos Cadastrados (Excluir)</h3>
+      <h3>Vídeos Cadastrados</h3>
       <ul id="admin-video-list" class="admin-video-list"></ul>
+      
+      <!-- APENAS UM BOTÃO DE EDITAR E UM DE EXCLUIR PARA A LISTA TODA -->
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button id="btn-global-edit" class="btn-action" type="button" disabled>Editar Selecionado</button>
+        <button id="btn-global-delete" class="btn-action gray-button" type="button" style="background-color: var(--ccb-red) !important;" disabled>Excluir Selecionado</button>
+      </div>
     </div>
+
     <p id="admin-msg" class="admin-message"></p>
-    <button type="button" id="btn-video-manager-back" class="btn-action gray-button">Voltar ao Painel</button>
+    <button type="button" id="btn-video-manager-back" class="btn-action gray-button" style="margin-top: 15px;">Voltar ao Painel</button>
   </div>
 </div>
 

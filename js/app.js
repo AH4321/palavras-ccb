@@ -5,6 +5,8 @@ import {
   abrirModalSenhas, 
   salvarOuAtualizarVideo, 
   cancelarEdicao, 
+  carregarSelecaoParaEdicao,
+  excluirVideoSelecionado,
   atualizarSenhas 
 } from "./admin.js";
 import { filtrarVideos, initPlayer, iniciarVideosAleatoriosContinuos } from "./player.js";
@@ -63,12 +65,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnCloseAdminMenu = document.getElementById("btn-close-admin-menu");
   if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", voltarParaMenu);
 
-  // Botões de Salvar/Atualizar e Cancelar Edição de Vídeos
+  // Botões de Gerenciamento de Vídeos (Salvar, Cancelar Edição, Editar Selecionado, Excluir Selecionado)
   const btnSaveGh = document.getElementById("btn-save-gh");
   if (btnSaveGh) btnSaveGh.addEventListener("click", salvarOuAtualizarVideo);
 
   const btnCancelEdit = document.getElementById("btn-cancel-edit");
   if (btnCancelEdit) btnCancelEdit.addEventListener("click", cancelarEdicao);
+
+  const btnGlobalEdit = document.getElementById("btn-global-edit");
+  if (btnGlobalEdit) btnGlobalEdit.addEventListener("click", carregarSelecaoParaEdicao);
+
+  const btnGlobalDelete = document.getElementById("btn-global-delete");
+  if (btnGlobalDelete) btnGlobalDelete.addEventListener("click", excluirVideoSelecionado);
 
   const btnVideoManagerBack = document.getElementById("btn-video-manager-back");
   if (btnVideoManagerBack) btnVideoManagerBack.addEventListener("click", voltarParaAdminMenu);
