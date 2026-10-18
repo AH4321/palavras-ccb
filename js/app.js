@@ -118,33 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
-      // Limpa os dados de sessão para forçar a exigência de senha
+      // Limpa os dados de sessão
       sessionStorage.clear();
 
-      // Fecha o modal de saída
-      if (sairModal) {
-        sairModal.style.setProperty("display", "none", "important");
-      }
-
-      // Regressa de imediato ao ecrã de login/senha
-      const menuOverlay = document.getElementById("menu-overlay");
-      const appContainer = document.getElementById("app-container");
-      const loginOverlay = document.getElementById("login-overlay");
-      const passwordInput = document.getElementById("password-input");
-
-      if (menuOverlay) menuOverlay.style.display = "none";
-      if (appContainer) appContainer.style.display = "none";
-      if (loginOverlay) {
-        loginOverlay.style.display = "flex";
-        if (passwordInput) {
-          passwordInput.value = "";
-          passwordInput.focus();
-        }
-      }
-
-      // Substitui o estado atual no histórico para marcar que estamos no login
-      window.history.replaceState({ page: "login" }, "", "");
-      window.history.pushState({ page: "login" }, "", "");
+      // Redireciona para a página inicial/pesquisa do navegador (ou pode alterar o URL para o pretendido)
+      window.location.href = "https://www.google.com";
     });
   }
 
@@ -157,19 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.history.pushState({ page: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
-    const loginOverlay = document.getElementById("login-overlay");
     const appContainer = document.getElementById("app-container");
     const currentSairModal = document.getElementById("sair-modal");
     const btnSairNao = document.getElementById("btn-sair-nao");
-
-    const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
-
-    // Se estiver no ecrã de login e apertar voltar, tenta fechar a aba/aplicativo
-    if (loginVisivel) {
-      window.close();
-      window.history.pushState({ page: "login" }, "", "");
-      return;
-    }
 
     // Se o modal de saída estiver aberto, apenas fecha o modal ao apertar voltar
     if (currentSairModal && window.getComputedStyle(currentSairModal).display !== "none") {
