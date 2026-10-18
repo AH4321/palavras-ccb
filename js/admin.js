@@ -82,11 +82,13 @@ export function carregarSelecaoParaEdicao() {
   const video = listaVideos[itemSelecionadoIndex];
   if (!video) return;
 
-  const videoId = video.youtubeld || video.youtubeld;
+  // Usa a chave exata 'youtubeld' do objeto de dados
+  const videoId = video.youtubeld;
 
   document.getElementById("edit-video-index").value = itemSelecionadoIndex;
   document.getElementById("new-video-title").value = video.title;
-  // Preenche o campo da URL com o link completo para visualização e edição
+  
+  // Preenche o campo da URL com o link completo do YouTube usando o ID correto
   document.getElementById("new-video-url").value = videoId ? `https://www.youtube.com/watch?v=${videoId}` : "";
   
   document.getElementById("form-video-title-heading").innerText = "Editar Vídeo Selecionado";
