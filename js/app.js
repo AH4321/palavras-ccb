@@ -118,15 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
-      // Limpa os dados de sessão para forçar nova senha
+      // 1. Limpa os dados da sessão (exige senha novamente)
       sessionStorage.clear();
 
-      // Fecha o modal de saída
+      // 2. Fecha o modal de saída
       if (sairModal) {
         sairModal.style.setProperty("display", "none", "important");
       }
 
-      // Oculta os menus e mostra o ecrã de login limpo
+      // 3. Esconde o menu principal / container e mostra o ecrã de login
       const menuOverlay = document.getElementById("menu-overlay");
       const appContainer = document.getElementById("app-container");
       const loginOverlay = document.getElementById("login-overlay");
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Atualiza o histórico para o estado de login
+      // 4. Atualiza o histórico para o estado de login
       window.history.replaceState({ page: "login" }, "", "");
     });
   }
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
 
-    // Se estiver no ecrã de login após sair, impede que recuo reabra o app
+    // Se estiver no ecrã de login após sair, mantém no login ao apertar voltar
     if (loginVisivel) {
       window.history.pushState({ page: "login" }, "", "");
       return;
