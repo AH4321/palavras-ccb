@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnAppBack = document.getElementById("btn-app-back");
   if (btnAppBack) btnAppBack.addEventListener("click", () => {
     voltarParaMenu();
-    window.history.pushState({ page: "main" }, "", "");
+    window.history.replaceState({ page: "main" }, "", "");
   });
 
   const searchInput = document.getElementById("search-input");
@@ -130,15 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
-      // 1. Limpa os dados de sessão para exigir senha novamente
       sessionStorage.clear();
 
-      // 2. Fecha o modal de saída
       if (sairModal) {
         sairModal.style.setProperty("display", "none", "important");
       }
 
-      // 3. Regressa de imediato ao ecrã de login/senha
       const menuOverlay = document.getElementById("menu-overlay");
       const appContainer = document.getElementById("app-container");
       const loginOverlay = document.getElementById("login-overlay");
@@ -154,8 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // 4. Regista estado de login no histórico
-      window.history.pushState({ page: "login" }, "", "");
+      window.history.replaceState({ page: "login" }, "", "");
     });
   }
 
@@ -165,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================
      CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
      ========================================== */
-  window.history.pushState({ page: "main" }, "", "");
+  window.history.replaceState({ page: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
     const loginOverlay = document.getElementById("login-overlay");
@@ -176,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
     const appVisivel = appContainer && window.getComputedStyle(appContainer).display !== "none";
 
-    // Se estiver no ecrã de login, bloqueia recuo
+    // Se estiver no ecrã de login, mantém o utilizador preso no login
     if (loginVisivel) {
       window.history.pushState({ page: "login" }, "", "");
       return;
@@ -189,9 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Se estiver na tela de vídeos, volta para o menu principal
+    // Se estiver na tela de vídeos, força o retorno visual e redefine o histórico para main
     if (appVisivel) {
       voltarParaMenu();
+      window.history.replaceState({ page: "main" }, "", "");
       window.history.pushState({ page: "main" }, "", "");
       return;
     }
@@ -203,6 +200,4 @@ document.addEventListener("DOMContentLoaded", () => {
       window.history.pushState({ page: "main" }, "", "");
     }
   });
-
-  window.history.pushState({ page: "main" }, "", "");
 });
