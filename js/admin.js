@@ -28,33 +28,121 @@ function fecharModaisAdmin() {
 }
 
 export function renderizarListaAdmin() {
-  const adminList = document.getElementById("admin-video-list");
-  if (!adminList) return;
-  
-  adminList.innerHTML = "";
-  if (listaVideos.length === 0) {
-    adminList.innerHTML = `<li class="admin-video-item">Nenhum vídeo cadastrado</li>`;
-    return;
-  }
-  
-  listaVideos.forEach((video, index) => {
-    const li = document.createElement("li");
-    li.className = "admin-video-item";
-    
-    const titleSpan = document.createElement("span");
-    titleSpan.innerText = video.title;
-    titleSpan.title = video.title;
-    
-    const delBtn = document.createElement("button");
-    delBtn.className = "btn-delete-item";
-    delBtn.type = "button";
-    delBtn.innerText = "Excluir";
-    delBtn.addEventListener("click", () => excluirVideoDoGitHub(index));
-    
-    li.appendChild(titleSpan);
-    li.appendChild(delBtn);
-    adminList.appendChild(li);
-  });
+    const adminList = document.getElementById("admin-video-list");
+    adminList.innerHTML = "";
+    if (listaVideos.length === 0) {
+        adminList.innerHTML = `<li class="admin-video-item">Nenhum vídeo cadastrado</li>`;
+        return;
+    }
+
+    // Exibe também a lista administrativa em ordem decrescente mantendo o índice real correto
+    const listaOrdenada = listaVideos.map((vid, origIndex) => ({ vid, origIndex }))
+                                     .sort((a, b) => b.vid.title.localeCompare(a.vid.title));
+
+    listaOrdenada.forEach(({ vid: video, origIndex: index }) => {
+        const li = document.createElement("li");
+        li.className = "admin-video-item";
+        
+        const titleSpan = document.createElement("span");
+        titleSpan.innerText = video.title;
+        titleSpan.title = video.title;
+
+        const btnContainer = document.createElement("div");
+        btnContainer.style.display = "flex";
+        btnContainer.style.gap = "4px";
+
+        const editBtn = document.createElement("button");
+        editBtn.className = "btn-action";
+        editBtn.style.padding = "4px 8px";
+        editBtn.style.fontSize = "0.75rem";
+        editBtn.innerText = "Editar";
+        editBtn.type = "button";
+        editBtn.addEventListener("click", () => preencherEdicaoVideo(index));
+
+        const delBtn = document.createElement("button");
+        delBtn.className = "btn-delete-item";
+        delBtn.type = "button";
+        delBtn.innerText = "Excluir";
+        delBtn.addEventListener("click", () => excluirVideoDoGitHub(index));
+
+        btnContainer.appendChild(editBtn);
+        btnContainer.appendChild(delBtn);
+
+        li.appendChild(titleSpan);
+        li.appendChild(btnContainer);
+        adminList.appendChild(li);
+    });
+}
+
+export function preencherEdicaoVideo(index) {
+    const video = listaVideos[index];
+    if (!video) return;
+
+    document.getElementById("edit-video-index").value = index;
+    document.getElementById("new-video-title").value = video.title;
+    document.getElementById("new-video-url").value = video.youtubeld;
+    document.getElementById("form-video-title-heading").innerText = "Editar Vídeo";
+    document.getElementById("btn-save-gh").innerText = "Salvar Alterações";
+    document.getElementById("btn-cancel-edit").style.display = "block";
+}
+
+export function cancelarEdicao() {
+    document.getElementById("edit-video-index").value = "-1";
+    document.getElementById("new-video-title").value = "";
+    document.getElementById("new-video-url").value = "";
+    document.getElementById("form-video-title-heading").innerText = "Adicionar Novo Vídeo";
+    document.getElementById("btn-save-gh").innerText = "Salvar Novo Vídeo";
+    document.getElementById("btn-cancel-edit").style.display = "none";
+}
+
+// Substitui ou expande a lógica anterior de salvar para lidar com adição e edição
+export async function salvarOuAtualizarVideo() {
+    const token = document.getElementById("gh-token-videos").value.trim();
+    const title = document.getElementById("new-video-title").value.trim();
+    const rawUrl = document.getElementById("new-video-url").value.trim();
+    const editIndex = parseInt(document.getElementById("edit-video-index").value, 10);
+    const msg = document.getElementById("admin-msg");
+    const btn = document.getElementById("btn-save-gh");
+
+    if (!token) {
+        msg.style.color = "red";
+        msg.innerText = "Preencha o Token do GitHub!";
+        return;
+    }
+    if (!title || !rawUrl) {
+        msg.style.color = "red";
+        msg.innerText = "Preencha o título e a URL/ID do vídeo!";
+        return;
+    }
+
+    const youtubeld = extrairYoutubeld(rawUrl);
+    btn.disabled = true;
+    msg.style.color = "#0b2545";
+    msg.innerText = "Enviando alterações...";
+
+    try {
+        let novaLista = [...listaVideos];
+        if (editIndex >= 0) {
+            novaLista[editIndex] = { title, youtubeld };
+            await salvarListaNoGitHub(token, novaLista, `Atualizado vídeo: ${title}`);
+            listaVideos[editIndex] = { title, youtubeld };
+            msg.innerText = "Vídeo atualizado com sucesso!";
+        } else {
+            novaLista.push({ title, youtubeld });
+            await salvarListaNoGitHub(token, novaLista, `Adicionado vídeo: ${title}`);
+            listaVideos.push({ title, youtubeld });
+            msg.innerText = "Vídeo salvo com sucesso!";
+        }
+
+        renderizarListaAdmin();
+        cancelarEdicao();
+        msg.style.color = "green";
+    } catch (err) {
+        msg.style.color = "red";
+        msg.innerText = "Erro: " + err.message;
+    } finally {
+        btn.disabled = false;
+    }
 }
 
 export function extrairYoutubeId(entrada) {

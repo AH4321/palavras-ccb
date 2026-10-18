@@ -104,10 +104,12 @@
       <input type="password" id="gh-token-videos" placeholder="Digite apenas o seu token aqui">
     </div>
     <div class="admin-manage-section">
-      <h3>Adicionar Novo Vídeo</h3>
-      <input type="text" id="new-video-title" placeholder="Título do Vídeo Novo">
+      <h3 id="form-video-title-heading">Adicionar Novo Vídeo</h3>
+      <input type="hidden" id="edit-video-index" value="-1">
+      <input type="text" id="new-video-title" placeholder="Título do Vídeo">
       <input type="text" id="new-video-url" placeholder="ID ou URL do YouTube">
       <button id="btn-save-gh" class="btn-action" type="button">Salvar Novo Vídeo</button>
+      <button id="btn-cancel-edit" class="btn-action gray-button" type="button" style="display: none; margin-top: 5px;">Cancelar Edição</button>
     </div>
     <div class="admin-manage-section">
       <h3>Vídeos Cadastrados (Excluir)</h3>

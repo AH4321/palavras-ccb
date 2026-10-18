@@ -113,20 +113,22 @@ export function renderizarLista(videos) {
 }
 
 export function carregarPlaylist() {
-  renderizarLista(listaVideos);
-  if (listaVideos.length > 0) {
-    if (state.currentVideoIndex < 0) {
-      state.currentVideoIndex = 0;
-    }
-    state.kbPlaylistIndex = 0;
+    // Cria uma cópia da lista ordenada de forma decrescente pelo título (data mais recente primeiro)
+    const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
+    renderizarLista(listaOrdenada);
     
-    const playlistElement = document.getElementById('playlist');
-    if (playlistElement) {
-      playlistElement.setAttribute('tabindex', '0');
-      playlistElement.focus();
-      focarCartaoVideo(0);
+    if (listaVideos.length > 0) {
+        if (state.currentVideoIndex < 0) {
+            state.currentVideoIndex = 0;
+            state.kbPlaylistIndex = 0;
+        }
+        const playlistElement = document.getElementById('playlist');
+        if (playlistElement) {
+            playlistElement.setAttribute('tabindex', '0');
+            playlistElement.focus();
+            focarCartaoVideo(0);
+        }
     }
-  }
 }
 
 export function focarCartaoVideo(index) {

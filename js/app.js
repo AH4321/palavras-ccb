@@ -1,6 +1,12 @@
 import { autenticar, verificarSenhaAdmin } from "./auth.js";
 import { navegarPara, voltarParaMenu, voltarParaAdminMenu } from "./menu.js";
-import { abrirGerenciadorVideos, abrirModalSenhas, adicionarVideoNoGitHub, atualizarSenhas } from "./admin.js";
+import { 
+  abrirGerenciadorVideos, 
+  abrirModalSenhas, 
+  salvarOuAtualizarVideo, 
+  cancelarEdicao, 
+  atualizarSenhas 
+} from "./admin.js";
 import { filtrarVideos, initPlayer, iniciarVideosAleatoriosContinuos } from "./player.js";
 import { inicializarTeclado, focarMenuPrincipal } from "./keyboard.js";
 
@@ -57,8 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnCloseAdminMenu = document.getElementById("btn-close-admin-menu");
   if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", voltarParaMenu);
 
+  // Botões de Salvar/Atualizar e Cancelar Edição de Vídeos
   const btnSaveGh = document.getElementById("btn-save-gh");
-  if (btnSaveGh) btnSaveGh.addEventListener("click", adicionarVideoNoGitHub);
+  if (btnSaveGh) btnSaveGh.addEventListener("click", salvarOuAtualizarVideo);
+
+  const btnCancelEdit = document.getElementById("btn-cancel-edit");
+  if (btnCancelEdit) btnCancelEdit.addEventListener("click", cancelarEdicao);
 
   const btnVideoManagerBack = document.getElementById("btn-video-manager-back");
   if (btnVideoManagerBack) btnVideoManagerBack.addEventListener("click", voltarParaAdminMenu);
@@ -102,25 +112,19 @@ document.addEventListener("DOMContentLoaded", () => {
   inicializarTeclado();
   focarMenuPrincipal();
 
-  /* ==========================================
-     CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
-     ========================================== */
+  // Controle do botão voltar do telemóvel / browser
   window.history.replaceState({ page: "main" }, "", "");
-
   window.addEventListener("popstate", (event) => {
     const loginOverlay = document.getElementById("login-overlay");
     const appContainer = document.getElementById("app-container");
-
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
     const appVisivel = appContainer && window.getComputedStyle(appContainer).display !== "none";
 
-    // Se estiver no ecrã de login, mantém o utilizador preso no login
     if (loginVisivel) {
       window.history.pushState({ page: "login" }, "", "");
       return;
     }
 
-    // Se estiver na tela de vídeos, força o retorno visual e redefine o histórico para main
     if (appVisivel) {
       voltarParaMenu();
       window.history.replaceState({ page: "main" }, "", "");
