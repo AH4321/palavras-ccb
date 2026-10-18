@@ -13,30 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Helper para alternar entre ecrãs de forma limpa e garantir o estado do histórico
-  function irParaTela(nomeTela) {
-    const menuOverlay = document.getElementById("menu-overlay");
-    const appContainer = document.getElementById("app-container");
-    const loginOverlay = document.getElementById("login-overlay");
-    const adminOverlay = document.getElementById("admin-overlay"); // se existir
-
-    // Oculta todos os overlays principais
-    if (loginOverlay) loginOverlay.style.display = "none";
-    if (menuOverlay) menuOverlay.style.display = "none";
-    if (appContainer) appContainer.style.display = "none";
-
-    if (nomeTela === "login") {
-      if (loginOverlay) loginOverlay.style.display = "flex";
-      window.history.replaceState({ page: "login" }, "", "");
-    } else if (nomeTela === "main") {
-      if (menuOverlay) menuOverlay.style.display = "flex";
-      window.history.pushState({ page: "main" }, "", "");
-    } else if (nomeTela === "app") {
-      if (appContainer) appContainer.style.display = "flex";
-      window.history.pushState({ page: "app" }, "", "");
-    }
-  }
-
   const btnPalavras = document.getElementById("btn-menu-palavras");
   if (btnPalavras) btnPalavras.addEventListener("click", () => {
     navegarPara("palavras");
@@ -67,10 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const btnCloseAdminAuth = document.getElementById("btn-close-admin-auth");
-  if (btnCloseAdminAuth) btnCloseAdminAuth.addEventListener("click", () => {
-    voltarParaMenu();
-    window.history.replaceState({ page: "main" }, "", "");
-  });
+  if (btnCloseAdminAuth) btnCloseAdminAuth.addEventListener("click", voltarParaMenu);
 
   const btnGerenciarVideos = document.getElementById("btn-gerenciar-videos");
   if (btnGerenciarVideos) btnGerenciarVideos.addEventListener("click", abrirGerenciadorVideos);
@@ -79,16 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnAlterarSenhas) btnAlterarSenhas.addEventListener("click", abrirModalSenhas);
 
   const btnAdminVoltar = document.getElementById("btn-admin-voltar");
-  if (btnAdminVoltar) btnAdminVoltar.addEventListener("click", () => {
-    voltarParaMenu();
-    window.history.replaceState({ page: "main" }, "", "");
-  });
+  if (btnAdminVoltar) btnAdminVoltar.addEventListener("click", voltarParaMenu);
 
   const btnCloseAdminMenu = document.getElementById("btn-close-admin-menu");
-  if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", () => {
-    voltarParaMenu();
-    window.history.replaceState({ page: "main" }, "", "");
-  });
+  if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", voltarParaMenu);
 
   const btnSaveGh = document.getElementById("btn-save-gh");
   if (btnSaveGh) btnSaveGh.addEventListener("click", adicionarVideoNoGitHub);
@@ -109,21 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnClosePasswords) btnClosePasswords.addEventListener("click", voltarParaAdminMenu);
 
   const btnPlaceholderBack = document.getElementById("btn-placeholder-back");
-  if (btnPlaceholderBack) btnPlaceholderBack.addEventListener("click", () => {
-    voltarParaMenu();
-    window.history.replaceState({ page: "main" }, "", "");
-  });
+  if (btnPlaceholderBack) btnPlaceholderBack.addEventListener("click", voltarParaMenu);
 
   const btnClosePlaceholder = document.getElementById("btn-close-placeholder");
-  if (btnClosePlaceholder) btnClosePlaceholder.addEventListener("click", () => {
-    voltarParaMenu();
-    window.history.replaceState({ page: "main" }, "", "");
-  });
+  if (btnClosePlaceholder) btnClosePlaceholder.addEventListener("click", voltarParaMenu);
 
   const btnAppBack = document.getElementById("btn-app-back");
   if (btnAppBack) btnAppBack.addEventListener("click", () => {
     voltarParaMenu();
-    window.history.replaceState({ page: "main" }, "", "");
+    window.history.pushState({ page: "main" }, "", "");
   });
 
   const searchInput = document.getElementById("search-input");
@@ -169,21 +130,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
-      // 1. Limpa a sessão
+      // 1. Limpa os dados de sessão para exigir senha novamente
       sessionStorage.clear();
 
-      // 2. Fecha o modal
+      // 2. Fecha o modal de saída
       if (sairModal) {
         sairModal.style.setProperty("display", "none", "important");
       }
 
-      // 3. Retorna para o login
-      irParaTela("login");
+      // 3. Regressa de imediato ao ecrã de login/senha
+      const menuOverlay = document.getElementById("menu-overlay");
+      const appContainer = document.getElementById("app-container");
+      const loginOverlay = document.getElementById("login-overlay");
       const passwordInput = document.getElementById("password-input");
-      if (passwordInput) {
-        passwordInput.value = "";
-        passwordInput.focus();
+
+      if (menuOverlay) menuOverlay.style.display = "none";
+      if (appContainer) appContainer.style.display = "none";
+      if (loginOverlay) {
+        loginOverlay.style.display = "flex";
+        if (passwordInput) {
+          passwordInput.value = "";
+          passwordInput.focus();
+        }
       }
+
+      // 4. Regista estado de login no histórico
+      window.history.pushState({ page: "login" }, "", "");
     });
   }
 
@@ -193,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================
      CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
      ========================================== */
-  window.history.replaceState({ page: "main" }, "", "");
+  window.history.pushState({ page: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
     const loginOverlay = document.getElementById("login-overlay");
@@ -204,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
     const appVisivel = appContainer && window.getComputedStyle(appContainer).display !== "none";
 
-    // Se estiver no ecrã de login, impede que recuo reabra o app
+    // Se estiver no ecrã de login, bloqueia recuo
     if (loginVisivel) {
       window.history.pushState({ page: "login" }, "", "");
       return;
@@ -220,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Se estiver na tela de vídeos, volta para o menu principal
     if (appVisivel) {
       voltarParaMenu();
-      window.history.replaceState({ page: "main" }, "", "");
+      window.history.pushState({ page: "main" }, "", "");
       return;
     }
 
@@ -231,4 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.history.pushState({ page: "main" }, "", "");
     }
   });
+
+  window.history.pushState({ page: "main" }, "", "");
 });
