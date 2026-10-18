@@ -339,41 +339,41 @@ export function pararModoAleatorio() {
   }
 }
 
-/* ==========================================
+/*
+=========
 FILTRA OS VÍDEOS
-========================================== */
+============ */
 export function filtrarVideos() {
     const searchInput = document.getElementById('search-input');
     if (!searchInput) return;
-
     const termoBruto = searchInput.value;
     const termos = termoBruto
         ? termoBruto
             .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[\u0300-\u036f]/g, "")
             .toLowerCase()
             .split(/\s+/)
         : [];
 
-    const cards = document.querySelectorAll('.video-card-item');
+    // Ordena rigorosamente a lista original em ordem decrescente pelo título antes de filtrar
+    const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
 
-    cards.forEach(card => {
-        const tituloEl = card.querySelector('.video-card-title');
-        if (!tituloEl) return;
-
-        const titulo = tituloEl.textContent
+    const listaFiltrada = listaOrdenada.filter(video => {
+        const tituloEl = video.title;
+        if (!tituloEl) return false;
+        
+        const titulo = tituloEl
             .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[\u0300-\u036f]/g, "")
             .toLowerCase();
 
         const atendeTodos = termos.every((t, index) => {
             if (/^\d{1,2}$/.test(t)) {
                 const termoAnterior = index > 0 ? termos[index - 1] : null;
                 if (termoAnterior && /^\d{4}$/.test(termoAnterior)) {
-                    const regexAnoMes = new RegExp(`${termoAnterior}\\s+0?${parseInt(t, 10)}\\b`);
+                    const regexAnoMes = new RegExp(`\\b${termoAnterior}\\s+0?${parseInt(t, 10)}\\b`);
                     return regexAnoMes.test(titulo);
                 }
-
                 if (index === termos.length - 1 && termos.length >= 3) {
                     const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
                     return regex.test(titulo);
@@ -381,7 +381,6 @@ export function filtrarVideos() {
                 const regex = new RegExp(`\\b${t}\\b`);
                 return regex.test(titulo);
             }
-
             if (/^\d{4}$/.test(t)) {
                 if (index === termos.length - 1 && termos.length >= 3) {
                     const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
@@ -390,14 +389,12 @@ export function filtrarVideos() {
                 const regex = new RegExp(`\\b${t}\\b`);
                 return regex.test(titulo);
             }
-
             return titulo.includes(t);
         });
 
-        if (atendeTodos || termos.length === 0) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
+        return atendeTodos || termos.length === 0;
     });
+
+    // Renderiza a lista filtrada mantendo a ordem decrescente
+    renderizarLista(listaFiltrada);
 }
