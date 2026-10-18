@@ -121,7 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // Limpa os dados de sessão
       sessionStorage.clear();
 
-      // Substitui o histórico atual pela página inicial para bloquear o botão "voltar"
+      // Limpa o conteúdo da página atual instantaneamente para evitar flash visual
+      document.body.innerHTML = "";
+
+      // Substitui o histórico e redireciona de forma forçada
       window.location.replace("https://www.google.com");
     });
   }
