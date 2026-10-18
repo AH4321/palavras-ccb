@@ -13,14 +13,47 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Helper para alternar entre ecrãs de forma limpa e garantir o estado do histórico
+  function irParaTela(nomeTela) {
+    const menuOverlay = document.getElementById("menu-overlay");
+    const appContainer = document.getElementById("app-container");
+    const loginOverlay = document.getElementById("login-overlay");
+    const adminOverlay = document.getElementById("admin-overlay"); // se existir
+
+    // Oculta todos os overlays principais
+    if (loginOverlay) loginOverlay.style.display = "none";
+    if (menuOverlay) menuOverlay.style.display = "none";
+    if (appContainer) appContainer.style.display = "none";
+
+    if (nomeTela === "login") {
+      if (loginOverlay) loginOverlay.style.display = "flex";
+      window.history.replaceState({ page: "login" }, "", "");
+    } else if (nomeTela === "main") {
+      if (menuOverlay) menuOverlay.style.display = "flex";
+      window.history.pushState({ page: "main" }, "", "");
+    } else if (nomeTela === "app") {
+      if (appContainer) appContainer.style.display = "flex";
+      window.history.pushState({ page: "app" }, "", "");
+    }
+  }
+
   const btnPalavras = document.getElementById("btn-menu-palavras");
-  if (btnPalavras) btnPalavras.addEventListener("click", () => navegarPara("palavras"));
+  if (btnPalavras) btnPalavras.addEventListener("click", () => {
+    navegarPara("palavras");
+    window.history.pushState({ page: "app" }, "", "");
+  });
 
   const btnBiblia = document.getElementById("btn-menu-biblia");
-  if (btnBiblia) btnBiblia.addEventListener("click", () => navegarPara("biblia"));
+  if (btnBiblia) btnBiblia.addEventListener("click", () => {
+    navegarPara("biblia");
+    window.history.pushState({ page: "app" }, "", "");
+  });
 
   const btnHinos = document.getElementById("btn-menu-hinos");
-  if (btnHinos) btnHinos.addEventListener("click", () => navegarPara("hinos"));
+  if (btnHinos) btnHinos.addEventListener("click", () => {
+    navegarPara("hinos");
+    window.history.pushState({ page: "app" }, "", "");
+  });
 
   const btnConfig = document.getElementById("btn-menu-configuracao");
   if (btnConfig) btnConfig.addEventListener("click", () => navegarPara("configuracao"));
@@ -34,7 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const btnCloseAdminAuth = document.getElementById("btn-close-admin-auth");
-  if (btnCloseAdminAuth) btnCloseAdminAuth.addEventListener("click", voltarParaMenu);
+  if (btnCloseAdminAuth) btnCloseAdminAuth.addEventListener("click", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
 
   const btnGerenciarVideos = document.getElementById("btn-gerenciar-videos");
   if (btnGerenciarVideos) btnGerenciarVideos.addEventListener("click", abrirGerenciadorVideos);
@@ -43,10 +79,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnAlterarSenhas) btnAlterarSenhas.addEventListener("click", abrirModalSenhas);
 
   const btnAdminVoltar = document.getElementById("btn-admin-voltar");
-  if (btnAdminVoltar) btnAdminVoltar.addEventListener("click", voltarParaMenu);
+  if (btnAdminVoltar) btnAdminVoltar.addEventListener("click", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
 
   const btnCloseAdminMenu = document.getElementById("btn-close-admin-menu");
-  if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", voltarParaMenu);
+  if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
 
   const btnSaveGh = document.getElementById("btn-save-gh");
   if (btnSaveGh) btnSaveGh.addEventListener("click", adicionarVideoNoGitHub);
@@ -67,13 +109,22 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnClosePasswords) btnClosePasswords.addEventListener("click", voltarParaAdminMenu);
 
   const btnPlaceholderBack = document.getElementById("btn-placeholder-back");
-  if (btnPlaceholderBack) btnPlaceholderBack.addEventListener("click", voltarParaMenu);
+  if (btnPlaceholderBack) btnPlaceholderBack.addEventListener("click", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
 
   const btnClosePlaceholder = document.getElementById("btn-close-placeholder");
-  if (btnClosePlaceholder) btnClosePlaceholder.addEventListener("click", voltarParaMenu);
+  if (btnClosePlaceholder) btnClosePlaceholder.addEventListener("click", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
 
   const btnAppBack = document.getElementById("btn-app-back");
-  if (btnAppBack) btnAppBack.addEventListener("click", voltarParaMenu);
+  if (btnAppBack) btnAppBack.addEventListener("click", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
 
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
@@ -118,32 +169,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnSairSim) {
     btnSairSim.addEventListener("click", () => {
-      // 1. Limpa os dados da sessão (exige senha novamente)
+      // 1. Limpa a sessão
       sessionStorage.clear();
 
-      // 2. Fecha o modal de saída
+      // 2. Fecha o modal
       if (sairModal) {
         sairModal.style.setProperty("display", "none", "important");
       }
 
-      // 3. Esconde o menu principal / container e mostra o ecrã de login
-      const menuOverlay = document.getElementById("menu-overlay");
-      const appContainer = document.getElementById("app-container");
-      const loginOverlay = document.getElementById("login-overlay");
+      // 3. Retorna para o login
+      irParaTela("login");
       const passwordInput = document.getElementById("password-input");
-
-      if (menuOverlay) menuOverlay.style.display = "none";
-      if (appContainer) appContainer.style.display = "none";
-      if (loginOverlay) {
-        loginOverlay.style.display = "flex";
-        if (passwordInput) {
-          passwordInput.value = "";
-          passwordInput.focus();
-        }
+      if (passwordInput) {
+        passwordInput.value = "";
+        passwordInput.focus();
       }
-
-      // 4. Atualiza o histórico para o estado de login
-      window.history.replaceState({ page: "login" }, "", "");
     });
   }
 
@@ -153,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================
      CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
      ========================================== */
-  // Define o estado inicial limpo no histórico ao carregar o menu principal
   window.history.replaceState({ page: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
@@ -165,27 +204,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
     const appVisivel = appContainer && window.getComputedStyle(appContainer).display !== "none";
 
-    // Se estiver no ecrã de login após sair, mantém no login ao apertar voltar
+    // Se estiver no ecrã de login, impede que recuo reabra o app
     if (loginVisivel) {
       window.history.pushState({ page: "login" }, "", "");
       return;
     }
 
-    // Se o modal de saída estiver aberto, apenas fecha o modal ao apertar voltar
+    // Se o modal de saída estiver aberto, fecha apenas o modal
     if (currentSairModal && window.getComputedStyle(currentSairModal).display !== "none") {
       currentSairModal.style.setProperty("display", "none", "important");
       window.history.pushState({ page: "main" }, "", "");
       return;
     }
 
-    // Se estiver na tela de vídeos aberta, volta para o menu principal e reseta o estado do histórico
+    // Se estiver na tela de vídeos, volta para o menu principal
     if (appVisivel) {
       voltarParaMenu();
       window.history.replaceState({ page: "main" }, "", "");
       return;
     }
 
-    // Se já estiver no menu principal e apertar voltar, abre obrigatoriamente o modal de saída
+    // Se estiver no menu principal, abre obrigatoriamente o modal de saída
     if (currentSairModal) {
       currentSairModal.style.setProperty("display", "flex", "important");
       if (btnSairNao) btnSairNao.focus();
