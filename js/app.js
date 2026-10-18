@@ -153,7 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================
      CONTROLE DO BOTÃO VOLTAR DO TELEMÓVEL
      ========================================== */
-  window.history.pushState({ page: "main" }, "", "");
+  // Define o estado inicial limpo no histórico ao carregar o menu principal
+  window.history.replaceState({ page: "main" }, "", "");
 
   window.addEventListener("popstate", (event) => {
     const loginOverlay = document.getElementById("login-overlay");
@@ -162,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnSairNao = document.getElementById("btn-sair-nao");
 
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
+    const appVisivel = appContainer && window.getComputedStyle(appContainer).display !== "none";
 
     // Se estiver no ecrã de login após sair, mantém no login ao apertar voltar
     if (loginVisivel) {
@@ -176,18 +178,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Se estiver na tela de vídeos aberta, volta para o menu principal em vez de sair
-    if (appContainer && window.getComputedStyle(appContainer).display !== "none") {
+    // Se estiver na tela de vídeos aberta, volta para o menu principal e reseta o estado do histórico
+    if (appVisivel) {
       voltarParaMenu();
+      window.history.replaceState({ page: "main" }, "", "");
+      return;
+    }
+
+    // Se já estiver no menu principal e apertar voltar, abre obrigatoriamente o modal de saída
+    if (currentSairModal) {
+      currentSairModal.style.setProperty("display", "flex", "important");
+      if (btnSairNao) btnSairNao.focus();
       window.history.pushState({ page: "main" }, "", "");
-    } else {
-      // Se já estiver no menu principal, abre o modal personalizado de saída
-      if (currentSairModal) {
-        currentSairModal.style.setProperty("display", "flex", "important");
-        if (btnSairNao) btnSairNao.focus();
-      }
     }
   });
-
-  window.history.pushState({ page: "main" }, "", "");
 });
