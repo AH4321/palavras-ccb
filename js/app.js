@@ -121,8 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Limpa os dados de sessão
       sessionStorage.clear();
 
-      // Redireciona para a página inicial/pesquisa do navegador (ou pode alterar o URL para o pretendido)
-      window.location.href = "https://www.google.com";
+      // Substitui o histórico atual pela página inicial para bloquear o botão "voltar"
+      window.location.replace("https://www.google.com");
     });
   }
 
