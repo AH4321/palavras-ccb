@@ -82,9 +82,13 @@ export function carregarSelecaoParaEdicao() {
   const video = listaVideos[itemSelecionadoIndex];
   if (!video) return;
 
+  const videoId = video.youtubeld || video.youtubeld;
+
   document.getElementById("edit-video-index").value = itemSelecionadoIndex;
   document.getElementById("new-video-title").value = video.title;
-  document.getElementById("new-video-url").value = video.youtubeld;
+  // Preenche o campo da URL com o link completo para visualização e edição
+  document.getElementById("new-video-url").value = videoId ? `https://www.youtube.com/watch?v=${videoId}` : "";
+  
   document.getElementById("form-video-title-heading").innerText = "Editar Vídeo Selecionado";
   document.getElementById("btn-save-gh").innerText = "Salvar Alterações";
   document.getElementById("btn-cancel-edit").style.display = "block";
