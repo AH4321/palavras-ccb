@@ -242,11 +242,11 @@ button.btn-close:focus {
   border-bottom: none;
 }
 
-.admin-video-item span { 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 75%;
+.admin-video-item span {
+  white-space: normal;
+  word-break: break-word;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .btn-delete-item { 
