@@ -113,11 +113,11 @@ export function renderizarLista(videos) {
 }
 
 export function carregarPlaylist() {
-    // Cria uma cópia da lista ordenada de forma decrescente pelo título (data mais recente primeiro)
+    // Ordena rigorosamente a lista em ordem decrescente (mais recente primeiro) baseada no título (datas)
     const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
     renderizarLista(listaOrdenada);
     
-    if (listaVideos.length > 0) {
+    if (listaOrdenada.length > 0) {
         if (state.currentVideoIndex < 0) {
             state.currentVideoIndex = 0;
             state.kbPlaylistIndex = 0;
