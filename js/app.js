@@ -99,62 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRandomVideos.addEventListener("click", iniciarVideosAleatoriosContinuos);
   }
 
-  /* ==========================================
-     AÇÃO DO BOTÃO SAIR (MODAL PERSONALIZADO)
-     ========================================== */
-  document.addEventListener("click", (e) => {
-    const btnSairTarget = e.target.closest("#btn-sair-app");
-    if (btnSairTarget) {
-      e.preventDefault();
-      const sairModal = document.getElementById("sair-modal");
-      const btnSairNao = document.getElementById("btn-sair-nao");
-      
-      if (sairModal) {
-        sairModal.style.setProperty("display", "flex", "important");
-        if (btnSairNao) btnSairNao.focus();
-      }
-    }
-  });
-
-  const btnSairSim = document.getElementById("btn-sair-sim");
-  const btnSairNao = document.getElementById("btn-sair-nao");
-  const sairModal = document.getElementById("sair-modal");
-
-  if (btnSairNao && sairModal) {
-    btnSairNao.addEventListener("click", () => {
-      sairModal.style.setProperty("display", "none", "important");
-      const btnSair = document.getElementById("btn-sair-app");
-      if (btnSair) btnSair.focus();
-    });
-  }
-
-  if (btnSairSim) {
-    btnSairSim.addEventListener("click", () => {
-      sessionStorage.clear();
-
-      if (sairModal) {
-        sairModal.style.setProperty("display", "none", "important");
-      }
-
-      const menuOverlay = document.getElementById("menu-overlay");
-      const appContainer = document.getElementById("app-container");
-      const loginOverlay = document.getElementById("login-overlay");
-      const passwordInput = document.getElementById("password-input");
-
-      if (menuOverlay) menuOverlay.style.display = "none";
-      if (appContainer) appContainer.style.display = "none";
-      if (loginOverlay) {
-        loginOverlay.style.display = "flex";
-        if (passwordInput) {
-          passwordInput.value = "";
-          passwordInput.focus();
-        }
-      }
-
-      window.history.replaceState({ page: "login" }, "", "");
-    });
-  }
-
   inicializarTeclado();
   focarMenuPrincipal();
 
@@ -166,8 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", (event) => {
     const loginOverlay = document.getElementById("login-overlay");
     const appContainer = document.getElementById("app-container");
-    const currentSairModal = document.getElementById("sair-modal");
-    const btnSairNao = document.getElementById("btn-sair-nao");
 
     const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
     const appVisivel = appContainer && window.getComputedStyle(appContainer).display !== "none";
@@ -178,26 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Se o modal de saída estiver aberto, fecha apenas o modal
-    if (currentSairModal && window.getComputedStyle(currentSairModal).display !== "none") {
-      currentSairModal.style.setProperty("display", "none", "important");
-      window.history.pushState({ page: "main" }, "", "");
-      return;
-    }
-
     // Se estiver na tela de vídeos, força o retorno visual e redefine o histórico para main
     if (appVisivel) {
       voltarParaMenu();
       window.history.replaceState({ page: "main" }, "", "");
       window.history.pushState({ page: "main" }, "", "");
       return;
-    }
-
-    // Se estiver no menu principal, abre obrigatoriamente o modal de saída
-    if (currentSairModal) {
-      currentSairModal.style.setProperty("display", "flex", "important");
-      if (btnSairNao) btnSairNao.focus();
-      window.history.pushState({ page: "main" }, "", "");
     }
   });
 });
