@@ -9,14 +9,11 @@
 <title>CCB</title>
 <!-- Manifesto para Android e PWAs modernos -->
 <link rel="manifest" href="manifest.json">
-
 <!-- Cor do tema para barras de navegação e status (Android/Windows) -->
 <meta name="theme-color" content="#0b2545">
-
 <!-- Ícones e suporte específico para Apple / iOS (iPhone e iPad) -->
 <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
 <link rel="apple-touch-icon" href="images/icon-192.png">
-
 <!-- Favicon tradicional para navegadores de desktop (abas do navegador) -->
 <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
@@ -24,178 +21,185 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <!-- === TELA DE LOGIN === -->
 <div id="login-overlay">
-  <div class="login-card">
-    <h2>CCB</h2>
-    <p>Acesso Restrito</p>
-    <form id="login-form">
-      <input 
-        type="password" 
-        id="password-input" 
-        placeholder="Digite a senha de acesso" 
-        required 
-        autocomplete="current-password" 
-        autofocus
-      >
-      <button type="submit" id="btn-login-submit">Entrar</button>
-    </form>
-    <p id="login-error" class="error-message">Senha incorreta!</p>
-  </div>
+<div class="login-card">
+<h2>CCB</h2>
+<p>Acesso Restrito</p>
+<form id="login-form">
+<div class="password-field-wrapper">
+<input
+type="password"
+id="password-input"
+placeholder="Digite a senha de acesso"
+required
+autocomplete="current-password"
+autofocus
+>
+<button type="button" class="btn-toggle-password" data-target="password-input" title="Mostrar/Ocultar Senha">&#128065;</button>
+</div>
+<button type="submit" id="btn-login-submit">Entrar</button>
+</form>
+<p id="login-error" class="error-message">Senha incorreta!</p>
+</div>
 </div>
 
 <!-- === MENU PRINCIPAL === -->
 <div id="menu-overlay">
-  <div class="menu-card">
-    <h2>Menu Principal</h2>
-    <p>Selecione a opção desejada</p>
-    <div class="menu-grid" id="main-menu-grid"> 
-      <button class="btn-menu" id="btn-menu-palavras" type="button">Palavras</button>
-      <button class="btn-menu" id="btn-menu-biblia" type="button">Bíblia</button>
-      <button class="btn-menu" id="btn-menu-hinos" type="button">Hinos</button>
-    </div>
-    <button id="btn-menu-configuracao" class="btn-config-flutuante" type="button" title="Configurações">&#9881;</button>    
-  </div>
+<div class="menu-card">
+<h2>Menu Principal</h2>
+<p>Selecione a opção desejada</p>
+<div class="menu-grid" id="main-menu-grid">
+<button class="btn-menu" id="btn-menu-palavras" type="button">Palavras</button>
+<button class="btn-menu" id="btn-menu-biblia" type="button">Bíblia</button>
+<button class="btn-menu" id="btn-menu-hinos" type="button">Hinos</button>
+</div>
+<button id="btn-menu-configuracao" class="btn-config-flutuante" type="button" title="Configurações">&#9881;</button>
+</div>
 </div>
 
-<!-- ==========================================
-     AUTENTICAÇÃO DO ADMINISTRADOR
-========================================== -->
+<!-- ========================================== -->
+<!-- AUTENTICAÇÃO DO ADMINISTRADOR -->
+<!-- ========================================== -->
 <div id="admin-auth-overlay" class="modal-overlay">
-  <div class="admin-card">
-    <button class="btn-close" id="btn-close-admin-auth" type="button">&times;</button>
-    <h2>Autenticação do Administrador</h2>
-    <p>Digite a senha para gerenciar o sistema</p>
-    <form id="admin-auth-form">
-      <input type="password" id="admin-password-input" placeholder="Digite a senha mestra" required>
-      <button type="submit">Acessar</button>
-    </form>
-    <p id="admin-auth-error" class="error-message">Senha incorreta!</p>
-  </div>
+<div class="admin-card">
+<button class="btn-close" id="btn-close-admin-auth" type="button">&times;</button>
+<h2>Autenticação do Administrador</h2>
+<p>Digite a senha para gerenciar o sistema</p>
+<form id="admin-auth-form">
+<div class="password-field-wrapper">
+<input type="password" id="admin-password-input" placeholder="Digite a senha mestra" required>
+<button type="button" class="btn-toggle-password" data-target="admin-password-input" title="Mostrar/Ocultar Senha">&#128065;</button>
+</div>
+<button type="submit">Acessar</button>
+</form>
+<p id="admin-auth-error" class="error-message">Senha incorreta!</p>
+</div>
 </div>
 
-<!-- ==========================================
-     MENU DO ADMINISTRADOR
-========================================== -->
+<!-- ========================================== -->
+<!-- MENU DO ADMINISTRADOR -->
+<!-- ========================================== -->
 <div id="admin-menu-overlay" class="modal-overlay">
-  <div class="admin-card">
-    <button class="btn-close" id="btn-close-admin-menu" type="button">&times;</button>
-    <h2>Painel de Gerenciamento</h2>
-    <p>Escolha o que deseja configurar</p>
-    <div class="menu-grid" id="admin-menu-grid">
-      <button class="btn-menu" id="btn-gerenciar-videos" type="button">Gerenciar Vídeos</button>
-      <button class="btn-menu admin-password-button" id="btn-alterar-senhas" type="button">Alterar Senhas</button>
-      <button class="btn-menu admin-back-button" id="btn-admin-voltar" type="button">Voltar ao Menu Principal</button>
-    </div>
-  </div>
+<div class="admin-card">
+<button class="btn-close" id="btn-close-admin-menu" type="button">&times;</button>
+<h2>Painel de Gerenciamento</h2>
+<p>Escolha o que deseja configurar</p>
+<div class="menu-grid" id="admin-menu-grid">
+<button class="btn-menu" id="btn-gerenciar-videos" type="button">Gerenciar Vídeos</button>
+<button class="btn-menu admin-password-button" id="btn-alterar-senhas" type="button">Alterar Senhas</button>
+<button class="btn-menu admin-back-button" id="btn-admin-voltar" type="button">Voltar ao Menu Principal</button>
+</div>
+</div>
 </div>
 
-<!-- ==========================================
-     GERENCIAMENTO DE VÍDEOS
-========================================== -->
+<!-- ========================================== -->
+<!-- GERENCIAMENTO DE VÍDEOS -->
+<!-- ========================================== -->
 <div id="admin-form-overlay" class="modal-overlay">
-  <div class="admin-card">
-    <button class="btn-close" id="btn-close-video-manager" type="button">&times;</button>
-    <h2>Gerenciar Vídeos</h2>
-    <p>Adicione, edite ou remova vídeos do repositório</p>
-    
-    <div class="token-area">
-      <label>Token do GitHub (PAT):</label>
-      <input type="password" id="gh-token-videos" placeholder="Digite apenas o seu token aqui">
-    </div>
-
-    <!-- Formulário Único (Novo / Edição) -->
-    <div class="admin-manage-section">
-      <h3 id="form-video-title-heading">Adicionar / Editar Vídeo</h3>
-      <input type="hidden" id="edit-video-index" value="-1">
-      <input type="text" id="new-video-title" placeholder="Título do Vídeo">
-      <input type="text" id="new-video-url" placeholder="ID ou URL do YouTube">
-      <button id="btn-save-gh" class="btn-action" type="button">Salvar Vídeo</button>
-      <button id="btn-cancel-edit" class="btn-action gray-button" type="button" style="display: none; margin-top: 5px;">Limpar Seleção</button>
-    </div>
-
-    <!-- Lista com Ações Únicas Globais -->
-    <div class="admin-manage-section">
-      <h3>Vídeos Cadastrados</h3>
-      <ul id="admin-video-list" class="admin-video-list"></ul>
-      
-      <!-- APENAS UM BOTÃO DE EDITAR E UM DE EXCLUIR PARA A LISTA TODA -->
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        <button id="btn-global-edit" class="btn-action" type="button" disabled>Editar Selecionado</button>
-        <button id="btn-global-delete" class="btn-action gray-button" type="button" style="background-color: var(--ccb-red) !important;" disabled>Excluir Selecionado</button>
-      </div>
-    </div>
-
-    <p id="admin-msg" class="admin-message"></p>
-    <button type="button" id="btn-video-manager-back" class="btn-action gray-button" style="margin-top: 15px;">Voltar ao Painel</button>
-  </div>
+<div class="admin-card">
+<button class="btn-close" id="btn-close-video-manager" type="button">&times;</button>
+<h2>Gerenciar Vídeos</h2>
+<p>Adicione, edite ou remova vídeos do repositório</p>
+<div class="token-area">
+<label>Token do GitHub (PAT):</label>
+<div class="password-field-wrapper">
+<input type="password" id="gh-token-videos" placeholder="Digite apenas o seu token aqui">
+<button type="button" class="btn-toggle-password" data-target="gh-token-videos" title="Mostrar/Ocultar Senha">&#128065;</button>
+</div>
+</div>
+<div class="admin-manage-section">
+<h3 id="form-video-title-heading">Adicionar / Editar Vídeo</h3>
+<input type="hidden" id="edit-video-index" value="-1">
+<input type="text" id="new-video-title" placeholder="Título do Vídeo">
+<input type="text" id="new-video-url" placeholder="ID ou URL do YouTube">
+<button id="btn-save-gh" class="btn-action" type="button">Salvar Vídeo</button>
+<button id="btn-cancel-edit" class="btn-action gray-button" type="button" style="display: none; margin-top: 5px;">Limpar Seleção</button>
+</div>
+<div class="admin-manage-section">
+<h3>Vídeos Cadastrados</h3>
+<ul id="admin-video-list" class="admin-video-list"></ul>
+<div style="display: flex; gap: 10px; margin-top: 10px;">
+<button id="btn-global-edit" class="btn-action" type="button" disabled>Editar Selecionado</button>
+<button id="btn-global-delete" class="btn-action gray-button" type="button" style="background-color: var(--ccb-red) !important;" disabled>Excluir Selecionado</button>
+</div>
+</div>
+<p id="admin-msg" class="admin-message"></p>
+<button type="button" id="btn-video-manager-back" class="btn-action gray-button" style="margin-top: 15px;">Voltar ao Painel</button>
+</div>
 </div>
 
-<!-- ==========================================
-     ALTERAÇÃO DE SENHAS
-========================================== -->
+<!-- ========================================== -->
+<!-- ALTERAÇÃO DE SENHAS -->
+<!-- ========================================== -->
 <div id="admin-passwords-overlay" class="modal-overlay">
-  <div class="admin-card">
-    <button class="btn-close" id="btn-close-passwords" type="button">&times;</button>
-    <h2>Alterar Senhas</h2>
-    <p>Altere as senhas de acesso do sistema</p>
-    <div class="token-area">
-      <label>Token do GitHub (PAT):</label>
-      <input type="password" id="gh-token-pass" placeholder="Digite apenas o seu token aqui">
-      <label>Nova Senha de Usuário (Acesso Geral):</label>
-      <input type="password" id="new-user-pass" placeholder="Deixe em branco se não desejar alterar">
-      <label>Nova Senha de Administrador:</label>
-      <input type="password" id="new-admin-pass" placeholder="Deixe em branco se não desejar alterar">
-    </div>
-    <button id="btn-save-pass" type="button" class="btn-action save-password-button">Salvar Novas Senhas</button>
-    <button type="button" id="btn-password-back" class="btn-action gray-button">Voltar ao Painel</button>
-    <p id="pass-msg" class="admin-message"></p>
-  </div>
+<div class="admin-card">
+<button class="btn-close" id="btn-close-passwords" type="button">&times;</button>
+<h2>Alterar Senhas</h2>
+<p>Altere as senhas de acesso do sistema</p>
+<div class="token-area">
+<label>Token do GitHub (PAT):</label>
+<div class="password-field-wrapper">
+<input type="password" id="gh-token-pass" placeholder="Digite apenas o seu token aqui">
+<button type="button" class="btn-toggle-password" data-target="gh-token-pass" title="Mostrar/Ocultar Senha">&#128065;</button>
 </div>
 
-<!-- ==========================================
-     PLACEHOLDER
-========================================== -->
+<label>Nova Senha de Usuário (Acesso Geral):</label>
+<div class="password-field-wrapper">
+<input type="password" id="new-user-pass" placeholder="Deixe em branco se não desejar alterar">
+<button type="button" class="btn-toggle-password" data-target="new-user-pass" title="Mostrar/Ocultar Senha">&#128065;</button>
+</div>
+
+<label>Nova Senha de Administrador:</label>
+<div class="password-field-wrapper">
+<input type="password" id="new-admin-pass" placeholder="Deixe em branco se não desejar alterar">
+<button type="button" class="btn-toggle-password" data-target="new-admin-pass" title="Mostrar/Ocultar Senha">&#128065;</button>
+</div>
+</div>
+<button id="btn-save-pass" type="button" class="btn-action save-password-button">Salvar Novas Senhas</button>
+<button type="button" id="btn-password-back" class="btn-action gray-button">Voltar ao Painel</button>
+<p id="pass-msg" class="admin-message"></p>
+</div>
+</div>
+
+<!-- ========================================== -->
+<!-- PLACEHOLDER -->
+<!-- ========================================== -->
 <div id="placeholder-overlay" class="modal-overlay">
-  <div class="admin-card">
-    <button class="btn-close" id="btn-close-placeholder" type="button">&times;</button>
-    <h2 id="placeholder-title">Recurso</h2>
-    <p id="placeholder-desc" class="placeholder-description">Esta seção estará disponível em breve.</p>
-    <button type="button" id="btn-placeholder-back" class="btn-action">Voltar ao Menu Principal</button>
-  </div>
+<div class="admin-card">
+<button class="btn-close" id="btn-close-placeholder" type="button">&times;</button>
+<h2 id="placeholder-title">Recurso</h2>
+<p id="placeholder-desc" class="placeholder-description">Esta seção estará disponível em breve.</p>
+<button type="button" id="btn-placeholder-back" class="btn-action">Voltar ao Menu Principal</button>
+</div>
 </div>
 
-<!-- ==========================================
-     APLICAÇÃO DE VÍDEOS (ESTILO YOUTUBE TV)
-========================================== -->
+<!-- ========================================== -->
+<!-- APLICAÇÃO DE VÍDEOS (ESTILO YOUTUBE TV) -->
+<!-- ========================================== -->
 <div id="app-container">
-
-  <header class="tv-header">
-    <div class="tv-header-top">
-      <button class="btn-back-menu" id="btn-app-back" type="button" title="Voltar ao Menu">&larr; Menu</button>
-      <h1>Palavras CCB</h1>
-    </div>
-    
-    <div class="tv-search-container">
-      <input type="text" id="search-input" placeholder="Buscar vídeo (digite sua busca)...">
-    </div>
-    <div class="tv-random-section">
-        <button id="btn-random-videos" class="btn-random-tv" type="button">⇄ ALEATÓRIO</button>
-    </div>
-
-  </header>
-      
-  <div class="tv-main-content">    
-    <div class="tv-grid-container" id="playlist" tabindex="0">
-      <!-- Os cartões dos vídeos serão injetados dinamicamente via JS -->
-    </div>
-  </div>
-
+<header class="tv-header">
+<div class="tv-header-top">
+<button class="btn-back-menu" id="btn-app-back" type="button" title="Voltar ao Menu">&larr; Menu</button>
+<h1>Palavras CCB</h1>
+</div>
+<div class="header-search-random-group">
+<div class="tv-search-container">
+<input type="text" id="search-input" placeholder="Buscar vídeo (digite sua busca)...">
+</div>
+<div class="tv-random-section">
+<button id="btn-random-videos" class="btn-header btn-random-tv" type="button">ALEATÓRIO</button>
+</div>
+</div>
+</header>
+<div class="tv-main-content">
+<div class="tv-grid-container" id="playlist" tabindex="0">
+<!-- Os cartões dos vídeos serão injetados dinamicamente via JS -->
+</div>
+</div>
 </div>
 
 <script type="module" src="js/app.js"></script>
 <script type="module" src="js/keyboard.js"></script>
-
 </body>
 </html>

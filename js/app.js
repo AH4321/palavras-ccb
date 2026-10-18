@@ -117,6 +117,23 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRandomVideos.addEventListener("click", iniciarVideosAleatoriosContinuos);
   }
 
+  // Lógica global para o botão de alternar visibilidade da senha (olhinho)
+  document.querySelectorAll(".btn-toggle-password").forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-target");
+      const input = document.getElementById(targetId);
+      if (input) {
+        if (input.type === "password") {
+          input.type = "text";
+          button.innerHTML = "&#128064;"; // Olho aberto
+        } else {
+          input.type = "password";
+          button.innerHTML = "&#128065;"; // Olho fechado
+        }
+      }
+    });
+  });
+
   inicializarTeclado();
   focarMenuPrincipal();
 

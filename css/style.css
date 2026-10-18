@@ -908,3 +908,37 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
   color: var(--ccb-dark-blue) !important;
   font-weight: bold;
 }
+
+/* Estilo para o contentor do input de senha com o olhinho */
+.password-field-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.password-field-wrapper input {
+  width: 100% !important;
+  margin-bottom: 0 !important;
+  padding-right: 40px !important; /* Espaço para o botão do olhinho */
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #666;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.btn-toggle-password:hover {
+  color: var(--ccb-blue);
+}
