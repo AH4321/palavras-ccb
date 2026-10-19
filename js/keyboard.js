@@ -82,6 +82,55 @@ export function inicializarTeclado() {
                 colunas = colTemplate ? colTemplate.split(" ").length : 4;
             }
 
+            // Define quantas linhas saltar ao premir PageUp / PageDown
+            const linhasPorPagina = 3;
+            const itensPorPagina = colunas * linhasPorPagina;
+
+            // --- TECLAS DE NAVEGAÇÃO RÁPIDA (PAGE UP/DOWN, HOME, END) ---
+            if (e.key === "Home") {
+                e.preventDefault();
+                if (listaExibida.length > 0) {
+                    state.kbPlaylistIndex = 0;
+                    focarCartaoVideo(state.kbPlaylistIndex);
+                }
+                return;
+            }
+
+            if (e.key === "End") {
+                e.preventDefault();
+                if (listaExibida.length > 0) {
+                    state.kbPlaylistIndex = listaExibida.length - 1;
+                    focarCartaoVideo(state.kbPlaylistIndex);
+                }
+                return;
+            }
+
+            if (e.key === "PageDown") {
+                e.preventDefault();
+                if (listaExibida.length > 0) {
+                    let novoIndex = state.kbPlaylistIndex + itensPorPagina;
+                    if (novoIndex >= listaExibida.length) {
+                        novoIndex = listaExibida.length - 1;
+                    }
+                    state.kbPlaylistIndex = novoIndex;
+                    focarCartaoVideo(state.kbPlaylistIndex);
+                }
+                return;
+            }
+
+            if (e.key === "PageUp") {
+                e.preventDefault();
+                if (listaExibida.length > 0) {
+                    let novoIndex = state.kbPlaylistIndex - itensPorPagina;
+                    if (novoIndex < 0) {
+                        novoIndex = 0;
+                    }
+                    state.kbPlaylistIndex = novoIndex;
+                    focarCartaoVideo(state.kbPlaylistIndex);
+                }
+                return;
+            }
+
             if (document.activeElement === searchBox) {
                 if (e.key === "ArrowDown") {
                     e.preventDefault();
