@@ -141,10 +141,20 @@ export function focarCartaoVideo(index) {
   cards.forEach((card, i) => {
     if (i === index) {
       card.classList.add('kb-focus');
-      card.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest'
-      });
+      card.focus(); // Garante também o foco real no elemento
+
+      // Se for o primeiro cartão, força o scroll estritamente para o topo
+      if (index === 0) {
+        const playlistElement = document.getElementById('playlist');
+        if (playlistElement) {
+          playlistElement.scrollTop = 0;
+        }
+      } else {
+        card.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest'
+        });
+      }
     } else {
       card.classList.remove('kb-focus');
     }
