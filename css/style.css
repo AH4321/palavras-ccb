@@ -442,10 +442,10 @@ ESTILOS DA APLICAÇÃO "PALAVRAS" (YOUTUBE TV)
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
   outline: none;
+  padding-top: 35px !important;
+  scroll-padding-top: 35px;
   padding-bottom: 2rem;
   overflow: visible;
-  overflow-anchor: none;
-  scroll-padding-top: 20px;
 }
 
 .video-card-item {

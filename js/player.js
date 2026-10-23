@@ -127,11 +127,6 @@ export function carregarPlaylist() {
             playlistElement.setAttribute('tabindex', '0');
             playlistElement.focus();
             focarCartaoVideo(0);
-            
-            // Garante que o scroll volta para o topo de forma absoluta após o foco inicial
-            setTimeout(() => {
-                playlistElement.scrollTop = 0;
-            }, 10);
         }
     }
 }
@@ -141,20 +136,10 @@ export function focarCartaoVideo(index) {
   cards.forEach((card, i) => {
     if (i === index) {
       card.classList.add('kb-focus');
-      card.focus(); // Garante também o foco real no elemento
-
-      // Se for o primeiro cartão, força o scroll estritamente para o topo
-      if (index === 0) {
-        const playlistElement = document.getElementById('playlist');
-        if (playlistElement) {
-          playlistElement.scrollTop = 0;
-        }
-      } else {
-        card.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest'
-        });
-      }
+      card.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+      });
     } else {
       card.classList.remove('kb-focus');
     }
