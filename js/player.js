@@ -125,9 +125,13 @@ export function carregarPlaylist() {
         const playlistElement = document.getElementById('playlist');
         if (playlistElement) {
             playlistElement.setAttribute('tabindex', '0');
-            playlistElement.scrollTop = 0;
             playlistElement.focus();
             focarCartaoVideo(0);
+            
+            // Garante que o scroll volta para o topo de forma absoluta após o foco inicial
+            setTimeout(() => {
+                playlistElement.scrollTop = 0;
+            }, 10);
         }
     }
 }
