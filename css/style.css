@@ -444,6 +444,7 @@ ESTILOS DA APLICAÇÃO "PALAVRAS" (YOUTUBE TV)
   outline: none;
   padding-bottom: 2rem;
   overflow: visible;
+  scroll-padding-top: 20px;
 }
 
 .video-card-item {
