@@ -98,7 +98,6 @@ export const listaVideos = [
   { title: "2025 08 03   Palavra Vídeo – DOM 10 00   Tiago 4   IrSalvador", youtubeId: "od9iGLWqxLw" },
   { title: "2025 07 30   Palavra Vídeo – QUA 15 00   João 17   IrLuiz", youtubeId: "O9FAXtyFuqg" },
   { title: "2025 06 01   Palavra Vídeo   DOM 10 00   II Coríntios 4 16   IrSalvador", youtubeId: "ZlIL07rcduE" },
-  { title: "2025 04 27   Palavra Vídeo   DOM 10 00   II Reis 22   IrSalvador", youtubeId: "3DjZIZXLTWk" },
   { title: "2025 04 09   Palavra Vídeo   QUA 15 00   Salmo 1   IrHélio", youtubeId: "wX4nPH3jx_c" },
   { title: "2025 04 02   Palavra Vídeo   QUA 15 00   Coríntios 13   IrLuiz", youtubeId: "jImc9SBtczE" },
   { title: "2025 03 26   Palavra Vídeo   QUA 15 00   Mateus 6   IrLuiz", youtubeId: "yyl1bgaWppw" },
