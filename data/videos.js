@@ -373,5 +373,6 @@ export const listaVideos = [
   { title: "2020 05 06 Palavra Vídeo 20 00 Salmos 19 IrSalvador", youtubeId: "TJ64lt0EJgs" },
   { title: "2020 05 03 Palavra Vídeo 18 00 Gênesis 22 IrCláudio", youtubeId: "bN5THoe30Cg" },
   { title: "2020 04 26 Palavra Vídeo 18 00 Filipenses 4 IrLaércio", youtubeId: "axTP-RItrds" },
-  { title: "2026 09 30 Palavra Vídeo - QUA 19 30 Efésios 2 IrLuiz", youtubeId: "qaAFGNBegA0" }
+  { title: "2026 09 30 Palavra Vídeo - QUA 19 30 Efésios 2 IrLuiz", youtubeId: "qaAFGNBegA0" },
+  { title: "2022 03 23   Palavra Vídeo   QUA 19 30   Hebreus 5   IrCláudio", youtubeId: "R_BNlb9SRgM" }
 ];
