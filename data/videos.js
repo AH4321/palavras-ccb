@@ -379,5 +379,6 @@ export const listaVideos = [
   { title: "2026 10 07   Palavra Vídeo –  QUA 19 30   João 11   IrIsaias", youtubeId: "iWzj-9azfsc" },
   { title: "2026 10 11   Palavra Vídeo –  DOM   10 00   João 14   IrSalvador", youtubeId: "zwX8jeR_j54" },
   { title: "2026 10 14   Palavra Vídeo    QUA 19 30   Lucas 4 14   IrHélio", youtubeId: "i0zkvDypuNg" },
-  { title: "2026 10 18   Palavra Vídeo    DOM   10 00   João 16 25   IrSalvador", youtubeId: "CGinpTgzdMY" }
+  { title: "2026 10 18   Palavra Vídeo    DOM   10 00   João 16 25   IrSalvador", youtubeId: "CGinpTgzdMY" },
+  { title: "2026 10 21   Palavra Vídeo    QUA 19 30   II Coríntios 4 13 e 5 10   IrHélio", youtubeId: "bSbjcWZDG30" }
 ];
