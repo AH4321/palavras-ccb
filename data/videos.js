@@ -27,7 +27,7 @@ export const listaVideos = [
   { title: "2026 07 15 Palavra Vídeo - QUA 19 30 Salmos 23 IrLuiz", youtubeId: "WIsrrESJHao" },
   { title: "2026 07 12 Palavra Vídeo - DOM 10 00 Pedro 2 IrNilson", youtubeId: "8yOEfsYuEFM" },
   { title: "2026 07 05 Palavra Vídeo - DOM 1000 João 8 IrSalvador", youtubeId: "Rq8nslD81sA" },
-  { title: "2026 07 01 Palavra Vídeo - QUA 19 30 Isaías 9 IrLuiz", youtubeId: "jDORIILhPEQ" },
+  { title: "2026 07 01 Palavra Vídeo - QUA 19 30 Isaías 9 IrLuiz", youtubeId: "jD0RIILhPEQ" },
   { title: "2026 06 28 Palavra Vídeo - DOM 10 00 Tessalonicenses 4 IrNilson", youtubeId: "NyfvKr4KZHo" },
   { title: "2026 06 24 Palavra Vídeo - QUA 1500 Marcos 10 17 IrHélio", youtubeId: "RJxy7OvRbUk" },
   { title: "2026 06 21 Palavra Vídeo - DOM 1000 II Coríntios 5 IrSalvador", youtubeId: "JF-60Kvunug" },
