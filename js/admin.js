@@ -140,17 +140,31 @@ export async function salvarOuAtualizarVideo() {
 
     const youtubeld = extrairYoutubeld(rawUrl);
 
-    // === VERIFICAÇÃO DE VÍDEO DUPLICADO ===
-    // Verifica se já existe algum vídeo com o mesmo ID do YouTube na lista
-    const indiceDuplicado = listaVideos.findIndex(v => (v.youtubeld || v.youtubeId) === youtubeld);
+    // === 1. VERIFICAÇÃO DE VÍDEO DUPLICADO (POR ID DO YOUTUBE) ===
+    const indiceDuplicadoId = listaVideos.findIndex(v => (v.youtubeld || v.youtubeId) === youtubeld);
     
-    // Se encontrou um duplicado e ele NÃO é o mesmo item que estamos editando atualmente:
-    if (indiceDuplicado !== -1 && indiceDuplicado !== editIndex) {
+    if (indiceDuplicadoId !== -1 && indiceDuplicadoId !== editIndex) {
         msg.style.color = "red";
         msg.innerText = "Erro: Este vídeo já está cadastrado na lista!";
         return;
     }
-    // ======================================
+    // ============================================================
+
+    // === 2. VERIFICAÇÃO DE TÍTULO DUPLICADO ===
+    const titleLower = title.toLowerCase();
+    const indiceDuplicadoTitulo = listaVideos.findIndex((video, index) => {
+        if (editIndex >= 0 && index === editIndex) {
+            return false; // Ignora o próprio item durante a edição
+        }
+        return video.title && video.title.trim().toLowerCase() === titleLower;
+    });
+
+    if (indiceDuplicadoTitulo !== -1) {
+        msg.style.color = "red";
+        msg.innerText = "Erro: Já existe um vídeo cadastrado com este título!";
+        return;
+    }
+    // ==========================================
 
     btn.disabled = true;
     msg.style.color = "#0b2545";
