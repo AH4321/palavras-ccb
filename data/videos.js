@@ -370,7 +370,7 @@ export const listaVideos = [
   { title: "2020 05 23 Palavra Vídeo 18 00 II Pedro 1 IrCláudio", youtubeId: "Njc-wHQ1edE" },
   { title: "2020 05 20 Palavra Vídeo 20 00 Atos 12 IrHélio", youtubeId: "g46XVsIzoQs" },
   { title: "2020 05 10 Palavra Vídeo 18 00 I Coríntios 9 15 IrHélio", youtubeId: "VO-chqwvWSA" },
-  { title: "2020 05 06 Palavra Vídeo 20 00 Salmos 19 IrSalvador", youtubeId: "TJ64lt0EJgs" },
+  { title: "2020 05 06 Palavra Vídeo 20 00 Salmos 19 IrSalvador", youtubeId: "TJ64It0EJgs" },
   { title: "2020 05 03 Palavra Vídeo 18 00 Gênesis 22 IrCláudio", youtubeId: "bN5THoe30Cg" },
   { title: "2020 04 26 Palavra Vídeo 18 00 Filipenses 4 IrLaércio", youtubeId: "axTP-RItrds" },
   { title: "2026 09 30 Palavra Vídeo - QUA 19 30 Efésios 2 IrLuiz", youtubeId: "qaAFGNBegA0" },
