@@ -119,52 +119,66 @@ export function extrairYoutubeld(entrada) {
 }
 
 export async function salvarOuAtualizarVideo() {
-  const token = document.getElementById("gh-token-videos").value.trim();
-  const title = document.getElementById("new-video-title").value.trim();
-  const rawUrl = document.getElementById("new-video-url").value.trim();
-  const editIndex = parseInt(document.getElementById("edit-video-index").value, 10);
-  const msg = document.getElementById("admin-msg");
-  const btn = document.getElementById("btn-save-gh");
+    const token = document.getElementById("gh-token-videos").value.trim();
+    const title = document.getElementById("new-video-title").value.trim();
+    const rawUrl = document.getElementById("new-video-url").value.trim();
+    const editIndex = parseInt(document.getElementById("edit-video-index").value, 10);
+    const msg = document.getElementById("admin-msg");
+    const btn = document.getElementById("btn-save-gh");
 
-  if (!token) {
-    msg.style.color = "red";
-    msg.innerText = "Preencha o Token do GitHub!";
-    return;
-  }
-  if (!title || !rawUrl) {
-    msg.style.color = "red";
-    msg.innerText = "Preencha o título e a URL/ID do vídeo!";
-    return;
-  }
-
-  const youtubeld = extrairYoutubeld(rawUrl);
-  btn.disabled = true;
-  msg.style.color = "#0b2545";
-  msg.innerText = "Enviando alterações...";
-
-  try {
-    let novaLista = [...listaVideos];
-    if (editIndex >= 0) {
-      novaLista[editIndex] = { title, youtubeld };
-      await salvarListaNoGitHub(token, novaLista, `Atualizado vídeo: ${title}`);
-      listaVideos[editIndex] = { title, youtubeld };
-      msg.innerText = "Vídeo atualizado com sucesso!";
-    } else {
-      novaLista.push({ title, youtubeld });
-      await salvarListaNoGitHub(token, novaLista, `Adicionado vídeo: ${title}`);
-      listaVideos.push({ title, youtubeld });
-      msg.innerText = "Vídeo salvo com sucesso!";
+    if (!token) {
+        msg.style.color = "red";
+        msg.innerText = "Preencha o Token do GitHub!";
+        return;
     }
 
-    renderizarListaAdmin();
-    cancelarEdicao();
-    msg.style.color = "green";
-  } catch (err) {
-    msg.style.color = "red";
-    msg.innerText = "Erro: " + err.message;
-  } finally {
-    btn.disabled = false;
-  }
+    if (!title || !rawUrl) {
+        msg.style.color = "red";
+        msg.innerText = "Preencha o título e a URL/ID do vídeo!";
+        return;
+    }
+
+    const youtubeld = extrairYoutubeld(rawUrl);
+
+    // === VERIFICAÇÃO DE VÍDEO DUPLICADO ===
+    // Verifica se já existe algum vídeo com o mesmo ID do YouTube na lista
+    const indiceDuplicado = listaVideos.findIndex(v => (v.youtubeld || v.youtubeId) === youtubeld);
+    
+    // Se encontrou um duplicado e ele NÃO é o mesmo item que estamos editando atualmente:
+    if (indiceDuplicado !== -1 && indiceDuplicado !== editIndex) {
+        msg.style.color = "red";
+        msg.innerText = "Erro: Este vídeo já está cadastrado na lista!";
+        return;
+    }
+    // ======================================
+
+    btn.disabled = true;
+    msg.style.color = "#0b2545";
+    msg.innerText = "Enviando alterações...";
+
+    try {
+        let novaLista = [...listaVideos];
+        if (editIndex >= 0) {
+            novaLista[editIndex] = { title, youtubeld };
+            await salvarListaNoGitHub(token, novaLista, `Atualizado vídeo: ${title}`);
+            listaVideos[editIndex] = { title, youtubeld };
+            msg.innerText = "Vídeo atualizado com sucesso!";
+        } else {
+            novaLista.push({ title, youtubeld });
+            await salvarListaNoGitHub(token, novaLista, `Adicionado vídeo: ${title}`);
+            listaVideos.push({ title, youtubeld });
+            msg.innerText = "Vídeo salvo com sucesso!";
+        }
+
+        renderizarListaAdmin();
+        cancelarEdicao();
+        msg.style.color = "green";
+    } catch (err) {
+        msg.style.color = "red";
+        msg.innerText = "Erro: " + err.message;
+    } finally {
+        btn.disabled = false;
+    }
 }
 
 export async function excluirVideoSelecionado() {
