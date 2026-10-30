@@ -324,7 +324,7 @@ export const listaVideos = [
   { title: "2020 10 11 Palavra Vídeo 18 00 Atos 5 17 IrLaércio", youtubeId: "zY175kNcNYc" },
   { title: "2020 10 11 Palavra Vídeo 14 00 II Timóteo 2 IrSilvano", youtubeId: "ZGmx1LtoyUI" },
   { title: "2020 10 11 Palavra Vídeo 10 00 Salmos 46 IrMilton", youtubeId: "13PFKQSpcSY" },
-  { title: "2020 10 10 Palavra Vídeo 18 00 Efésios 1 IrSalvador", youtubeId: "rloMzdHWr3M" },
+  { title: "2020 10 10 Palavra Vídeo 18 00 Efésios 1 IrSalvador", youtubeId: "rIoMzdHWr3M" },
   { title: "2020 10 07 Palavra Vídeo 20 00 Efésios 2 IrCláudio", youtubeId: "ygNEC-d4Msc" },
   { title: "2020 10 04 Palavra Vídeo 18 00 Juízes 6 IrLaércio", youtubeId: "O_EtpITxW_M" },
   { title: "2020 10 04 Palavra Vídeo 10 00 Salmos 33 IrSilvano", youtubeId: "3_RtwlhEael" },
