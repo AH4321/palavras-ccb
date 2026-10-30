@@ -381,5 +381,6 @@ export const listaVideos = [
   { title: "2026 10 14   Palavra Vídeo    QUA 19 30   Lucas 4 14   IrHélio", youtubeId: "i0zkvDypuNg" },
   { title: "2026 10 18   Palavra Vídeo    DOM   10 00   João 16 25   IrSalvador", youtubeId: "CGinpTgzdMY" },
   { title: "2026 10 21   Palavra Vídeo    QUA 19 30   II Coríntios 4 13 e 5 10   IrHélio", youtubeId: "bSbjcWZDG30" },
-  { title: "2022 03 16   Palavra Vídeo   QUA 15 00   Lucas 17 11   IrHélio", youtubeId: "XM2w-b0pyZY" }
+  { title: "2022 03 16   Palavra Vídeo   QUA 15 00   Lucas 17 11   IrHélio", youtubeId: "XM2w-b0pyZY" },
+  { title: "2025 02 26   Palavra Vídeo   QUA 15 00   Romanos 11 33   IrLuiz", youtubeId: "cl2KVz86XUg" }
 ];
