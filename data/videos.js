@@ -266,7 +266,7 @@ export const listaVideos = [
   { title: "2021 09 05 Palavra Vídeo DOM 1000 II Coríntios 13 Ir", youtubeId: "VfgARbEBCDY" },
   { title: "2021 09 01 Palavra Vídeo QUA 15 00 Gênesis 50 14 IrCláudio", youtubeId: "byrsaVbnN_Q" },
   { title: "2021 08 25 Palavra Vídeo QUA 1500 Lucas 10 13 IrCláudio", youtubeId: "b-0vsedxdRk" },
-  { title: "2021 08 22 Palavra Vídeo DOM 1000 Mateus 13 44 IrSalvador", youtubeId: "IYsM2h6m3Fo" },
+  { title: "2021 08 22 Palavra Vídeo DOM 1000 Mateus 13 44 IrSalvador", youtubeId: "lYsM2h6m3Fo" },
   { title: "2021 08 18 Palavra Vídeo QUA 15 00 João 20 IrCláudio", youtubeId: "UkxWfeoKyxM" },
   { title: "2021 08 15 Palavra Vídeo DOM 1000 Jonas 1 IrMilton", youtubeId: "r81FfaLDQZc" },
   { title: "2021 08 08 Palavra Vídeo DOM 1000 I Coríntios 2 IrSalvador", youtubeId: "XLU01ru50r8" },
