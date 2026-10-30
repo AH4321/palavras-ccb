@@ -308,7 +308,7 @@ export const listaVideos = [
   { title: "2021 03 31 Palavra Vídeo QUA 15 00 Reis 19 IrCláudio", youtubeId: "OeHc7-bc2ws" },
   { title: "2021 03 28 Palavra Vídeo DOM 18 00 Hebreus 10 19 IrSalvador", youtubeId: "nmxUyzxd0Cs" },
   { title: "2021 03 27 Palavra Vídeo SAB 19 30 Números 14 IrLaércio", youtubeId: "JpXU6MEKGpE" },
-  { title: "2021 03 24 Palavra Vídeo QUA 15 00 Oséias 11 IrJoão", youtubeId: "zNDplEqc5Wc" },
+  { title: "2021 03 24 Palavra Vídeo QUA 15 00 Oséias 11 IrJoão", youtubeId: "zNDpIEqc5Wc" },
   { title: "2021 03 20 Palavra Vídeo SAB 19h30 II Samuel 18 9 IrMilton", youtubeId: "LmTdQGIXLqE" },
   { title: "2021 03 17 Palavra Vídeo QUA 15h00 Jó 1 IrCláudio", youtubeId: "cxjNVnfgnAl" },
   { title: "2021 03 13 Palavra Vídeo 19 00 Marcos 6 30 IrLaércio", youtubeId: "kjabKSXMj1s" },
