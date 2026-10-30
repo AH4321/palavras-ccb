@@ -238,7 +238,7 @@ export const listaVideos = [
   { title: "2022 05 11 Palavra Vídeo QUA 15 00 Mateus 13 IrCláudio", youtubeId: "ht1ex1huSnU" },
   { title: "2022 05 08 Palavra Vídeo DOM 1000 Efésios 4 IrSalvador", youtubeId: "zxejvxTdMLg" },
   { title: "2022 05 01 Palavra Vídeo DOM 1000 I Coríntios 15 19 Ir", youtubeId: "qCPpwLCpkMo" },
-  { title: "2022 04 27 Palavra Vídeo QUA 1500 João 8 IrLuiz", youtubeId: "SccR-EZIXEY" },
+  { title: "2022 04 27 Palavra Vídeo QUA 1500 João 8 IrLuiz", youtubeId: "SccR-EZlXEY" },
   { title: "2022 04 20 Palavra Vídeo QUA 15 00 Mateus 19 16 IrSilvano", youtubeId: "jS1ykVqgx3g" },
   { title: "2022 04 15 Palavra Vídeo SEX 1930 Jó 28 IrDavi", youtubeId: "yHksc7Ttq0c" },
   { title: "2022 04 13 Palavra Vídeo QUA 1500 Marcos 16 Ir", youtubeId: "e6f-eRmjhgg" },
