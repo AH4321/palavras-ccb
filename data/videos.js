@@ -356,7 +356,7 @@ export const listaVideos = [
   { title: "2020 07 05 Palavra Vídeo 18 00 Salmos 39 IrSalvador", youtubeId: "vf6mHT09XKQ" },
   { title: "2020 07 04 Palavra Vídeo 18 00 Salmos 139 IrCláudio", youtubeId: "9pH1B_Kt0AY" },
   { title: "2020 06 28 Palavra Vídeo 18 00 Josué 1 IrLaércio", youtubeId: "Ukc2rU1Hm-w" },
-  { title: "2020 06 24 Palavra Vídeo 20 00 Atos 8 IrLaércio", youtubeId: "ZEXX2jj3OZA" },
+  { title: "2020 06 24 Palavra Vídeo 20 00 Atos 8 IrLaércio", youtubeId: "ZExX2jj3OZA" },
   { title: "2020 06 21 Palavra Vídeo 18 00 Salmos 133 IrSalvador", youtubeId: "ysH5_0HyifE" },
   { title: "2020 06 21 Palavra Vídeo 10 00 Mateus 11 25 Ir", youtubeId: "68uK-aY-Msw" },
   { title: "2020 06 14 Palavra Vídeo 18 00 Salmos 91 Ir", youtubeId: "kJGH2q4BxGk" },
