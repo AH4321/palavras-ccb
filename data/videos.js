@@ -190,7 +190,7 @@ export const listaVideos = [
   { title: "2023 11 12 Palavra Vídeo DOM 1000 Mateus 25 IrSalvador", youtubeId: "NDic07LKVzA" },
   { title: "2023 11 05 Palavra Vídeo DOM 1000 Salmos 90 IrSalvador", youtubeId: "ge0bWxDTXZ0" },
   { title: "2023 11 01 Palavra Vídeo QUA 15 00 Filipenses 1 12 IrSalvador", youtubeId: "SNMbzjJSV_I" },
-  { title: "2023 10 25 Palavra Vídeo QUA 15 00 Pedro 1 IrLuiz", youtubeId: "kbJlVsFbBC8" },
+  { title: "2023 10 25 Palavra Vídeo QUA 15 00 Pedro 1 IrLuiz", youtubeId: "kbJIVsFbBC8" },
   { title: "2023 10 18 Palavra Vídeo QUA 15 00 João 18 IrLuiz", youtubeId: "HCf0ywbVs-4" },
   { title: "2023 10 15 Palavra Vídeo DOM 1000 Mateus 13 44 IrSalvador", youtubeId: "X1JG13BMm8Y" },
   { title: "2023 10 08 Palavra Vídeo DOM 1000 Mateus 18 23 IrSalvador", youtubeId: "4PrdYdKsFLc" },
