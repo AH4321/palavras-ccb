@@ -133,7 +133,7 @@ export const listaVideos = [
   { title: "2026 09 13 Palavra Vídeo - DOM 1000 Mateus 9 18 IrMaurício", youtubeId: "uX-u2Kj_9Zw" },
   { title: "2026 09 09 Palavra Vídeo - QUA 1930 João 3 IrLuiz", youtubeId: "GHMuvIkEXms" },
   { title: "2026 09 02 Palavra Vídeo - QUA 19 30 Tiago 5 7 IrNilson", youtubeId: "7k_l7JQV4PI" },
-  { title: "2025 01 01 Palavra Vídeo QUA 15 00 Romanos 8 18 IrLuiz", youtubeId: "-JITK0a8F60" },
+  { title: "2025 01 01 Palavra Vídeo QUA 15 00 Romanos 8 18 IrLuiz", youtubeId: "-JlTK0a8F60" },
   { title: "2024 12 29 Palavra Vídeo DOM 1000 Mateus 11 IrSalvador", youtubeId: "45t4NLicSrl" },
   { title: "2024 12 25 Palavra Vídeo QUA 1500 Efésios 4 Ir", youtubeId: "3u9g-3tJrp8" },
   { title: "2024 11 27 Palavra Vídeo QUA 15 00 Lucas 12 13 IrLuiz", youtubeId: "5_N28hsln2Y" },
