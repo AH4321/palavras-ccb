@@ -293,7 +293,7 @@ export const listaVideos = [
   { title: "2021 05 12 Palavra Vídeo QUA 1500 Romanos 5 IrLuiz", youtubeId: "PSMCE2nN4Xw" },
   { title: "2021 05 09 Palavra Vídeo DOM 10 00 Jeremias 2 IrMilton", youtubeId: "RYKsj_dwAz4" },
   { title: "2021 05 05 Palavra Vídeo QUA 1500 Rute 2 IrCláudio", youtubeId: "5M1dXD-AomM" },
-  { title: "2021 05 02 Palavra Vídeo DOM 10 00 Samuel 7 IrCláudio", youtubeId: "_pZWDa9TVE" },
+  { title: "2021 05 02 Palavra Vídeo DOM 10 00 Samuel 7 IrCláudio", youtubeId: "__pZWDa9TVE" },
   { title: "2021 04 28 Palavra Vídeo QUA 15 00 Salmos 73 IrSilvano", youtubeId: "SLoJhVfQz81" },
   { title: "2021 04 25 Palavra Vídeo DOM 1000 I Samuel 1 IrLaércio", youtubeId: "ZD-XSPK_tz4" },
   { title: "2021 04 21 Palavra Vídeo QUA 15 00 Zacarias 3 IrLuiz", youtubeId: "EGk7AEGM22s" },
