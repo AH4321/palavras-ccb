@@ -74,7 +74,7 @@ export const listaVideos = [
   { title: "2025 11 05 Palavra Vídeo - QUA 15 00 Efésios 2 IrLuiz", youtubeId: "ApG3MCQRJAM" },
   { title: "2025 11 02 Palavra Vídeo - DOM 1000 Lucas 15 11 Ir", youtubeId: "gcrsLlJys98" },
   { title: "2025 10 29 Palavra Vídeo - QUA 15 00 Lucas 4 IrLuiz", youtubeId: "K0Kx8Sd-nQc" },
-  { title: "2025 10 26 Palavra Vídeo - DOM 1000 Romanos 6 IrLuiz", youtubeId: "yd5pv0_ZI4" },
+  { title: "2025 10 26 Palavra Vídeo - DOM 1000 Romanos 6 IrLuiz", youtubeId: "yd5pv0__ZI4" },
   { title: "2025 10 22 Palavra Vídeo - QUA 15 00 Lucas 7 Ir", youtubeId: "jlvevV_G7JI" },
   { title: "2025 10 19 Palavra Vídeo - DOM 1000 Lucas 16 IrSalvador", youtubeId: "cEZi2A0Anfw" },
   { title: "2025 10 12 Palavra Vídeo - DOM 1000 João 1 IrSalvador", youtubeId: "Bwbolv5z-H0" },
