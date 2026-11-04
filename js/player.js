@@ -315,10 +315,13 @@ export function iniciarVideosAleatoriosContinuos() {
     const searchInput = document.getElementById('search-input');
     const termoBruto = searchInput ? searchInput.value.trim() : "";
 
-    let listaCandidatos = listaVideos;
+    let listaCandidatos = [];
 
-    // Se houver texto na barra de busca, filtramos com base estrita nos vídeos visíveis/filtrados
-    if (termoBruto !== "") {
+    if (termoBruto === "") {
+        // Se a busca estiver vazia, usa todos os vídeos
+        listaCandidatos = listaVideos;
+    } else {
+        // Se houver busca, replicamos exatamente a inteligência de filtro do seu app
         const termos = termoBruto
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, "")
@@ -335,7 +338,33 @@ export function iniciarVideosAleatoriosContinuos() {
                 .replace(/[\u0300-\u036f]/g, "")
                 .toLowerCase();
 
-            return termos.every(t => titulo.includes(t));
+            const atendeTodos = termos.every((t, index) => {
+                if (/^\d{1,2}$/.test(t)) {
+                    const termoAnterior = index > 0 ? termos[index - 1] : null;
+                    if (termoAnterior && /^\d{4}$/.test(termoAnterior)) {
+                        const regexAnoMes = new RegExp(`\\b${termoAnterior}\\s+0?${parseInt(t, 10)}\\b`);
+                        return regexAnoMes.test(titulo);
+                    }
+                    if (index === termos.length - 1 && termos.length >= 3) {
+                        const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
+                        return regex.test(titulo);
+                    }
+                    const regex = new RegExp(`\\b${t}\\b`);
+                    return regex.test(titulo);
+                }
+                if (/^\d{4}$/.test(t)) {
+                    if (index === termos.length - 1 && termos.length >= 3) {
+                        const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
+                        return regex.test(titulo);
+                    }
+                    const regex = new RegExp(`\\b${t}\\b`);
+                    return regex.test(titulo);
+                }
+                const regex = new RegExp(`\\b${t}\\b`);
+                return regex.test(titulo) || titulo.includes(t);
+            });
+
+            return atendeTodos;
         });
     }
 
@@ -349,12 +378,12 @@ export function iniciarVideosAleatoriosContinuos() {
         state.modoAleatorioAtivo = true;
     }
 
-    // Sorteia um índice dentro da lista de candidatos (completa ou filtrada)
+    // Sorteia um vídeo apenas dentre os candidatos filtrados corretamente
     const randomIndex = Math.floor(Math.random() * listaCandidatos.length);
     const videoEscolhido = listaCandidatos[randomIndex];
     const videoldEscolhido = videoEscolhido.youtubeld || videoEscolhido.youtubeld;
 
-    // Encontra o índice correspondente na lista original de vídeos para reproduzir corretamente
+    // Encontra o índice correto na lista original para o player abrir sem erro
     const indexOriginal = listaVideos.findIndex(v => (v.youtubeld || v.youtubeld) === videoldEscolhido);
 
     if (indexOriginal !== -1) {
