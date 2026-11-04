@@ -415,7 +415,33 @@ export function verificarFimDeVideoNoModoContinuo() {
                 .replace(/[\u0300-\u036f]/g, "")
                 .toLowerCase();
 
-            return termos.every(t => titulo.includes(t));
+            const atendeTodos = termos.every((t, index) => {
+                if (/^\d{1,2}$/.test(t)) {
+                    const termoAnterior = index > 0 ? termos[index - 1] : null;
+                    if (termoAnterior && /^\d{4}$/.test(termoAnterior)) {
+                        const regexAnoMes = new RegExp(`\\b${termoAnterior}\\s+0?${parseInt(t, 10)}\\b`);
+                        return regexAnoMes.test(titulo);
+                    }
+                    if (index === termos.length - 1 && termos.length >= 3) {
+                        const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
+                        return regex.test(titulo);
+                    }
+                    const regex = new RegExp(`\\b${t}\\b`);
+                    return regex.test(titulo);
+                }
+                if (/^\d{4}$/.test(t)) {
+                    if (index === termos.length - 1 && termos.length >= 3) {
+                        const regex = new RegExp(`\\b${t}\\b(?!\\s*\\d{2})`);
+                        return regex.test(titulo);
+                    }
+                    const regex = new RegExp(`\\b${t}\\b`);
+                    return regex.test(titulo);
+                }
+                const regex = new RegExp(`\\b${t}\\b`);
+                return regex.test(titulo) || titulo.includes(t);
+            });
+
+            return atendeTodos;
         });
     }
 
@@ -481,51 +507,6 @@ export function verificarFimDeVideoNoModoContinuo() {
     if (!modoAleatorioContinuoAtivo) return;
     if (!listaVideos || listaVideos.length === 0) return;
 
-    const searchInput = document.getElementById('search-input');
-    const termoBruto = searchInput ? searchInput.value.trim() : "";
-
-    let listaCandidatos = listaVideos;
-
-    if (termoBruto !== "") {
-        const termos = termoBruto
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase()
-            .split(/\s+/);
-
-        const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
-
-        listaCandidatos = listaOrdenada.filter(video => {
-            const tituloEl = video.title;
-            if (!tituloEl) return false;
-            const titulo = tituloEl
-                .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, "")
-                .toLowerCase();
-
-            return termos.every(t => titulo.includes(t));
-        });
-    }
-
-    if (listaCandidatos.length === 0) return;
-
-    const randomFiltradoIndex = Math.floor(Math.random() * listaCandidatos.length);
-    const videoEscolhido = listaCandidatos[randomFiltradoIndex];
-    const videoldEscolhido = videoEscolhido.youtubeld || videoEscolhido.youtubeld;
-    const proximoOriginal = listaVideos.findIndex(v => (v.youtubeld || v.youtubeld) === videoldEscolhido);
-
-    setTimeout(() => {
-        if (modoAleatorioContinuoAtivo && proximoOriginal !== -1) {
-            tocarVideo(proximoOriginal);
-        }
-    }, 300);
-}
-
-export function verificarFimDeVideoNoModoContinuo() {
-    if (!modoAleatorioContinuoAtivo) return;
-    if (!listaVideos || listaVideos.length === 0) return;
-
-    // Reaproveita a mesma lógica para manter o filtro ativo no modo contínuo
     const searchInput = document.getElementById('search-input');
     const termoBruto = searchInput ? searchInput.value.trim() : "";
 
