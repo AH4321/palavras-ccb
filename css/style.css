@@ -534,6 +534,7 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
     min-height: 100vh;
     overflow-y: auto !important;
     background-color: var(--ccb-dark-blue);
+    display: block !important;
   }
 
   #app-container[style*="display: block"] {
@@ -549,6 +550,7 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
     overflow: visible !important;
   }
 
+  
   .tv-header {
     position: sticky !important;
     top: 0;
@@ -606,7 +608,7 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
     height: auto !important;
     overflow: visible !important;
     padding: 15px !important;
-    margin-top: 10px;
+    padding: 20px 12px !important;
   }
 
   .tv-grid-container {
@@ -615,7 +617,7 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
     gap: 15px !important;
     overflow: visible !important;
     height: auto !important;
-    padding-top: 25px !important;
+    padding-top: 15px !important;
   }
   /* FORÇA O PRIMEIRO CARTÃO A AFASTAR-SE DO CABEÇALHO FIXO NO TELEMÓVEL */
   .tv-grid-container .video-card-item:first-child {
