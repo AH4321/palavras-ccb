@@ -605,7 +605,8 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
     flex-direction: column !important;
     height: auto !important;
     overflow: visible !important;
-    padding: 10px !important;
+    padding: 15px !important;
+    margin-top: 10px;
   }
 
   .tv-grid-container {
