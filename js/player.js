@@ -481,6 +481,50 @@ export function verificarFimDeVideoNoModoContinuo() {
     if (!modoAleatorioContinuoAtivo) return;
     if (!listaVideos || listaVideos.length === 0) return;
 
+    const searchInput = document.getElementById('search-input');
+    const termoBruto = searchInput ? searchInput.value.trim() : "";
+
+    let listaCandidatos = listaVideos;
+
+    if (termoBruto !== "") {
+        const termos = termoBruto
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .split(/\s+/);
+
+        const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
+
+        listaCandidatos = listaOrdenada.filter(video => {
+            const tituloEl = video.title;
+            if (!tituloEl) return false;
+            const titulo = tituloEl
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase();
+
+            return termos.every(t => titulo.includes(t));
+        });
+    }
+
+    if (listaCandidatos.length === 0) return;
+
+    const randomFiltradoIndex = Math.floor(Math.random() * listaCandidatos.length);
+    const videoEscolhido = listaCandidatos[randomFiltradoIndex];
+    const videoldEscolhido = videoEscolhido.youtubeld || videoEscolhido.youtubeld;
+    const proximoOriginal = listaVideos.findIndex(v => (v.youtubeld || v.youtubeld) === videoldEscolhido);
+
+    setTimeout(() => {
+        if (modoAleatorioContinuoAtivo && proximoOriginal !== -1) {
+            tocarVideo(proximoOriginal);
+        }
+    }, 300);
+}
+
+export function verificarFimDeVideoNoModoContinuo() {
+    if (!modoAleatorioContinuoAtivo) return;
+    if (!listaVideos || listaVideos.length === 0) return;
+
     // Reaproveita a mesma lógica para manter o filtro ativo no modo contínuo
     const searchInput = document.getElementById('search-input');
     const termoBruto = searchInput ? searchInput.value.trim() : "";
