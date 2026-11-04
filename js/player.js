@@ -310,27 +310,103 @@ export function fecharPlayerFullscreen() {
 }
 
 export function iniciarVideosAleatoriosContinuos() {
-  if (!listaVideos || listaVideos.length === 0) return;
-  
-  modoAleatorioContinuoAtivo = true;
-  if (typeof state !== 'undefined') {
-    state.modoAleatorioAtivo = true;
-  }
-  
-  const randomIndex = Math.floor(Math.random() * listaVideos.length);
-  tocarVideo(randomIndex);
+    if (!listaVideos || listaVideos.length === 0) return;
+
+    // Obtém o valor atual da barra de pesquisa
+    const searchInput = document.getElementById('search-input');
+    const termoBruto = searchInput ? searchInput.value.trim() : "";
+
+    let listaCandidatos = listaVideos;
+
+    // Se houver texto na barra de busca, filtramos a lista de forma idêntica à função de busca
+    if (termoBruto !== "") {
+        const termos = termoBruto
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .split(/\s+/);
+
+        const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
+
+        listaCandidatos = listaOrdenada.filter(video => {
+            const tituloEl = video.title;
+            if (!tituloEl) return false;
+            const titulo = tituloEl
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase();
+
+            return termos.every(t => titulo.includes(t));
+        });
+    }
+
+    // Se após a busca não sobrar nenhum vídeo, encerra para evitar erros
+    if (listaCandidatos.length === 0) {
+        alert("Nenhum vídeo encontrado para esta busca.");
+        return;
+    }
+
+    modoAleatorioContinuoAtivo = true;
+    if (typeof state !== 'undefined') {
+        state.modoAleatorioAtivo = true;
+    }
+
+    // Sorteia um índice aleatório dentro dos candidatos (seja a lista completa ou a filtrada)
+    const randomIndex = Math.floor(Math.random() * listaCandidatos.length);
+    const videoEscolhido = listaCandidatos[randomIndex];
+    const videoldEscolhido = videoEscolhido.youtubeld || videoEscolhido.youtubeld;
+
+    // Descobre o índice real na lista original (`listaVideos`) para tocar corretamente
+    const indexOriginal = listaVideos.findIndex(v => (v.youtubeld || v.youtubeld) === videoldEscolhido);
+
+    if (indexOriginal !== -1) {
+        tocarVideo(indexOriginal);
+    }
 }
 
 export function verificarFimDeVideoNoModoContinuo() {
-  if (!modoAleatorioContinuoAtivo) return;
-  if (!listaVideos || listaVideos.length === 0) return;
-  
-  const proximoAleatorio = Math.floor(Math.random() * listaVideos.length);
-  setTimeout(() => {
-    if (modoAleatorioContinuoAtivo) {
-      tocarVideo(proximoAleatorio);
+    if (!modoAleatorioContinuoAtivo) return;
+    if (!listaVideos || listaVideos.length === 0) return;
+
+    // Reaproveita a mesma lógica para manter o filtro ativo no modo contínuo
+    const searchInput = document.getElementById('search-input');
+    const termoBruto = searchInput ? searchInput.value.trim() : "";
+
+    let listaCandidatos = listaVideos;
+
+    if (termoBruto !== "") {
+        const termos = termoBruto
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .split(/\s+/);
+
+        const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
+
+        listaCandidatos = listaOrdenada.filter(video => {
+            const tituloEl = video.title;
+            if (!tituloEl) return false;
+            const titulo = tituloEl
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase();
+
+            return termos.every(t => titulo.includes(t));
+        });
     }
-  }, 300);
+
+    if (listaCandidatos.length === 0) return;
+
+    const randomFiltradoIndex = Math.floor(Math.random() * listaCandidatos.length);
+    const videoEscolhido = listaCandidatos[randomFiltradoIndex];
+    const videoldEscolhido = videoEscolhido.youtubeld || videoEscolhido.youtubeld;
+    const proximoOriginal = listaVideos.findIndex(v => (v.youtubeld || v.youtubeld) === videoldEscolhido);
+
+    setTimeout(() => {
+        if (modoAleatorioContinuoAtivo && proximoOriginal !== -1) {
+            tocarVideo(proximoOriginal);
+        }
+    }, 300);
 }
 
 export function pararModoAleatorio() {
