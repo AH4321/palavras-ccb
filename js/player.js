@@ -114,20 +114,22 @@ export function renderizarLista(videos) {
 
 export function carregarPlaylist() {
     // Ordena rigorosamente a lista em ordem decrescente (mais recente primeiro) baseada no título (datas)
-    const listaOrdenada = [...listaVideos].sort((a, b) => b.title.localeCompare(a.title));
-    renderizarLista(listaOrdenada);
+    const listaOrdenada = [...listaVideos].sort((a, b) =>
+        b.title.localeCompare(a.title));
     
+    renderizarLista(listaOrdenada);
+
     if (listaOrdenada.length > 0) {
-        if (state.currentVideoIndex < 0) {
+        if (state.currentVideoIndex < 0 || state.currentVideoIndex >= listaOrdenada.length) {
             state.currentVideoIndex = 0;
-            state.kbPlaylistIndex = 0;
         }
+        state.kbPlaylistIndex = state.currentVideoIndex;
+
         const playlistElement = document.getElementById('playlist');
         if (playlistElement) {
             playlistElement.setAttribute('tabindex', '0');
-            playlistElement.scrollTop = 0;
             playlistElement.focus();
-            focarCartaoVideo(0);
+            focarCartaoVideo(state.kbPlaylistIndex);
         }
     }
 }
