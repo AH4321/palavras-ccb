@@ -617,6 +617,10 @@ ADAPTAÇÃO EXCLUSIVA PARA TELEMÓVEIS (MOBILE)
     height: auto !important;
     padding-top: 25px !important;
   }
+  /* FORÇA O PRIMEIRO CARTÃO A AFASTAR-SE DO CABEÇALHO FIXO NO TELEMÓVEL */
+  .tv-grid-container .video-card-item:first-child {
+    margin-top: 25px !important;
+  }
 }
 
 /* ==========================================
