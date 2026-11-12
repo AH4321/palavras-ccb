@@ -392,5 +392,6 @@ export const listaVideos = [
   { title: "2026 11 01   Palavra Vídeo   DOM   10 00   Jó 14   IrIsaias", youtubeId: "bZ_ydyFJuUw" },
   { title: "2022 02 27   Palavra Vídeo   DOM 10 00   Mateus 13 24   IrLuiz", youtubeId: "TbGToanp8mk" },
   { title: "2026 11 04   Palavra Vídeo   QUA 19 30   Salmos 123   IrHélio", youtubeId: "W5Ky3ToE800" },
-  { title: "2026 11 08   Palavra Vídeo   DOM   10 00   II Coríntios 12   IrSalvador", youtubeId: "r2WnM0i4rQQ" }
+  { title: "2026 11 08   Palavra Vídeo   DOM   10 00   II Coríntios 12   IrSalvador", youtubeId: "r2WnM0i4rQQ" },
+  { title: "2022 02 23   Palavra Vídeo   QUA 15 00   Atos 4   IrCláudio", youtubeId: "gIAUK7XvzDQ" }
 ];
