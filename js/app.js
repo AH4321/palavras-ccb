@@ -1,3 +1,4 @@
+window.__APPCCB_HOST__ = true;
 import { autenticar, verificarSenhaAdmin } from "./auth.js";
 import { navegarPara, voltarParaMenu, voltarParaAdminMenu } from "./menu.js";
 import { 
@@ -105,6 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.history.replaceState({ page: "main" }, "", "");
   });
 
+  window.addEventListener("biblia:voltar-menu", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
+
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     searchInput.addEventListener("input", filtrarVideos);
@@ -151,6 +157,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (appVisivel) {
+      voltarParaMenu();
+      window.history.replaceState({ page: "main" }, "", "");
+      window.history.pushState({ page: "main" }, "", "");
+      return;
+    }
+    const bibliaContainer = document.getElementById("biblia-container");
+    const bibliaVisivel = bibliaContainer && window.getComputedStyle(bibliaContainer).display !== "none";
+    if (bibliaVisivel) {
       voltarParaMenu();
       window.history.replaceState({ page: "main" }, "", "");
       window.history.pushState({ page: "main" }, "", "");

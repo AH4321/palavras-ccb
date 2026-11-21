@@ -1,19 +1,31 @@
 import { state } from "./state.js";
 import { abrirAuthAdmin } from "./auth.js";
 import { carregarPlaylist } from "./player.js";
+import { iniciarBiblia, fecharBiblia } from "./biblia.js";
 
 export function navegarPara(opcao) {
   document.getElementById("menu-overlay").style.display = "none";
+
+  const appEl = document.getElementById("app-container");
+  const bibliaEl = document.getElementById("biblia-container");
+  if (appEl) appEl.style.display = "none";
+  if (bibliaEl) bibliaEl.style.display = "none";
+
   if (opcao === "palavras") {
-    document.getElementById("app-container").style.display = "block";
+    if (appEl) appEl.style.display = "block";
     carregarPlaylist();
-    document.getElementById("playlist").focus();
+    const playlistEl = document.getElementById("playlist");
+    if (playlistEl) playlistEl.focus();
+  } else if (opcao === "biblia") {
+    if (bibliaEl) bibliaEl.style.display = "flex";
+    iniciarBiblia();
   } else if (opcao === "configuracao") {
     abrirAuthAdmin();
-  } else if (opcao === "biblia") {
-    abrirPlaceholder("Bíblia", "A Bíblia Sagrada estará disponível em breve.");
   } else if (opcao === "hinos") {
-    abrirPlaceholder("Hinos", "O hinário com as letras dos hinos estará disponível em breve.");
+    abrirPlaceholder(
+      "Hinos",
+      "O hinário com as letras dos hinos estará disponível em breve."
+    );
   }
 }
 
@@ -26,8 +38,15 @@ export function abrirPlaceholder(titulo, descricao) {
 
 export function voltarParaMenu() {
   fecharModais();
-  document.getElementById("app-container").style.display = "none";
-  document.getElementById("menu-overlay").style.display = "flex";
+  fecharBiblia();
+
+  const appEl = document.getElementById("app-container");
+  const bibliaEl = document.getElementById("biblia-container");
+  const menuEl = document.getElementById("menu-overlay");
+
+  if (appEl) appEl.style.display = "none";
+  if (bibliaEl) bibliaEl.style.display = "none";
+  if (menuEl) menuEl.style.display = "flex";
 }
 
 export function voltarParaAdminMenu() {

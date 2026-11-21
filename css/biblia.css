@@ -1,0 +1,587 @@
+/* ===== ESTILOS ISOLADOS DA BÍBLIA PARA O APPCCB (SEM CONFLITO COM STYLE.CSS) ===== */
+#biblia-container {
+  --ccb-blue: #0b2545;
+  --ccb-dark-blue: #06172e;
+  --ccb-gold: #c5a059;
+  --ccb-white: #f8f9fa;
+  --ccb-gray: #e9ecef;
+  --escala-fonte: 1;
+
+  display: none;
+  flex-direction: column;
+  width: 98vw;
+  max-width: min(1760px, 100vw);
+  height: 95vh;
+  max-height: 100dvh;
+  background: var(--ccb-dark-blue);
+  color: var(--ccb-white);
+  border-radius: clamp(0px, 1vw, 10px);
+  border: 2px solid var(--ccb-gold);
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+  margin: auto;
+  position: relative;
+  z-index: 500;
+}
+
+#biblia-container * {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#biblia-container .biblia-tela {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+#biblia-container .biblia-tela.ativa {
+  display: flex;
+}
+
+#biblia-container .tv-header {
+  background: var(--ccb-blue);
+  color: var(--ccb-white);
+  padding: clamp(8px, 1.2vw, 14px) clamp(10px, 1.8vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1vw, 14px);
+  border-bottom: 3px solid var(--ccb-gold);
+  flex-shrink: 0;
+  width: 100%;
+}
+
+#biblia-container .tv-header-top {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.8vw, 12px);
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+}
+
+#biblia-container .tv-header h1 {
+  font-size: clamp(1rem, 1.35vw + 0.55rem, 1.65rem);
+  color: var(--ccb-gold);
+  letter-spacing: 0.4px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+#biblia-container .btn-back-menu {
+  background: transparent;
+  border: 1px solid var(--ccb-gold);
+  color: var(--ccb-gold);
+  font-size: clamp(0.75rem, 0.3vw + 0.68rem, 0.92rem);
+  font-weight: bold;
+  cursor: pointer;
+  padding: clamp(5px, 0.5vw, 7px) clamp(8px, 0.9vw, 13px);
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: auto;
+}
+
+#biblia-container .btn-back-menu:hover,
+#biblia-container .btn-back-menu:focus {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  outline: none;
+}
+
+#biblia-container .biblia-controles {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.8vw, 12px);
+  flex-wrap: wrap;
+  flex: 1 1 240px;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+#biblia-container .biblia-busca-box {
+  display: flex;
+  align-items: stretch;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid var(--ccb-gold);
+  background: #fff;
+  flex: 1 1 200px;
+  max-width: min(420px, 100%);
+  min-width: 0;
+}
+
+#biblia-container .biblia-busca-box input {
+  border: none;
+  border-radius: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: clamp(6px, 0.55vw, 9px) clamp(8px, 0.8vw, 12px);
+  color: var(--ccb-dark-blue);
+  font-size: clamp(0.85rem, 0.35vw + 0.75rem, 1rem);
+  outline: none;
+}
+
+#biblia-container .btn-lupa {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  border: none;
+  padding: 0 clamp(9px, 1vw, 14px);
+  font-size: clamp(0.9rem, 0.4vw + 0.8rem, 1.1rem);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+#biblia-container .btn-lupa:hover,
+#biblia-container .btn-lupa:focus {
+  background: #dfb96e;
+  outline: none;
+}
+
+#biblia-container .biblia-controles > input {
+  padding: clamp(6px, 0.55vw, 9px) clamp(8px, 0.8vw, 12px);
+  border-radius: 6px;
+  border: 2px solid var(--ccb-gold);
+  background: #fff;
+  color: var(--ccb-dark-blue);
+  font-size: clamp(0.85rem, 0.35vw + 0.75rem, 1rem);
+  outline: none;
+  flex: 1 1 180px;
+  max-width: min(320px, 100%);
+  min-width: 0;
+  margin: 0;
+}
+
+#biblia-container .biblia-controles > input:focus {
+  box-shadow: 0 0 10px var(--ccb-gold);
+}
+
+#biblia-container .biblia-header-tag {
+  font-size: clamp(0.8rem, 0.35vw + 0.72rem, 0.98rem);
+  color: var(--ccb-gold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#biblia-container .biblia-nav-capitulo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+#biblia-container .biblia-cap-badge {
+  background: rgba(6, 23, 46, 0.75);
+  border: 1px solid var(--ccb-gold);
+  color: var(--ccb-white);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: clamp(0.8rem, 0.3vw + 0.72rem, 0.95rem);
+  white-space: nowrap;
+}
+
+#biblia-container .btn-cap {
+  background: transparent;
+  border: 2px solid var(--ccb-gold);
+  color: var(--ccb-gold);
+  font-size: 1.15rem;
+  font-weight: bold;
+  width: clamp(32px, 2.5vw, 38px);
+  height: clamp(32px, 2.5vw, 38px);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+#biblia-container .btn-cap:hover:not(:disabled),
+#biblia-container .btn-cap:focus:not(:disabled) {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  outline: none;
+}
+
+#biblia-container .btn-cap:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+#biblia-container .biblia-main-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: clamp(12px, 2vw, 36px) clamp(12px, 2.5vw, 44px);
+  line-height: 1.75;
+  outline: none;
+  width: 100%;
+}
+
+/* TELA 1: LIVROS */
+#biblia-container .biblia-grupo-titulo {
+  width: 100%;
+  max-width: 1640px;
+  margin: 0 auto clamp(8px, 0.8vw, 12px) auto;
+  color: var(--ccb-gold);
+  font-size: clamp(0.95rem, 0.6vw + 0.78rem, 1.25rem);
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+#biblia-container .biblia-grupo-titulo:not(:first-child) {
+  margin-top: clamp(14px, 1.5vw, 24px);
+}
+
+#biblia-container .biblia-grid-livros {
+  width: 100%;
+  max-width: 1640px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(82px, 9vw, 132px), 1fr));
+  gap: clamp(4px, 0.45vw, 8px);
+}
+
+#biblia-container .btn-livro-compacto {
+  background: var(--ccb-blue);
+  color: var(--ccb-white);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-top: 3px solid var(--ccb-gold);
+  border-radius: 5px;
+  padding: clamp(5px, 0.45vw, 8px) clamp(4px, 0.5vw, 8px);
+  font-size: clamp(0.72rem, 0.35vw + 0.62rem, 0.9rem);
+  font-weight: 600;
+  line-height: 1.15;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+#biblia-container .btn-livro-compacto:hover,
+#biblia-container .btn-livro-compacto:focus {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* TELA 2: CAPÍTULOS */
+#biblia-container .biblia-grid-capitulos {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(54px, 6vw, 88px), 1fr));
+  gap: clamp(6px, 0.7vw, 12px);
+}
+
+#biblia-container .btn-capitulo-card {
+  background: var(--ccb-blue);
+  color: var(--ccb-white);
+  border: 1px solid rgba(197, 160, 89, 0.55);
+  border-top: 4px solid var(--ccb-gold);
+  border-radius: 8px;
+  padding: clamp(8px, 0.9vw, 15px) 6px;
+  font-size: clamp(0.9rem, 0.5vw + 0.75rem, 1.2rem);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-width: 0;
+}
+
+#biblia-container .btn-capitulo-card:hover,
+#biblia-container .btn-capitulo-card:focus {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* TELA 3: LEITURA */
+#biblia-container .biblia-capitulo-header {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto clamp(14px, 1.5vw, 24px) auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#biblia-container .biblia-capitulo-header h2 {
+  color: var(--ccb-gold);
+  font-size: calc(clamp(1.2rem, 1.2vw + 0.85rem, 1.85rem) * var(--escala-fonte, 1));
+  line-height: 1.25;
+  margin: 0;
+}
+
+#biblia-container .biblia-testamento-tag {
+  font-size: clamp(0.78rem, 0.3vw + 0.7rem, 0.92rem);
+  color: #ccc;
+}
+
+#biblia-container .biblia-secao {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto clamp(14px, 1.4vw, 24px) auto;
+}
+
+#biblia-container .biblia-secao-titulo {
+  color: var(--ccb-gold);
+  font-size: calc(clamp(0.98rem, 0.5vw + 0.82rem, 1.25rem) * var(--escala-fonte, 1));
+  font-weight: 600;
+  margin: clamp(12px, 1.2vw, 20px) 0 8px 0;
+  line-height: 1.35;
+}
+
+#biblia-container .biblia-versiculo {
+  font-size: calc(clamp(0.96rem, 0.45vw + 0.82rem, 1.22rem) * var(--escala-fonte, 1));
+  color: var(--ccb-white);
+  margin-bottom: clamp(6px, 0.6vw, 11px);
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#biblia-container .biblia-versiculo:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+#biblia-container .biblia-versiculo-num {
+  color: var(--ccb-gold);
+  font-weight: bold;
+  font-size: clamp(0.75rem, 0.3vw + 0.66rem, 0.92rem);
+  margin-right: 6px;
+  vertical-align: super;
+}
+
+/* TELA 4: RESULTADOS DA BUSCA */
+#biblia-container .busca-resumo-topo {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto clamp(10px, 1vw, 18px) auto;
+  padding: clamp(8px, 0.8vw, 12px) clamp(10px, 1.2vw, 16px);
+  background: rgba(11, 37, 69, 0.85);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-radius: 8px;
+  color: var(--ccb-white);
+  font-size: calc(clamp(0.85rem, 0.35vw + 0.76rem, 1.02rem) * var(--escala-fonte, 1));
+}
+
+#biblia-container .busca-bloco-livro {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto clamp(12px, 1.3vw, 24px) auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  border-radius: 8px;
+  padding: clamp(10px, 1.2vw, 18px) clamp(12px, 1.5vw, 22px);
+}
+
+#biblia-container .busca-livro-titulo {
+  color: var(--ccb-gold);
+  font-size: calc(clamp(1rem, 0.6vw + 0.82rem, 1.3rem) * var(--escala-fonte, 1));
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#biblia-container .busca-livro-qtd {
+  font-size: clamp(0.76rem, 0.3vw + 0.68rem, 0.88rem);
+  color: #ddd;
+  font-weight: normal;
+}
+
+#biblia-container .busca-item-versiculo {
+  margin-bottom: 8px;
+  padding: 5px 6px;
+  border-radius: 6px;
+  line-height: 1.65;
+  font-size: calc(clamp(0.92rem, 0.4vw + 0.8rem, 1.12rem) * var(--escala-fonte, 1));
+  overflow-wrap: break-word;
+}
+
+#biblia-container .busca-item-versiculo:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#biblia-container .busca-ref-link {
+  background: transparent;
+  border: none;
+  color: var(--ccb-gold);
+  font-weight: bold;
+  font-size: clamp(0.86rem, 0.35vw + 0.76rem, 1rem);
+  cursor: pointer;
+  margin-right: 6px;
+  text-decoration: underline;
+  padding: 0;
+}
+
+#biblia-container .busca-ref-link:hover {
+  color: #fff;
+}
+
+#biblia-container .palavra-destaque {
+  background-color: #ffd166;
+  color: #06172e;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+#biblia-container .biblia-status {
+  text-align: center;
+  color: #ccc;
+  margin-top: clamp(24px, 5vh, 60px);
+  font-size: clamp(0.9rem, 0.4vw + 0.8rem, 1.12rem);
+  padding: 0 12px;
+}
+
+#biblia-container .biblia-rodape-nav {
+  width: 100%;
+  max-width: 980px;
+  margin: clamp(18px, 2vw, 32px) auto 12px auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(197, 160, 89, 0.35);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#biblia-container .btn-rodape-cap {
+  background: var(--ccb-blue);
+  color: var(--ccb-gold);
+  border: 1px solid var(--ccb-gold);
+  padding: clamp(8px, 0.7vw, 11px) clamp(12px, 1.2vw, 20px);
+  border-radius: 6px;
+  font-size: clamp(0.82rem, 0.35vw + 0.74rem, 0.98rem);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1 1 140px;
+  max-width: 260px;
+}
+
+#biblia-container .btn-rodape-cap:hover:not(:disabled),
+#biblia-container .btn-rodape-cap:focus:not(:disabled) {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  outline: none;
+}
+
+#biblia-container .btn-rodape-cap:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* CONTROLES DE TAMANHO DA LETRA (A- / A+) */
+#biblia-container .biblia-fonte-controles {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(6, 23, 46, 0.72);
+  border: 1px solid rgba(197, 160, 89, 0.75);
+  border-radius: 6px;
+  padding: 2px 5px;
+  flex-shrink: 0;
+}
+
+#biblia-container .btn-fonte {
+  background: transparent;
+  border: 1px solid var(--ccb-gold);
+  color: var(--ccb-gold);
+  font-size: clamp(0.75rem, 0.25vw + 0.68rem, 0.88rem);
+  font-weight: 700;
+  padding: 4px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.15s ease;
+  width: auto;
+}
+
+#biblia-container .btn-fonte:hover:not(:disabled),
+#biblia-container .btn-fonte:focus:not(:disabled) {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  outline: none;
+}
+
+#biblia-container .btn-fonte:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+#biblia-container .biblia-fonte-badge {
+  color: var(--ccb-white);
+  font-size: clamp(0.72rem, 0.22vw + 0.65rem, 0.84rem);
+  font-weight: 600;
+  min-width: 38px;
+  text-align: center;
+  user-select: none;
+}
+
+@media (max-width: 767px) {
+  #biblia-container {
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100vw;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  #biblia-container .tv-header h1 {
+    white-space: normal;
+  }
+
+  #biblia-container .biblia-controles,
+  #biblia-container .biblia-busca-box,
+  #biblia-container .biblia-controles > input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #biblia-container .btn-rodape-cap {
+    max-width: none;
+    flex: 1 1 100%;
+  }
+}
