@@ -700,7 +700,12 @@ function carregarEscalaFonte() {
 function aplicarEscalaFonte() {
   const arredondada = Number(escalaFonteAtual.toFixed(2));
   escalaFonteAtual = arredondada;
-  document.documentElement.style.setProperty("--escala-fonte", String(arredondada));
+  const containerBiblia = document.getElementById("biblia-container");
+  if (containerBiblia) {
+    containerBiblia.style.setProperty("--escala-fonte", String(arredondada));
+  } else {
+    document.documentElement.style.setProperty("--escala-fonte", String(arredondada));
+  }
 
   const pct = `${Math.round(arredondada * 100)}%`;
   document.querySelectorAll(".biblia-fonte-badge").forEach((el) => {
