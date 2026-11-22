@@ -1,6 +1,5 @@
 /* ==========================================================================
    ESTILOS DO MÓDULO BÍBLIA SAGRADA (ESCOPADO AO #biblia-container)
-   Mantém a identidade visual do AppCCB e unifica livros e capítulos
    ========================================================================== */
 
 #biblia-container {
@@ -295,14 +294,27 @@
   margin: 0 auto;
 }
 
+#biblia-container .biblia-grid-livros > *,
+#biblia-container .biblia-grid-capitulos > * {
+  min-width: 0;
+}
+
 #biblia-container .btn-livro-compacto,
-#biblia-container .btn-capitulo {
-  background: var(--ccb-blue);
-  color: var(--ccb-white);
-  border: 1px solid rgba(197, 160, 89, 0.45);
-  border-top: 4px solid var(--ccb-gold);
-  border-radius: 6px;
-  padding: 10px 6px;
+#biblia-container .btn-capitulo,
+#biblia-container button.btn-capitulo {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: var(--ccb-blue) !important;
+  background-color: var(--ccb-blue) !important;
+  color: var(--ccb-white) !important;
+  border: 1px solid rgba(197, 160, 89, 0.45) !important;
+  border-top: 4px solid var(--ccb-gold) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  padding: 10px 4px;
   font-size: 0.92rem;
   font-weight: bold;
   cursor: pointer;
@@ -312,6 +324,11 @@
   justify-content: center;
   transition: all 0.2s ease;
   line-height: 1.25;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 #biblia-container .btn-livro-compacto:hover,
@@ -319,11 +336,15 @@
 #biblia-container .btn-livro-compacto.kb-focus,
 #biblia-container .btn-capitulo:hover,
 #biblia-container .btn-capitulo:focus,
-#biblia-container .btn-capitulo.kb-focus {
-  background: var(--ccb-gold);
-  color: var(--ccb-dark-blue);
-  border-color: var(--ccb-gold);
-  border-top-color: var(--ccb-gold);
+#biblia-container .btn-capitulo.kb-focus,
+#biblia-container button.btn-capitulo:hover,
+#biblia-container button.btn-capitulo:focus,
+#biblia-container button.btn-capitulo.kb-focus {
+  background: var(--ccb-gold) !important;
+  background-color: var(--ccb-gold) !important;
+  color: var(--ccb-dark-blue) !important;
+  border-color: var(--ccb-gold) !important;
+  border-top-color: var(--ccb-gold) !important;
   transform: translateY(-2px);
   outline: 2px solid var(--ccb-white);
 }
@@ -447,9 +468,10 @@
   }
 
   #biblia-container .btn-livro-compacto,
-  #biblia-container .btn-capitulo {
+  #biblia-container .btn-capitulo,
+  #biblia-container button.btn-capitulo {
     font-size: clamp(0.92rem, 0.45vw + 0.72rem, 1.08rem);
-    padding: 7px 6px;
+    padding: 7px 4px;
     line-height: 1.2;
   }
 }
@@ -479,9 +501,10 @@
   }
 
   #biblia-container .btn-livro-compacto,
-  #biblia-container .btn-capitulo {
+  #biblia-container .btn-capitulo,
+  #biblia-container button.btn-capitulo {
     font-size: 0.94rem;
-    padding: 10px 6px;
+    padding: 10px 4px;
   }
 }
 
@@ -566,9 +589,10 @@
   }
 
   #biblia-container .btn-livro-compacto,
-  #biblia-container .btn-capitulo {
+  #biblia-container .btn-capitulo,
+  #biblia-container button.btn-capitulo {
     font-size: 0.9rem;
-    padding: 10px 6px;
+    padding: 10px 4px;
     min-height: 42px;
   }
 
