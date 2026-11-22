@@ -1,5 +1,6 @@
 /* ==========================================================================
    ESTILOS DO MÓDULO BÍBLIA SAGRADA (ESCOPADO AO #biblia-container)
+   Mantém a identidade visual do AppCCB e unifica livros e capítulos
    ========================================================================== */
 
 #biblia-container {
@@ -74,7 +75,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
@@ -132,26 +133,29 @@
   box-shadow: 0 0 10px var(--ccb-gold);
 }
 
+/* Botão da lupa seguindo o estilo institucional (azul + topo dourado) */
 #biblia-container .btn-lupa {
-  background: var(--ccb-gold);
-  color: var(--ccb-dark-blue);
-  border: 2px solid var(--ccb-gold);
+  background: var(--ccb-blue);
+  color: var(--ccb-white);
+  border: 1px solid var(--ccb-gold);
+  border-top: 3px solid var(--ccb-gold);
   border-radius: 6px;
-  padding: 0.42rem 0.7rem;
+  padding: 0.42rem 0.75rem;
   font-size: 0.95rem;
   font-weight: bold;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 #biblia-container .btn-lupa:hover,
 #biblia-container .btn-lupa:focus,
 #biblia-container .btn-lupa.kb-focus {
-  background: var(--ccb-white);
-  border-color: var(--ccb-white);
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  border-color: var(--ccb-gold);
   outline: none;
 }
 
@@ -167,7 +171,7 @@
 }
 
 #biblia-container .btn-cap {
-  background: transparent;
+  background: var(--ccb-blue);
   color: var(--ccb-gold);
   border: 1px solid var(--ccb-gold);
   border-radius: 4px;
@@ -180,7 +184,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 #biblia-container .btn-cap:hover:not(:disabled),
@@ -216,7 +220,7 @@
 }
 
 #biblia-container .btn-fonte {
-  background: transparent;
+  background: var(--ccb-blue);
   color: var(--ccb-gold);
   border: 1px solid var(--ccb-gold);
   border-radius: 4px;
@@ -224,7 +228,7 @@
   font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 #biblia-container .btn-fonte:hover:not(:disabled),
@@ -279,8 +283,11 @@
   margin-top: 20px;
 }
 
-/* Grade de Livros */
-#biblia-container .biblia-grid-livros {
+/* ==========================================================================
+   GRADE UNIFICADA DE LIVROS E CAPÍTULOS (ESTILO .btn-menu DO PROJETO)
+   ========================================================================== */
+#biblia-container .biblia-grid-livros,
+#biblia-container .biblia-grid-capitulos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
   gap: 8px;
@@ -288,60 +295,37 @@
   margin: 0 auto;
 }
 
-#biblia-container .btn-livro-compacto {
-  background: rgba(255, 255, 255, 0.06);
+#biblia-container .btn-livro-compacto,
+#biblia-container .btn-capitulo {
+  background: var(--ccb-blue);
   color: var(--ccb-white);
   border: 1px solid rgba(197, 160, 89, 0.45);
+  border-top: 4px solid var(--ccb-gold);
   border-radius: 6px;
-  padding: 8px 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 10px 6px;
+  font-size: 0.92rem;
+  font-weight: bold;
   cursor: pointer;
   text-align: center;
-  transition: all 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
   line-height: 1.25;
 }
 
 #biblia-container .btn-livro-compacto:hover,
 #biblia-container .btn-livro-compacto:focus,
-#biblia-container .btn-livro-compacto.kb-focus {
-  background: var(--ccb-gold);
-  color: var(--ccb-dark-blue);
-  border-color: var(--ccb-gold);
-  transform: translateY(-2px);
-  outline: none;
-}
-
-/* Grade de Capítulos */
-#biblia-container .biblia-grid-capitulos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
-  gap: 8px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-#biblia-container .btn-capitulo {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--ccb-white);
-  border: 1px solid rgba(197, 160, 89, 0.45);
-  border-radius: 6px;
-  padding: 10px 6px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.18s ease;
-}
-
+#biblia-container .btn-livro-compacto.kb-focus,
 #biblia-container .btn-capitulo:hover,
 #biblia-container .btn-capitulo:focus,
 #biblia-container .btn-capitulo.kb-focus {
   background: var(--ccb-gold);
   color: var(--ccb-dark-blue);
   border-color: var(--ccb-gold);
+  border-top-color: var(--ccb-gold);
   transform: translateY(-2px);
-  outline: none;
+  outline: 2px solid var(--ccb-white);
 }
 
 /* Leitura dos Versículos (escala dinâmica com --escala-fonte) */
@@ -388,22 +372,23 @@
 }
 
 #biblia-container .biblia-resultado-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(197, 160, 89, 0.35);
+  background: var(--ccb-blue);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-left: 4px solid var(--ccb-gold);
   border-radius: 6px;
   padding: calc(10px * var(--escala-fonte, 1)) calc(14px * var(--escala-fonte, 1));
   font-size: calc(1rem * var(--escala-fonte, 1));
   line-height: 1.55;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: all 0.2s ease;
 }
 
 #biblia-container .biblia-resultado-item:hover,
 #biblia-container .biblia-resultado-item:focus,
 #biblia-container .biblia-resultado-item.kb-focus {
-  background: rgba(197, 160, 89, 0.16);
+  background: rgba(197, 160, 89, 0.22);
   border-color: var(--ccb-gold);
-  outline: none;
+  outline: 2px solid var(--ccb-gold);
 }
 
 #biblia-container .biblia-resultado-ref {
@@ -423,9 +408,10 @@
 }
 
 /* ==========================================================================
-   DESKTOP / TELAS MAIORES (min-width: 768px)
+   DESKTOP / TELAS MAIORES (min-width: 1025px)
+   Mantém letras grandes nos botões e ambos os testamentos bem encaixados
    ========================================================================== */
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   #biblia-container .tv-header {
     padding: 0.85rem 1.8rem;
   }
@@ -439,7 +425,8 @@
     padding: 6px 12px;
   }
 
-  #biblia-container .biblia-main-content:has(.biblia-grid-livros) {
+  #biblia-container .biblia-main-content:has(.biblia-grid-livros),
+  #biblia-container .biblia-main-content:has(.biblia-grid-capitulos) {
     padding: 12px 20px;
   }
 
@@ -453,15 +440,48 @@
     margin-top: 12px;
   }
 
-  #biblia-container .biblia-grid-livros {
+  #biblia-container .biblia-grid-livros,
+  #biblia-container .biblia-grid-capitulos {
     grid-template-columns: repeat(auto-fill, minmax(clamp(108px, 8.8vw, 148px), 1fr));
     gap: 5px;
   }
 
-  #biblia-container .btn-livro-compacto {
+  #biblia-container .btn-livro-compacto,
+  #biblia-container .btn-capitulo {
     font-size: clamp(0.92rem, 0.45vw + 0.72rem, 1.08rem);
     padding: 7px 6px;
     line-height: 1.2;
+  }
+}
+
+/* ==========================================================================
+   TABLETS (768px a 1024px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #biblia-container {
+    width: 98vw;
+    height: 96vh;
+  }
+
+  #biblia-container .tv-header {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  #biblia-container .tv-header h1 {
+    font-size: 1.25rem;
+  }
+
+  #biblia-container .biblia-grid-livros,
+  #biblia-container .biblia-grid-capitulos {
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: 7px;
+  }
+
+  #biblia-container .btn-livro-compacto,
+  #biblia-container .btn-capitulo {
+    font-size: 0.94rem;
+    padding: 10px 6px;
   }
 }
 
@@ -496,6 +516,7 @@
   #biblia-container .biblia-controles {
     justify-content: stretch;
     width: 100%;
+    gap: 8px;
   }
 
   #biblia-container .biblia-busca-box {
@@ -505,83 +526,9 @@
   #biblia-container #busca-palavra-input,
   #biblia-container #busca-palavra-resultados-input,
   #biblia-container #biblia-busca-input {
-    flex: 1;
+    flex: 1 1 100%;
     min-width: 0;
     width: 100%;
-  }
-
-  #biblia-container .biblia-main-content {
-    padding: 12px;
-  }
-
-  #biblia-container .biblia-grid-livros {
-    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-    gap: 6px;
-  }
-
-  #biblia-container .btn-livro-compacto {
-    font-size: 0.82rem;
-    padding: 8px 5px;
-  }
-}
-
-/* ==========================================================================
-   MELHORIAS PARA TABLETS (768px a 1024px)
-   ========================================================================== */
-@media (min-width: 768px) and (max-width: 1024px) {
-  #biblia-container {
-    width: 98vw;
-    height: 96vh;
-  }
-
-  #biblia-container .tv-header {
-    padding: 10px 14px;
-    gap: 8px;
-  }
-
-  #biblia-container .tv-header h1 {
-    font-size: 1.25rem;
-  }
-
-  #biblia-container .biblia-grid-livros {
-    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
-    gap: 7px;
-  }
-
-  #biblia-container .btn-livro-compacto {
-    font-size: 0.92rem;
-    padding: 9px 6px;
-  }
-
-  #biblia-container .biblia-grid-capitulos {
-    grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
-    gap: 9px;
-  }
-
-  #biblia-container .btn-capitulo {
-    padding: 12px 6px;
-    font-size: 1rem;
-  }
-}
-
-/* ==========================================================================
-   MELHORIAS PARA CELULARES (até 767px)
-   ========================================================================== */
-@media (max-width: 767px) {
-  #biblia-container .biblia-controles {
-    gap: 8px;
-  }
-
-  /* Faz o campo de filtrar no capítulo ocupar a linha inteira com conforto */
-  #biblia-container #biblia-busca-input {
-    flex: 1 1 100%;
-    width: 100%;
-    padding: 0.55rem 0.8rem;
-    font-size: 0.95rem;
-  }
-
-  #biblia-container #busca-palavra-input,
-  #biblia-container #busca-palavra-resultados-input {
     padding: 0.55rem 0.8rem;
     font-size: 0.95rem;
   }
@@ -591,7 +538,6 @@
     font-size: 1rem;
   }
 
-  /* Botões de anterior/próximo capítulo e A-/A+ mais fáceis de tocar */
   #biblia-container .btn-cap {
     width: 34px;
     height: 34px;
@@ -608,33 +554,22 @@
     min-width: 46px;
   }
 
-  /* Grade de livros e capítulos com toque mais confortável */
-  #biblia-container .biblia-grid-livros {
+  #biblia-container .biblia-main-content {
+    padding: 12px 10px 24px 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #biblia-container .biblia-grid-livros,
+  #biblia-container .biblia-grid-capitulos {
     grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
     gap: 7px;
   }
 
-  #biblia-container .btn-livro-compacto {
-    font-size: 0.88rem;
+  #biblia-container .btn-livro-compacto,
+  #biblia-container .btn-capitulo {
+    font-size: 0.9rem;
     padding: 10px 6px;
     min-height: 42px;
-  }
-
-  #biblia-container .biblia-grid-capitulos {
-    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
-    gap: 8px;
-  }
-
-  #biblia-container .btn-capitulo {
-    padding: 11px 4px;
-    font-size: 0.98rem;
-    min-height: 44px;
-  }
-
-  /* Respiro extra na leitura dos versículos e resultados */
-  #biblia-container .biblia-main-content {
-    padding: 12px 10px 24px 10px;
-    -webkit-overflow-scrolling: touch;
   }
 
   #biblia-container .biblia-versiculo,
