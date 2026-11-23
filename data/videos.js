@@ -400,5 +400,6 @@ export const listaVideos = [
   { title: "2026 11 11   Palavra Vídeo   QUA 19 30   I Tessalonicenses 4 13   IrLuiz", youtubeId: "lHRysjKTBk4" },
   { title: "2026 11 18   Palavra Vídeo   QUA 19 30   Josué 3   IrHélio", youtubeId: "saL_ct6ak6g" },
   { title: "2022 02 13   Palavra Vídeo   DOM 10 00   Hebreus 10 19   IrSalvador", youtubeId: "SV27OyR2amE" },
-  { title: "2022 02 09   Palavra Vídeo   QUA 15 00   Hebreus 11 23   IrCláudio", youtubeId: "Q-300BpVXX0" }
+  { title: "2022 02 09   Palavra Vídeo   QUA 15 00   Hebreus 11 23   IrCláudio", youtubeId: "Q-300BpVXX0" },
+  { title: "2022 02 06   Palavra Vídeo   DOM 10 00   Mateus 24   IrSalvador", youtubeId: "WXvYVkbi3pE" }
 ];
