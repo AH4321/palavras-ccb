@@ -308,14 +308,13 @@
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
-  background: var(--ccb-blue) !important;
-  background-color: var(--ccb-blue) !important;
-  color: var(--ccb-white) !important;
-  border: 1px solid rgba(197, 160, 89, 0.45) !important;
-  border-top: 4px solid var(--ccb-gold) !important;
-  border-radius: 6px !important;
-  box-shadow: none !important;
-  text-decoration: none !important;
+  background: var(--ccb-blue);
+  color: var(--ccb-white);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-top: 4px solid var(--ccb-gold);
+  border-radius: 6px;
+  box-shadow: none;
+  text-decoration: none;
   padding: 10px 4px;
   font-size: 1.15rem;
   font-weight: bold;
@@ -348,17 +347,16 @@
 #biblia-container button.btn-capitulo-card:hover,
 #biblia-container button.btn-capitulo-card:focus,
 #biblia-container button.btn-capitulo-card.kb-focus {
-  background: var(--ccb-gold) !important;
-  background-color: var(--ccb-gold) !important;
-  color: var(--ccb-dark-blue) !important;
-  border-color: var(--ccb-gold) !important;
-  border-top-color: var(--ccb-gold) !important;
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  border-color: var(--ccb-gold);
+  border-top-color: var(--ccb-gold);
   transform: translateY(-2px);
   outline: 2px solid var(--ccb-white);
 }
 
 /* ==========================================================================
-   LEITURA DOS VERSÍCULOS E SEÇÕES
+   LEITURA DOS VERSÍCULOS E SEÇÕES (TEXTO CONTÍNUO SEM CAIXAS SEPARADAS)
    ========================================================================== */
 #biblia-container .biblia-capitulo-header {
   max-width: 960px;
@@ -389,16 +387,16 @@
 
 #biblia-container .biblia-secao {
   max-width: 960px;
-  margin: 0 auto 14px auto;
+  margin: 0 auto calc(14px * var(--escala-fonte, 1)) auto;
   display: flex;
   flex-direction: column;
-  gap: calc(10px * var(--escala-fonte, 1));
+  gap: 0;
 }
 
 #biblia-container .biblia-secao-titulo {
   color: var(--ccb-gold);
   font-size: calc(1rem * var(--escala-fonte, 1));
-  margin-top: 6px;
+  margin: 6px 0 6px 0;
 }
 
 #biblia-container .biblia-leitura-lista {
@@ -406,23 +404,24 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: calc(10px * var(--escala-fonte, 1));
+  gap: 0;
 }
 
 #biblia-container .biblia-versiculo {
-  background: rgba(255, 255, 255, 0.04);
-  border-left: 3px solid var(--ccb-gold);
-  border-radius: 0 6px 6px 0;
-  padding: calc(10px * var(--escala-fonte, 1)) calc(14px * var(--escala-fonte, 1));
-  font-size: calc(1.05rem * var(--escala-fonte, 1));
-  line-height: 1.6;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: calc(3px * var(--escala-fonte, 1)) 0;
+  margin: 0;
+  font-size: calc(1.08rem * var(--escala-fonte, 1));
+  line-height: 1.7;
   color: var(--ccb-white);
 }
 
 #biblia-container .biblia-versiculo-num {
   color: var(--ccb-gold);
   font-weight: 700;
-  margin-right: 8px;
+  margin-right: 6px;
   user-select: none;
 }
 
@@ -589,7 +588,7 @@
   #biblia-container .btn-capitulo-card,
   #biblia-container button.btn-capitulo,
   #biblia-container button.btn-capitulo-card {
-    font-size: clamp(1.15rem, 0.45vw + 0.72rem, 1.08rem);
+    font-size: clamp(1.05rem, 0.55vw + 0.85rem, 1.3rem);
     padding: 7px 4px;
     line-height: 1.2;
   }
@@ -624,7 +623,7 @@
   #biblia-container .btn-capitulo-card,
   #biblia-container button.btn-capitulo,
   #biblia-container button.btn-capitulo-card {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     padding: 10px 4px;
   }
 }
@@ -714,12 +713,16 @@
   #biblia-container .btn-capitulo-card,
   #biblia-container button.btn-capitulo,
   #biblia-container button.btn-capitulo-card {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 10px 4px;
     min-height: 42px;
   }
 
-  #biblia-container .biblia-versiculo,
+  #biblia-container .biblia-versiculo {
+    padding: calc(4px * var(--escala-fonte, 1)) 0;
+    line-height: 1.7;
+  }
+
   #biblia-container .busca-item-versiculo,
   #biblia-container .biblia-resultado-item {
     padding: calc(11px * var(--escala-fonte, 1)) calc(12px * var(--escala-fonte, 1));
