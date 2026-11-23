@@ -403,5 +403,6 @@ export const listaVideos = [
   { title: "2022 02 09   Palavra Vídeo   QUA 15 00   Hebreus 11 23   IrCláudio", youtubeId: "Q-300BpVXX0" },
   { title: "2022 02 06   Palavra Vídeo   DOM 10 00   Mateus 24   IrSalvador", youtubeId: "WXvYVkbi3pE" },
   { title: "2022 02 02   Palavra Vídeo   QUA 15 00   João 6 60   IrDavi", youtubeId: "-sHEzJnCbn8" },
-  { title: "2022 01 30   Palavra Vídeo   DOM 10 00   Neemias 4   IrSalvador", youtubeId: "UBO7v5t2b8Q" }
+  { title: "2022 01 30   Palavra Vídeo   DOM 10 00   Neemias 4   IrSalvador", youtubeId: "UBO7v5t2b8Q" },
+  { title: "2022 01 26   Palavra Vídeo   QUA 15 00   Mateus 4   IrCláudio", youtubeId: "EJwa6IXfy9Y" }
 ];
