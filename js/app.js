@@ -115,6 +115,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  window.addEventListener("biblia:voltar-menu", () => {
+    voltarParaMenu();
+    window.history.replaceState({ page: "main" }, "", "");
+  });
+
   window.addEventListener("hinos:voltar-menu", () => {
     voltarParaMenu();
     window.history.replaceState({ page: "main" }, "", "");
