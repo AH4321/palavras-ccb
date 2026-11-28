@@ -3,6 +3,7 @@ import { abrirAuthAdmin } from "./auth.js";
 import { carregarPlaylist } from "./player.js";
 import { iniciarBiblia, fecharBiblia } from "./biblia.js";
 import { iniciarHinos, fecharHinos } from "./hinos.js";
+import { focarMenuPrincipal } from "./keyboard.js";
 
 export function navegarPara(opcao) {
   document.getElementById("menu-overlay").style.display = "none";
@@ -51,7 +52,10 @@ export function voltarParaMenu() {
   if (appEl) appEl.style.display = "none";
   if (bibliaEl) bibliaEl.style.display = "none";
   if (hinosEl) hinosEl.style.display = "none";
-  if (menuEl) menuEl.style.display = "flex";
+  if (menuEl) {
+    menuEl.style.display = "flex";
+    focarMenuPrincipal();
+  }
 }
 
 export function voltarParaAdminMenu() {
