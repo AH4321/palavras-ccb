@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnCloseAdminMenu = document.getElementById("btn-close-admin-menu");
   if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", voltarParaMenu);
 
-  // Botões de Gerenciamento de Vídeos
+  // Botões de Gerenciamento de Vídeos (Salvar, Cancelar Edição, Editar Selecionado, Excluir Selecionado)
   const btnSaveGh = document.getElementById("btn-save-gh");
   if (btnSaveGh) btnSaveGh.addEventListener("click", salvarOuAtualizarVideo);
 
@@ -115,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Voltar ao menu principal a partir do módulo Hinos
   window.addEventListener("hinos:voltar-menu", () => {
     voltarParaMenu();
     window.history.replaceState({ page: "main" }, "", "");
@@ -141,10 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (input) {
         if (input.type === "password") {
           input.type = "text";
-          button.innerHTML = "&#128064;";
+          button.innerHTML = "&#128064;"; // Olho aberto
         } else {
           input.type = "password";
-          button.innerHTML = "&#128065;";
+          button.innerHTML = "&#128065;"; // Olho fechado
         }
       }
     });
@@ -158,12 +157,15 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", () => {
     const loginOverlay = document.getElementById("login-overlay");
     const appContainer = document.getElementById("app-container");
+    const bibliaContainer = document.getElementById("biblia-container");
     const hinosContainer = document.getElementById("hinos-container");
 
     const loginVisivel =
       loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
     const appVisivel =
       appContainer && window.getComputedStyle(appContainer).display !== "none";
+    const bibliaVisivel =
+      bibliaContainer && window.getComputedStyle(bibliaContainer).display !== "none";
     const hinosVisivel =
       hinosContainer && window.getComputedStyle(hinosContainer).display !== "none";
 
@@ -172,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (appVisivel || hinosVisivel) {
+    if (appVisivel || bibliaVisivel || hinosVisivel) {
       voltarParaMenu();
       window.history.replaceState({ page: "main" }, "", "");
       window.history.pushState({ page: "main" }, "", "");
