@@ -406,5 +406,6 @@ export const listaVideos = [
   { title: "2022 01 30   Palavra Vídeo   DOM 10 00   Neemias 4   IrSalvador", youtubeId: "UBO7v5t2b8Q" },
   { title: "2022 01 26   Palavra Vídeo   QUA 15 00   Mateus 4   IrCláudio", youtubeId: "EJwa6IXfy9Y" },
   { title: "2022 01 23   Palavra Vídeo   DOM 10 00   Hebreus 2   IrSalvador", youtubeId: "TMI2g_9QgNE" },
-  { title: "2022 01 16   Palavra Vídeo   DOM 10 00   Romanos 12   IrNilson", youtubeId: "4y9LTC5qbUU" }
+  { title: "2022 01 16   Palavra Vídeo   DOM 10 00   Romanos 12   IrNilson", youtubeId: "4y9LTC5qbUU" },
+  { title: "2022 01 19   Palavra Vídeo   QUA 15 00   Colossenses 1   IrLuiz", youtubeId: "hn0juNaHUa0" }
 ];
