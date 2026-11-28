@@ -297,40 +297,50 @@ autofocus
 </div>
 
 <div id="hinos-container" class="hinos-wrapper">
-  <!-- TELA 1: GRADE DE HINOS E BUSCA -->
-  <section id="hinos-tela-lista" class="hinos-tela ativa" aria-label="Lista de Hinos">
+  <!-- TELA 1: LISTA DE HINOS E COROS + BUSCA -->
+  <section id="hinos-tela-lista" class="hinos-tela ativa" aria-label="Hinário">
     <header class="tv-header">
       <div class="tv-header-top">
         <button class="btn-back-menu" id="btn-hinos-back" type="button" title="Voltar ao Menu">&larr; Menu</button>
         <h1>Hinário</h1>
       </div>
+
       <div class="hinos-controles">
+        <div class="hinos-modo-busca" role="group" aria-label="Modo de busca">
+          <button type="button" class="btn-modo-busca ativo" data-modo="hino">Hino</button>
+          <button type="button" class="btn-modo-busca" data-modo="coro">Coro</button>
+          <button type="button" class="btn-modo-busca" data-modo="palavra">Palavra</button>
+        </div>
+
         <input
           type="text"
           id="hinos-busca-input"
-          placeholder="Buscar por nº, título ou letra..."
+          placeholder="Buscar nº ou título do hino..."
           autocomplete="off"
         >
       </div>
     </header>
+
     <main class="hinos-main-content" id="hinos-area-lista" tabindex="0">
-      <div class="hinos-status">Carregando hinos...</div>
+      <div class="hinos-status">Carregando hinário...</div>
     </main>
   </section>
 
-  <!-- TELA 2: LEITURA DO HINO -->
-  <section id="hinos-tela-leitura" class="hinos-tela" aria-label="Leitura do Hino">
+  <!-- TELA 2: LEITURA COMPLETA -->
+  <section id="hinos-tela-leitura" class="hinos-tela" aria-label="Leitura">
     <header class="tv-header">
       <div class="tv-header-top">
-        <button class="btn-back-menu" id="btn-hinos-voltar-lista" type="button" title="Voltar aos Hinos">&larr; Hinos</button>
-        <h1 id="hinos-titulo-topo">Hino</h1>
+        <button class="btn-back-menu" id="btn-hinos-voltar-lista" type="button" title="Voltar à lista">&larr; Lista</button>
+        <h1 id="hinos-titulo-topo">Leitura</h1>
       </div>
+
       <div class="hinos-controles">
         <div class="hinos-nav-item">
-          <button type="button" id="btn-hino-anterior" class="btn-hino-nav" title="Hino Anterior">&lsaquo;</button>
+          <button type="button" id="btn-hino-anterior" class="btn-hino-nav" title="Anterior">&lsaquo;</button>
           <span id="hinos-indicador-num" class="hinos-num-badge">Nº 1</span>
-          <button type="button" id="btn-hino-proximo" class="btn-hino-nav" title="Próximo Hino">&rsaquo;</button>
+          <button type="button" id="btn-hino-proximo" class="btn-hino-nav" title="Próximo">&rsaquo;</button>
         </div>
+
         <div class="hinos-fonte-controles" aria-label="Tamanho da letra">
           <button type="button" class="btn-fonte" id="btn-hino-fonte-diminuir" title="Diminuir letra">A-</button>
           <span class="hinos-fonte-badge" id="hinos-fonte-badge">100%</span>
@@ -338,6 +348,7 @@ autofocus
         </div>
       </div>
     </header>
+
     <main class="hinos-main-content" id="hinos-area-leitura" tabindex="0"></main>
   </section>
 </div>

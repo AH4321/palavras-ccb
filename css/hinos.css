@@ -34,6 +34,33 @@
   flex-wrap: wrap;
 }
 
+#hinos-container .hinos-modo-busca {
+  display: inline-flex;
+  background: rgba(6, 23, 46, 0.65);
+  border: 1px solid var(--ccb-gold);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+
+#hinos-container .btn-modo-busca {
+  background: transparent;
+  color: var(--ccb-white);
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.82rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+#hinos-container .btn-modo-busca.ativo,
+#hinos-container .btn-modo-busca:hover {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+}
+
 #hinos-container #hinos-busca-input {
   padding: 0.45rem 0.75rem;
   border-radius: 6px;
@@ -56,6 +83,20 @@
   text-align: center;
   padding: 32px 16px;
   color: var(--ccb-gray);
+}
+
+#hinos-container .hinos-grupo-titulo {
+  color: var(--ccb-gold);
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 0 auto 10px auto;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+  max-width: 1400px;
+}
+
+#hinos-container .hinos-grupo-titulo:not(:first-child) {
+  margin-top: 22px;
 }
 
 #hinos-container .hinos-grid {
@@ -90,7 +131,7 @@
 }
 
 #hinos-container .hino-card-num {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--ccb-gold);
 }
@@ -101,7 +142,7 @@
 }
 
 #hinos-container .hino-card-titulo {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 600;
   line-height: 1.25;
 }
@@ -138,7 +179,7 @@
 #hinos-container .hinos-fonte-badge {
   font-size: 0.82rem;
   font-weight: bold;
-  min-width: 48px;
+  min-width: 56px;
   text-align: center;
 }
 
@@ -196,6 +237,14 @@
   text-transform: uppercase;
 }
 
+#hinos-container mark.hino-destaque {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  padding: 0 3px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
 @media (max-width: 767px) {
   #hinos-container {
     width: 100vw;
@@ -203,6 +252,10 @@
     max-width: 100%;
     border-radius: 0;
     border: none;
+  }
+
+  #hinos-container .hinos-controles {
+    width: 100%;
   }
 
   #hinos-container #hinos-busca-input {
