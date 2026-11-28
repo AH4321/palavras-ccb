@@ -1,14 +1,13 @@
-window.__APPCCB_HOST__ = true;
 import { autenticar, verificarSenhaAdmin } from "./auth.js";
 import { navegarPara, voltarParaMenu, voltarParaAdminMenu } from "./menu.js";
-import { 
-  abrirGerenciadorVideos, 
-  abrirModalSenhas, 
-  salvarOuAtualizarVideo, 
-  cancelarEdicao, 
+import {
+  abrirGerenciadorVideos,
+  abrirModalSenhas,
+  salvarOuAtualizarVideo,
+  cancelarEdicao,
   carregarSelecaoParaEdicao,
   excluirVideoSelecionado,
-  atualizarSenhas 
+  atualizarSenhas
 } from "./admin.js";
 import { filtrarVideos, initPlayer, iniciarVideosAleatoriosContinuos } from "./player.js";
 import { inicializarTeclado, focarMenuPrincipal } from "./keyboard.js";
@@ -23,25 +22,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const btnPalavras = document.getElementById("btn-menu-palavras");
-  if (btnPalavras) btnPalavras.addEventListener("click", () => {
-    navegarPara("palavras");
-    window.history.pushState({ page: "app" }, "", "");
-  });
+  if (btnPalavras) {
+    btnPalavras.addEventListener("click", () => {
+      navegarPara("palavras");
+      window.history.pushState({ page: "app" }, "", "");
+    });
+  }
 
   const btnBiblia = document.getElementById("btn-menu-biblia");
-  if (btnBiblia) btnBiblia.addEventListener("click", () => {
-    navegarPara("biblia");
-    window.history.pushState({ page: "app" }, "", "");
-  });
+  if (btnBiblia) {
+    btnBiblia.addEventListener("click", () => {
+      navegarPara("biblia");
+      window.history.pushState({ page: "app" }, "", "");
+    });
+  }
 
   const btnHinos = document.getElementById("btn-menu-hinos");
-  if (btnHinos) btnHinos.addEventListener("click", () => {
-    navegarPara("hinos");
-    window.history.pushState({ page: "app" }, "", "");
-  });
+  if (btnHinos) {
+    btnHinos.addEventListener("click", () => {
+      navegarPara("hinos");
+      window.history.pushState({ page: "app" }, "", "");
+    });
+  }
 
   const btnConfig = document.getElementById("btn-menu-configuracao");
-  if (btnConfig) btnConfig.addEventListener("click", () => navegarPara("configuracao"));
+  if (btnConfig) {
+    btnConfig.addEventListener("click", () => navegarPara("configuracao"));
+  }
 
   const adminAuthForm = document.getElementById("admin-auth-form");
   if (adminAuthForm) {
@@ -66,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnCloseAdminMenu = document.getElementById("btn-close-admin-menu");
   if (btnCloseAdminMenu) btnCloseAdminMenu.addEventListener("click", voltarParaMenu);
 
-  // Botões de Gerenciamento de Vídeos (Salvar, Cancelar Edição, Editar Selecionado, Excluir Selecionado)
+  // Botões de Gerenciamento de Vídeos
   const btnSaveGh = document.getElementById("btn-save-gh");
   if (btnSaveGh) btnSaveGh.addEventListener("click", salvarOuAtualizarVideo);
 
@@ -101,12 +108,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnClosePlaceholder) btnClosePlaceholder.addEventListener("click", voltarParaMenu);
 
   const btnAppBack = document.getElementById("btn-app-back");
-  if (btnAppBack) btnAppBack.addEventListener("click", () => {
-    voltarParaMenu();
-    window.history.replaceState({ page: "main" }, "", "");
-  });
+  if (btnAppBack) {
+    btnAppBack.addEventListener("click", () => {
+      voltarParaMenu();
+      window.history.replaceState({ page: "main" }, "", "");
+    });
+  }
 
-  window.addEventListener("biblia:voltar-menu", () => {
+  // Voltar ao menu principal a partir do módulo Hinos
+  window.addEventListener("hinos:voltar-menu", () => {
     voltarParaMenu();
     window.history.replaceState({ page: "main" }, "", "");
   });
@@ -124,17 +134,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Lógica global para o botão de alternar visibilidade da senha (olhinho)
-  document.querySelectorAll(".btn-toggle-password").forEach(button => {
+  document.querySelectorAll(".btn-toggle-password").forEach((button) => {
     button.addEventListener("click", () => {
       const targetId = button.getAttribute("data-target");
       const input = document.getElementById(targetId);
       if (input) {
         if (input.type === "password") {
           input.type = "text";
-          button.innerHTML = "&#128064;"; // Olho aberto
+          button.innerHTML = "&#128064;";
         } else {
           input.type = "password";
-          button.innerHTML = "&#128065;"; // Olho fechado
+          button.innerHTML = "&#128065;";
         }
       }
     });
@@ -145,30 +155,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Controle do botão voltar do telemóvel / browser
   window.history.replaceState({ page: "main" }, "", "");
-  window.addEventListener("popstate", (event) => {
+  window.addEventListener("popstate", () => {
     const loginOverlay = document.getElementById("login-overlay");
     const appContainer = document.getElementById("app-container");
-    const loginVisivel = loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
-    const appVisivel = appContainer && window.getComputedStyle(appContainer).display !== "none";
+    const hinosContainer = document.getElementById("hinos-container");
+
+    const loginVisivel =
+      loginOverlay && window.getComputedStyle(loginOverlay).display !== "none";
+    const appVisivel =
+      appContainer && window.getComputedStyle(appContainer).display !== "none";
+    const hinosVisivel =
+      hinosContainer && window.getComputedStyle(hinosContainer).display !== "none";
 
     if (loginVisivel) {
       window.history.pushState({ page: "login" }, "", "");
       return;
     }
 
-    if (appVisivel) {
+    if (appVisivel || hinosVisivel) {
       voltarParaMenu();
       window.history.replaceState({ page: "main" }, "", "");
       window.history.pushState({ page: "main" }, "", "");
-      return;
-    }
-    const bibliaContainer = document.getElementById("biblia-container");
-    const bibliaVisivel = bibliaContainer && window.getComputedStyle(bibliaContainer).display !== "none";
-    if (bibliaVisivel) {
-      voltarParaMenu();
-      window.history.replaceState({ page: "main" }, "", "");
-      window.history.pushState({ page: "main" }, "", "");
-      return;
     }
   });
 });

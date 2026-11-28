@@ -2,14 +2,18 @@ import { state } from "./state.js";
 import { abrirAuthAdmin } from "./auth.js";
 import { carregarPlaylist } from "./player.js";
 import { iniciarBiblia, fecharBiblia } from "./biblia.js";
+import { iniciarHinos, fecharHinos } from "./hinos.js";
 
 export function navegarPara(opcao) {
   document.getElementById("menu-overlay").style.display = "none";
 
   const appEl = document.getElementById("app-container");
   const bibliaEl = document.getElementById("biblia-container");
+  const hinosEl = document.getElementById("hinos-container");
+
   if (appEl) appEl.style.display = "none";
   if (bibliaEl) bibliaEl.style.display = "none";
+  if (hinosEl) hinosEl.style.display = "none";
 
   if (opcao === "palavras") {
     if (appEl) appEl.style.display = "block";
@@ -19,13 +23,11 @@ export function navegarPara(opcao) {
   } else if (opcao === "biblia") {
     if (bibliaEl) bibliaEl.style.display = "flex";
     iniciarBiblia();
+  } else if (opcao === "hinos") {
+    if (hinosEl) hinosEl.style.display = "flex";
+    iniciarHinos();
   } else if (opcao === "configuracao") {
     abrirAuthAdmin();
-  } else if (opcao === "hinos") {
-    abrirPlaceholder(
-      "Hinos",
-      "O hinário com as letras dos hinos estará disponível em breve."
-    );
   }
 }
 
@@ -39,13 +41,16 @@ export function abrirPlaceholder(titulo, descricao) {
 export function voltarParaMenu() {
   fecharModais();
   fecharBiblia();
+  fecharHinos();
 
   const appEl = document.getElementById("app-container");
   const bibliaEl = document.getElementById("biblia-container");
+  const hinosEl = document.getElementById("hinos-container");
   const menuEl = document.getElementById("menu-overlay");
 
   if (appEl) appEl.style.display = "none";
   if (bibliaEl) bibliaEl.style.display = "none";
+  if (hinosEl) hinosEl.style.display = "none";
   if (menuEl) menuEl.style.display = "flex";
 }
 

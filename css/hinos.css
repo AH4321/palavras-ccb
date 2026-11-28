@@ -1,0 +1,216 @@
+#hinos-container {
+  --escala-hino: 1;
+  display: none;
+  width: 98vw;
+  max-width: 1700px;
+  height: 95vh;
+  background: var(--ccb-dark-blue);
+  border-radius: 10px;
+  border: 2px solid var(--ccb-gold);
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+  margin: auto;
+  flex-direction: column;
+  position: relative;
+  color: var(--ccb-white);
+}
+
+#hinos-container .hinos-tela {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+#hinos-container .hinos-tela.ativa {
+  display: flex;
+}
+
+#hinos-container .hinos-controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#hinos-container #hinos-busca-input {
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  border: 2px solid var(--ccb-gold);
+  background: #fff;
+  color: var(--ccb-dark-blue);
+  font-size: 0.9rem;
+  min-width: 240px;
+  outline: none;
+}
+
+#hinos-container .hinos-main-content {
+  flex: 1;
+  padding: 16px 20px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+#hinos-container .hinos-status {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--ccb-gray);
+}
+
+#hinos-container .hinos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#hinos-container .hino-card-btn {
+  background: var(--ccb-blue);
+  color: var(--ccb-white);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-top: 4px solid var(--ccb-gold);
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+#hinos-container .hino-card-btn:hover,
+#hinos-container .hino-card-btn:focus {
+  background: var(--ccb-gold);
+  color: var(--ccb-dark-blue);
+  transform: translateY(-2px);
+  outline: 2px solid var(--ccb-white);
+}
+
+#hinos-container .hino-card-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ccb-gold);
+}
+
+#hinos-container .hino-card-btn:hover .hino-card-num,
+#hinos-container .hino-card-btn:focus .hino-card-num {
+  color: var(--ccb-dark-blue);
+}
+
+#hinos-container .hino-card-titulo {
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+#hinos-container .hinos-nav-item,
+#hinos-container .hinos-fonte-controles {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(6, 23, 46, 0.55);
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(197, 160, 89, 0.5);
+}
+
+#hinos-container .btn-hino-nav,
+#hinos-container .btn-fonte {
+  background: var(--ccb-blue);
+  color: var(--ccb-gold);
+  border: 1px solid var(--ccb-gold);
+  border-radius: 4px;
+  padding: 4px 9px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#hinos-container .btn-hino-nav:disabled,
+#hinos-container .btn-fonte:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+#hinos-container .hinos-num-badge,
+#hinos-container .hinos-fonte-badge {
+  font-size: 0.82rem;
+  font-weight: bold;
+  min-width: 48px;
+  text-align: center;
+}
+
+#hinos-container .hino-leitura-card {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: calc(1.12rem * var(--escala-hino, 1));
+}
+
+#hinos-container .hino-cabecalho-leitura {
+  border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+#hinos-container .hino-numero-destaque {
+  color: var(--ccb-gold);
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+#hinos-container .hino-cabecalho-leitura h2 {
+  color: var(--ccb-white);
+  font-size: 1.4em;
+  margin-top: 2px;
+}
+
+#hinos-container .hino-estrofe {
+  display: flex;
+  gap: 10px;
+  margin-bottom: calc(16px * var(--escala-hino, 1));
+  line-height: 1.7;
+}
+
+#hinos-container .hino-estrofe-num {
+  color: var(--ccb-gold);
+  font-weight: 700;
+  min-width: 22px;
+}
+
+#hinos-container .hino-coro {
+  border-left: 4px solid var(--ccb-gold);
+  background: rgba(11, 37, 69, 0.65);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin: calc(18px * var(--escala-hino, 1)) 0;
+  line-height: 1.7;
+}
+
+#hinos-container .hino-coro-rotulo {
+  color: var(--ccb-gold);
+  font-weight: 700;
+  font-size: 0.9em;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  #hinos-container {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+  }
+
+  #hinos-container #hinos-busca-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #hinos-container .hinos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
