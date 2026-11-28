@@ -31,10 +31,10 @@
     ]
   },
   {
-    "tipo": "coro",
+    "tipo": "hino",
     "numero": 3,
     "titulo": "FAZ-NOS OUVIR TUA VOZ",
-    "estrofes": [
+    "refrao": [
       "Ó caro Salvador, a Tua voz de amor\nNos guia para o céu, glorioso lar;\nPela Palavra vem nos consolar."
     ]
   },
@@ -42,14 +42,14 @@
     "tipo": "hino",
     "numero": 4,
     "titulo": "OUVE A NOSSA ORAÇÃO",
-    "estrofes": [
+    "refrao": [
       "Nossos olhos para os céus, ó Deus, nós levantamos;\nConfiando em Teu amor, a nossa voz alçamos.",
       "Refrigério celestial e bálsamo precioso\nÉ sentir-Te em nosso ser, Pai santo, glorioso.",
       "No Teu trono, ó Senhor, recebe nesta hora\nA humilde oração do povo que Te adora."
     ]
   },
   {
-    "tipo": "coro",
+    "tipo": "hino",
     "numero": 4,
     "titulo": "OUVE A NOSSA ORAÇÃO",
     "estrofes": [
@@ -67,7 +67,7 @@
     ]
   },
   {
-    "tipo": "coro",
+    "tipo": "hino",
     "numero": 5,
     "titulo": "A ROCHA CELESTIAL",
     "estrofes": [
